@@ -1,0 +1,31 @@
+{
+  "name": "El Despertar del Avatar - MUNAY-KI Experience",
+  "short_name": "MUNAY-KI",
+  "description": "Una experiencia transformadora de inmersión en hielo donde aprenderás a convertir el miedo y la incomodidad en tus aliados.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1D1616",
+  "theme_color": "#DC0073",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "lang": "es-ES",
+  "categories": ["events", "lifestyle", "health"],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg"
+    }
+  ]
+} 

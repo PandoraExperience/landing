@@ -11,8 +11,8 @@ const CountdownUnit = ({ value, label, color }: { value: number, label: string, 
   return (
     <div className="relative group transition-transform duration-300 hover:scale-105">
       <div className={`absolute inset-0 ${color} rounded-lg blur-md opacity-20`}></div>
-      <div className="relative flex flex-col items-center bg-gray-900/70 px-4 md:px-6 py-3 md:py-4 rounded-lg border border-white/10 shadow-inner overflow-hidden">
-        <span className="text-3xl md:text-4xl font-bold text-ice-white">{value.toString().padStart(2, '0')}</span>
+      <div className="relative flex flex-col items-center bg-[#1D1616]/70 px-4 md:px-6 py-3 md:py-4 rounded-lg border border-[#DC0073]/20 backdrop-blur-sm shadow-[0_0_15px_rgba(220,0,115,0.1)] overflow-hidden">
+        <span className="text-3xl md:text-4xl font-bold text-white">{value.toString().padStart(2, '0')}</span>
         <span className="text-xs md:text-sm text-white/80">{label}</span>
         <div className={`absolute -bottom-1 left-0 w-full h-1 ${color} opacity-40`}></div>
       </div>
@@ -128,6 +128,15 @@ export default function Hero() {
           </div>
         </div>
         
+        {/* Quote */}
+        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+          <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
+            Esta experiencia no se trata de luchar contra el dolor, sino de transformarlo en claridad y fortaleza.
+          </p>
+        </div>
+        
         {/* Main title with improved visual treatment */}
         <div className={`relative mb-6 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Background glow effect */}
@@ -170,13 +179,8 @@ export default function Hero() {
           </div>
         </div>
         
-        {/* Updated H2 value proposition */}
-        <h2 className={`text-2xl md:text-3xl font-semibold max-w-3xl mb-12 leading-tight text-white/90 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          Esta experiencia no se trata de luchar contra el dolor, sino de transformarlo en claridad y fortaleza.
-        </h2>
-        
         {/* Featured video with HeroVideoDialog component */}
-        <div className={`w-full max-w-4xl mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <HeroVideoDialog
             animationStyle="from-center"
             videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
@@ -188,7 +192,7 @@ export default function Hero() {
         {/* Event date and countdown section */}
         <div className={`mb-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Event date */}
-          <div className="mb-4 flex flex-col md:flex-row items-center justify-center gap-2">
+          <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-2">
             <div className="flex items-center text-[#DC0073]">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
@@ -198,8 +202,8 @@ export default function Hero() {
             <span className="text-white font-semibold text-lg">17 de Mayo, 2025</span>
           </div>
           
-          {/* Countdown timer with component extraction */}
-          <div className="p-5 bg-gray-900/30 backdrop-blur-sm rounded-xl border border-white/10 shadow-lg">
+          {/* Countdown timer with improved styling */}
+          <div className="p-5 bg-[#1D1616]/30 backdrop-blur-sm rounded-xl border border-[#DC0073]/10 shadow-lg">
             <p className="text-sm text-white/70 mb-4">Reserva tu lugar antes que se agoten los cupos</p>
             <div className="flex justify-center gap-3 md:gap-6">
               <CountdownUnit value={countdown.days} label="Días" color="bg-[#DC0073]" />
