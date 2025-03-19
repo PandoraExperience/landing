@@ -1,0 +1,109 @@
+Full Project Description for Cursor AI: Development of "EL DESPERTAR DEL AVATAR" Landing Page
+Below is the complete project description and development instructions for the "EL DESPERTAR DEL AVATAR" landing page. This document includes all technical details, section-specific requirements, and branding guidelines to ensure a high-quality, conversion-optimized landing page.
+
+Project Overview
+The goal of this project is to create a visually impactful, emotionally engaging, and conversion-focused landing page for the event "EL DESPERTAR DEL AVATAR". This event is a transformative ice immersion experience designed to help participants overcome fear, build resilience, and connect with their inner strength. The landing page must clearly communicate the event's value, address potential objections, and drive registrations.
+
+The landing page will initially support manual payment instructions for bookings. Later, we will integrate a payment gateway to support Nequi, Bancolombia, and Daviplata transactions, as well as card payments. The page must be optimized for mobile and desktop users, load quickly, and include all necessary elements to maximize conversions.
+The landing will be in Spanish only for now. 
+
+Key Features and Functional Requirements
+1. Hero Section
+Video Placement: Include an introductory video (not as a background) in the hero section. The video should:
+Be prominently displayed with a custom thumbnail.
+Autoplay muted (optional) or require user interaction to play.
+Be optimized for fast loading (compressed MP4 format, max 5MB).
+Countdown Timer: Add a countdown timer to the event date to create urgency. The timer should:
+Be dynamic and update in real-time.
+Display days, hours, minutes, and seconds.
+Be styled to match the branding colors.
+Headline (H1): "No es aguantar el frío, es aprender a soltar el miedo."
+Subheadline (H2): "Esta experiencia no se trata de luchar contra el dolor, sino de transformarlo en claridad y fortaleza."
+CTA Button: Prominent button labeled "SEPARA TU CUPO YA" that scrolls to the registration section.
+2. ¿Para Quién Es Esta Experiencia? Section
+Objective: Clearly define the target audience and filter out those who are not ready for the experience.
+Content:
+List of personas who will benefit from the event (e.g., individuals in personal reinvention, professionals with high stress, etc.).
+Bold, direct statements for who the event is not for (e.g., "Si buscas una experiencia sin compromiso, este evento no es para ti").
+CTA Button: "ESTO ES PARA TI, RESERVA TU CUPO AHORA" (scrolls to more information).
+3. ¿Qué Vas a Vivir en Esta Experiencia? Section
+Objective: Highlight the key benefits of the event in an emotional and visually appealing way.
+Content:
+Three blocks with icons, images, and short descriptions:
+🧠 Transformación Mental: "Rompe patrones limitantes y reprograma tu mente para la resiliencia."
+❄ Expansión Emocional: "Aprenderás a convertir el miedo y la incomodidad en tus aliados."
+🔥 Renovación Espiritual: "Descubre una conexión más profunda contigo mismo y con la vida."
+CTA Button: "RESERVA TU LUGAR ANTES QUE SE AGOTEN" (scrolls to registration).
+4. El Entorno: Donde Sucede la Transformación Section
+Objective: Emphasize the natural setting and its role in the transformative experience.
+Content:
+Description of the location (e.g., "Entre quebradas cristalinas, montañas y aves silvestres").
+Highlight the absence of urban distractions and the inclusion of rituals and meditations.
+Include high-quality images or a short video showcasing the natural environment.
+CTA Button: "SÓLO QUEDAN POCOS CUPOS, RESERVA EL TUYO AHORA".
+5. Precio y Disponibilidad Section
+Objective: Create urgency and clearly communicate the value of the event.
+Content:
+Price: 497,000 COP (with a note about what is included: full experience, professional guidance, materials, and a conscious lunch).
+Manual payment instructions (e.g., bank transfer details, Nequi, Bancolombia, Daviplata).
+Mention of limited spots (25 participants per event).
+Offer for early registrants (e.g., "Descuento para los primeros 10 inscritos").
+Future integration of payment gateway for Nequi, Bancolombia, Daviplata, and card payments.
+CTA Button: "SEPARA TU CUPO AHORA ANTES DE QUE SE AGOTEN".
+6. Testimonios Reales Section
+Objective: Build trust and validate the event's impact through social proof.
+Content:
+A short, impactful quote: "Lo que hoy te incomoda, mañana te libera."
+A 60-second video with participant testimonials (edited for emotional impact).
+Mini testimonials with participant photos and short text.
+CTA Button: "VÍVELO TÚ TAMBIÉN, RESERVA AHORA".
+7. FAQ Section
+Objective: Address common objections and provide clarity.
+Content:
+Safety concerns (e.g., "¿Es seguro sumergirse en hielo?")
+Who should/should not participate (e.g., medical contraindications).
+What to bring to the event.
+Refund policy.
+What makes this event unique.
+CTA Button: "LISTO PARA RESERVAR, SEPARA TU CUPO YA".
+8. Registro y Reserva Tu Cupo Ahora Section
+Objective: Capture leads and drive conversions.
+Content:
+Simple form fields:
+Name
+Phone number
+Email
+Open-ended question: "¿Por qué quieres hacer esto?"
+Manual payment instructions (bank transfer details).
+Confirmation message after submission: "Tu transformación empieza ahora. Revisa tu correo para más detalles."
+Future Integration: Payment gateway for Nequi, Bancolombia, Daviplata, and card payments.
+Technical Specifications
+
+Tech Stack
+Frontend: Next.js with Tailwind CSS
+Hosting: Vercel
+Form Handling: React Hook Form with Zod validation
+Analytics: Google Analytics 4 + Meta Pixel
+Countdown Timer: JavaScript-based dynamic timer (e.g., React Countdown or custom implementation)
+Performance Optimization
+Images: Use Next.js Image component with WebP format and lazy loading.
+Videos: Compress videos to <5MB and lazy load.
+Critical CSS: Inline above-the-fold CSS.
+Font Loading: Use font-display: swap.
+Mobile Optimization
+Mobile-first design with breakpoints for tablet and desktop.
+Touch-friendly buttons and forms.
+Fast-loading assets for mobile connections.
+Branding Colors
+For a transformative, nature-inspired event like this, the following color palette is recommended:
+
+Primary Colors:
+Deep Blue (#003366): Represents calm, resilience, and clarity.
+Ice White (#F5F9FF): Evokes the purity and freshness of ice.
+Warm Orange (#FF6F3C): Adds energy, urgency, and emotional warmth.
+Secondary Colors:
+Forest Green (#2E8B57): Reflects the natural environment and growth.
+Light Gray (#E5E5E5): Neutral tone for backgrounds and text.
+Accent Colors:
+Gold (#FFD700): Symbolizes transformation and value.
+Crimson Red (#DC143C): Adds emotional intensity and urgency.
