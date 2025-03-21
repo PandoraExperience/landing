@@ -11,7 +11,7 @@ const CountdownUnit = ({ value, label, color }: { value: number, label: string, 
   return (
     <div className="relative group transition-transform duration-300 hover:scale-105">
       <div className={`absolute inset-0 ${color} rounded-lg blur-md opacity-20`}></div>
-      <div className="relative flex flex-col items-center bg-[#1D1616]/70 px-4 md:px-6 py-3 md:py-4 rounded-lg border border-[#DC0073]/20 backdrop-blur-sm shadow-[0_0_15px_rgba(220,0,115,0.1)] overflow-hidden">
+      <div className="relative flex flex-col items-center bg-[#1D1616]/70 px-4 md:px-6 py-3 md:py-4 rounded-lg border border-primary/20 backdrop-blur-sm shadow-[0_0_15px_rgba(5,96,187,0.1)] overflow-hidden">
         <span className="text-3xl md:text-4xl font-bold text-white">{value.toString().padStart(2, '0')}</span>
         <span className="text-xs md:text-sm text-white/80">{label}</span>
         <div className={`absolute -bottom-1 left-0 w-full h-1 ${color} opacity-40`}></div>
@@ -94,15 +94,29 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section ref={sectionRef} id="hero" className="relative min-h-screen bg-[#1D1616] text-white flex flex-col items-center justify-center px-4 pt-28 pb-20 overflow-hidden">
       {/* Enhanced breathing/pulsating background gradients */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(220,0,115,0.3)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.3)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
       <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-[radial-gradient(circle,rgba(46,139,87,0.2)_0%,rgba(0,0,0,0)_70%)] animate-breathe opacity-90" style={{ animationDelay: '3s' }}></div>
       
       {/* Parallax background elements - more pronounced glow */}
       <div 
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#DC0073]/20 filter blur-3xl animate-breathe"
+        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
       ></div>
       <div 
@@ -123,15 +137,15 @@ export default function Hero() {
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
         {/* Logo or brand identifier above title */}
         <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex items-center justify-center bg-gray-900/30 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
-            <span className="text-[#DC0073] text-sm font-medium tracking-wider">MUNAY-KI EXPERIENCE</span>
+          <div className="flex items-center justify-center bg-gray-900/30 px-4 py-1.5 rounded-full backdrop-blur-sm border border-primary/10">
+            <span className="text-primary text-sm font-medium tracking-wider">MUNAY-KI EXPERIENCE</span>
           </div>
         </div>
         
         {/* Quote */}
         <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+          <div className="absolute -left-6 top-0 text-3xl text-primary/70">"</div>
+          <div className="absolute -right-6 bottom-0 text-3xl text-primary/70">"</div>
           <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
             Esta experiencia no se trata de luchar contra el dolor, sino de transformarlo en claridad y fortaleza.
           </p>
@@ -140,40 +154,24 @@ export default function Hero() {
         {/* Main title with improved visual treatment */}
         <div className={`relative mb-6 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Background glow effect */}
-          <div className="absolute inset-0 bg-[#DC0073]/40 filter blur-[100px] rounded-full animate-breathe"></div>
+          <div className="absolute inset-0 bg-primary/40 filter blur-[100px] rounded-full animate-breathe"></div>
           
           <div className="relative">
             <h1 className="mb-2">
               {/* Title with improved shimmer effect - First line */}
-              <div className="relative overflow-hidden leading-tight p-2 rounded-lg bg-black/5 backdrop-blur-sm shadow-[0_0_30px_rgba(220,0,115,0.2)]">
-                <div className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white drop-shadow-[0_10px_8px_rgba(0,0,0,0.5)]" 
+              <div className="relative overflow-hidden leading-tight p-2 rounded-lg bg-black/5 backdrop-blur-sm shadow-[0_0_30px_rgba(5,96,187,0.2)]">
+                <div className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-[0_10px_8px_rgba(0,0,0,0.5)]" 
                   style={{ 
                     textShadow: '0 1px 0 rgba(255,255,255,0.4), 0 2px 0 rgba(255,255,255,0.3), 0 3px 0 rgba(255,255,255,0.2), 0 4px 0 rgba(255,255,255,0.1), 0 5px 10px rgba(0,0,0,0.6), 0 15px 15px rgba(0,0,0,0.3)',
                     letterSpacing: '1px'
                   }}>
-                  EL DESPERTAR
+                  EL DESPERTAR DEL AVATAR
                 </div>
                 {/* New shimmer implementation with slower animation - more pronounced */}
                 <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[shimmer_8s_ease-in-out_infinite]"></div>
                 
                 {/* Light flare effect */}
                 <div className="absolute -top-10 -right-10 w-20 h-20 rounded-full bg-white/30 blur-xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-              </div>
-              
-              {/* Title with improved shimmer effect - Second line */}
-              <div className="relative overflow-hidden leading-tight mt-2 p-2 rounded-lg bg-black/5 backdrop-blur-sm shadow-[0_0_30px_rgba(220,0,115,0.2)]">
-                <div className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white drop-shadow-[0_10px_8px_rgba(0,0,0,0.5)]"
-                  style={{ 
-                    textShadow: '0 1px 0 rgba(255,255,255,0.4), 0 2px 0 rgba(255,255,255,0.3), 0 3px 0 rgba(255,255,255,0.2), 0 4px 0 rgba(255,255,255,0.1), 0 5px 10px rgba(0,0,0,0.6), 0 15px 15px rgba(0,0,0,0.3)',
-                    letterSpacing: '1px'
-                  }}>
-                  DEL AVATAR
-                </div>
-                {/* New shimmer implementation with delay and slower animation - more pronounced */}
-                <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[shimmer_8s_ease-in-out_infinite_4s]"></div>
-                
-                {/* Light flare effect */}
-                <div className="absolute -bottom-10 -left-10 w-20 h-20 rounded-full bg-white/30 blur-xl animate-pulse-slow" style={{ animationDelay: '5s' }}></div>
               </div>
             </h1>
           </div>
@@ -184,8 +182,8 @@ export default function Hero() {
           <HeroVideoDialog
             animationStyle="from-center"
             videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-            thumbnailSrc="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=1920&auto=format&fit=crop"
-            thumbnailAlt="Descubre la experiencia Munay-Ki"
+            thumbnailSrc="/images/Hero/hero-video.webp"
+            thumbnailAlt="Mujer en agua - Experiencia transformadora Munay-Ki"
           />
         </div>
 
@@ -193,7 +191,7 @@ export default function Hero() {
         <div className={`mb-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Event date */}
           <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-2">
-            <div className="flex items-center text-[#DC0073]">
+            <div className="flex items-center text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
               </svg>
@@ -203,13 +201,13 @@ export default function Hero() {
           </div>
           
           {/* Countdown timer with improved styling */}
-          <div className="p-5 bg-[#1D1616]/30 backdrop-blur-sm rounded-xl border border-[#DC0073]/10 shadow-lg">
+          <div className="p-5 bg-[#1D1616]/30 backdrop-blur-sm rounded-xl border border-primary/10 shadow-lg">
             <p className="text-sm text-white/70 mb-4">Reserva tu lugar antes que se agoten los cupos</p>
             <div className="flex justify-center gap-3 md:gap-6">
-              <CountdownUnit value={countdown.days} label="Días" color="bg-[#DC0073]" />
-              <CountdownUnit value={countdown.hours} label="Horas" color="bg-[#DC0073]" />
-              <CountdownUnit value={countdown.minutes} label="Minutos" color="bg-[#DC0073]" />
-              <CountdownUnit value={countdown.seconds} label="Segundos" color="bg-[#DC0073]" />
+              <CountdownUnit value={countdown.days} label="Días" color="bg-primary" />
+              <CountdownUnit value={countdown.hours} label="Horas" color="bg-primary" />
+              <CountdownUnit value={countdown.minutes} label="Minutos" color="bg-primary" />
+              <CountdownUnit value={countdown.seconds} label="Segundos" color="bg-primary" />
             </div>
           </div>
         </div>
@@ -219,15 +217,12 @@ export default function Hero() {
           {/* Enhanced CTA with improved visibility and contrast */}
           <div className="relative mb-5 group">
             {/* Animated glow effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#DC0073] via-[#e84393] to-[#DC0073] rounded-full opacity-80 blur-md animate-pulse group-hover:opacity-100"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary-light to-primary rounded-full opacity-80 blur-md animate-pulse group-hover:opacity-100"></div>
             
             {/* Button with white background for high contrast */}
             <button
-              onClick={() => {
-                const registration = document.getElementById('registro');
-                registration?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="relative px-8 py-5 text-lg font-bold bg-white text-[#DC0073] hover:text-white hover:bg-[#DC0073] border-2 border-[#DC0073] rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(220,0,115,0.5)] group-hover:shadow-[0_0_25px_rgba(220,0,115,0.8)]"
+              onClick={() => scrollToSection('reserva')}
+              className="relative px-8 py-5 text-lg font-bold bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] group-hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
               RESERVA TU LUGAR AHORA
             </button>

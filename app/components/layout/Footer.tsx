@@ -44,17 +44,13 @@ const Footer = () => {
           {/* About */}
           <div className="text-center md:text-left">
             <div className="flex items-center mb-6 justify-center md:justify-start">
-              <div className="relative h-24 w-24 mr-4">
+              <div className="relative h-24 w-24">
                 <Image 
-                  src="/images/logo/munay-ki.svg"
+                  src="/images/logo/MUNAY-KI_White.png"
                   alt="MUNAY-KI Logo"
                   fill
                   className="object-contain"
                 />
-              </div>
-              <div className="flex flex-col">
-                <h3 className="text-2xl font-bold text-white">MUNAY-KI</h3>
-                <span className="text-gray-400 text-sm italic">El poder de amor</span>
               </div>
             </div>
             <p className="text-gray-300 mb-6">
@@ -68,56 +64,50 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-5 text-[#DC0073]">Enlaces Rápidos</h4>
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="#hero" 
-                  className="text-gray-300 hover:text-white transition-colors relative group"
-                >
+                <a href="#hero" className="text-gray-300 hover:text-white transition-colors relative group">
                   <span className="relative z-10">Inicio</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>
               <li>
-                <a 
-                  href="#experiencia" 
-                  className="text-gray-300 hover:text-white transition-colors relative group"
-                >
+                <a href="#experiencia" className="text-gray-300 hover:text-white transition-colors relative group">
                   <span className="relative z-10">Experiencia</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>
               <li>
-                <a 
-                  href="#transformacion" 
-                  className="text-gray-300 hover:text-white transition-colors relative group"
-                >
+                <a href="#transformacion" className="text-gray-300 hover:text-white transition-colors relative group">
                   <span className="relative z-10">Transformación</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>
               <li>
-                <a 
-                  href="#precio" 
-                  className="text-gray-300 hover:text-white transition-colors relative group"
-                >
+                <a href="#precio" className="text-gray-300 hover:text-white transition-colors relative group">
                   <span className="relative z-10">Precio</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>
               <li>
-                <a 
-                  href="#testimonios" 
-                  className="text-gray-300 hover:text-white transition-colors relative group"
-                >
+                <a href="#testimonios" className="text-gray-300 hover:text-white transition-colors relative group">
                   <span className="relative z-10">Testimonios</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>
               <li>
-                <a 
-                  href="#registro" 
-                  className="text-gray-300 hover:text-white transition-colors relative group"
-                >
+                <a href="#reserva" className="text-gray-300 hover:text-white transition-colors relative group">
                   <span className="relative z-10">Reserva</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#guia" className="text-gray-300 hover:text-white transition-colors relative group">
+                  <span className="relative z-10">Tu Guía</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="text-gray-300 hover:text-white transition-colors relative group">
+                  <span className="relative z-10">FAQ</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>

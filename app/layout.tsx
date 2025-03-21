@@ -67,7 +67,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#DC0073" />
+        <meta name="theme-color" content="#0560BB" />
         
         {/* Google Analytics */}
         <Script
@@ -101,7 +101,7 @@ export default function RootLayout({
                 "priceCurrency": "COP",
                 "availability": "https://schema.org/LimitedAvailability",
                 "validFrom": "2024-01-01",
-                "url": "https://eldespetardelavatar.com/#registro"
+                "url": "https://eldespetardelavatar.com/#reserva"
               },
               "organizer": {
                 "@type": "Organization",

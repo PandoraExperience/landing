@@ -7,18 +7,19 @@ module.exports = {
     extend: {
       colors: {
         // Primary Colors
-        'primary': '#DC0073', // Using the pink color as primary for the components
-        'deep-blue': '#003366', // Represents calm, resilience, and clarity
-        'ice-white': '#F5F9FF', // Evokes the purity and freshness of ice
-        'warm-orange': '#FF6F3C', // Adds energy, urgency, and emotional warmth
+        'primary': '#0560BB', // Main blue color from the design
+        'primary-dark': '#003366', // Darker blue for depth
+        'primary-light': '#3B82F6', // Lighter blue for accents
+        'ice-white': '#F5F9FF', // Light background
         
         // Secondary Colors
-        'forest-green': '#2E8B57', // Reflects the natural environment and growth
-        'light-gray': '#E5E5E5', // Neutral tone for backgrounds and text
+        'dark-bg': '#1D1616', // Dark background color
+        'light-gray': '#E5E5E5', // Neutral tone for text
+        'text-light': '#94A3B8', // Light text color
         
         // Accent Colors
-        'gold': '#FFD700', // Symbolizes transformation and value
-        'crimson': '#DC143C', // Adds emotional intensity and urgency
+        'accent-blue': '#60A5FA', // Bright blue for highlights
+        'accent-purple': '#818CF8', // Purple accent for variety
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -48,16 +49,13 @@ module.exports = {
         },
         flow: {
           '0%': { backgroundPosition: '0 0' },
-          '100%': { backgroundPosition: '100% 100%' },
+          '100%': { backgroundPosition: '400% 0' },
         },
         shimmer: {
-          '0%': { transform: 'translateX(-150%) skewX(-12deg)', opacity: '0' },
-          '10%': { opacity: '0.7' },
-          '50%': { transform: 'translateX(0%) skewX(-12deg)', opacity: '0.5' },
-          '90%': { opacity: '0.7' },
-          '100%': { transform: 'translateX(150%) skewX(-12deg)', opacity: '0' },
-        },
-      },
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        }
+      }
     },
   },
   plugins: [],

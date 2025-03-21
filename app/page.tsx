@@ -8,6 +8,8 @@ import ExperienceHighlights from '@/app/components/sections/ExperienceHighlights
 import TransformationEnvironment from '@/app/components/sections/TransformationEnvironment';
 import PricingAvailability from '@/app/components/sections/PricingAvailability';
 import Testimonials from '@/app/components/sections/Testimonials';
+import FAQ from '@/app/components/sections/FAQ';
+import YourGuide from '@/app/components/sections/YourGuide';
 
 export default function Home() {
   return (
@@ -19,12 +21,9 @@ export default function Home() {
       <TransformationEnvironment />
       <PricingAvailability />
       <Testimonials />
-      
-      {/* More sections will be implemented later */}
-      
-      {/* Registration form */}
       <RegistrationForm />
-      
+      <YourGuide />
+      <FAQ />
       <Footer />
     </main>
   );

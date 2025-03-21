@@ -15,7 +15,7 @@ const TestimonialCard = ({
   quote: string 
 }) => {
   return (
-    <div className="bg-[#1D1616]/70 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#DC0073]/10 hover:-translate-y-1 group border border-white/5">
+    <div className="relative p-6 bg-[#1D1616]/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 group border border-white/5">
       <div className="relative">
         <div className="aspect-square overflow-hidden">
           <img 
@@ -32,7 +32,7 @@ const TestimonialCard = ({
       </div>
       <div className="p-5">
         <div className="relative">
-          <svg className="absolute -top-3 -left-3 w-6 h-6 text-[#DC0073]/40" fill="currentColor" viewBox="0 0 24 24">
+          <svg className="absolute -top-3 -left-3 w-6 h-6 text-primary/40" fill="currentColor" viewBox="0 0 24 24">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
           </svg>
           <p className="text-gray-300 text-sm italic relative z-10">
@@ -53,8 +53,8 @@ const PlayButton = ({ onClick }: { onClick: () => void }) => {
       aria-label="Reproducir video de testimonios"
     >
       <div className="relative">
-        <div className="absolute inset-0 bg-[#DC0073]/30 rounded-full blur-xl animate-pulse-slow"></div>
-        <div className="relative w-20 h-20 bg-[#DC0073]/90 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+        <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl animate-pulse-slow"></div>
+        <div className="relative w-20 h-20 bg-primary/90 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white transition-transform duration-300 group-hover:scale-110" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
           </svg>
@@ -151,9 +151,18 @@ const Testimonials = () => {
     setVideoPlaying(false);
   };
 
-  const scrollToRegistration = () => {
-    const registration = document.getElementById('registro');
-    registration?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -163,15 +172,15 @@ const Testimonials = () => {
       className="relative py-24 px-4 overflow-hidden bg-[#1D1616] text-white"
     >
       {/* Background Elements - Enhanced with breathing/pulsating background gradients */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(220,0,115,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
       
       {/* Parallax background elements - more pronounced glow */}
       <div 
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#DC0073]/20 filter blur-3xl animate-breathe"
+        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
       ></div>
       <div 
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#DC0073]/15 filter blur-3xl animate-breathe"
+        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-primary/15 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
       
@@ -188,7 +197,7 @@ const Testimonials = () => {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#DC0073] text-sm font-medium tracking-wider">
+              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-primary text-sm font-medium tracking-wider">
                 HISTORIAS DE TRANSFORMACIÓN
               </span>
             </div>
@@ -197,7 +206,7 @@ const Testimonials = () => {
           {/* Main Title with glow effect */}
           <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#DC0073]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
             
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               Testimonios Reales
@@ -206,8 +215,8 @@ const Testimonials = () => {
 
           {/* Main Quote */}
           <div className="relative max-w-3xl mx-auto mb-12">
-            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -left-6 top-0 text-3xl text-primary/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-primary/70">"</div>
             <p className={`text-2xl md:text-3xl italic font-light px-8 text-gray-300 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Lo que hoy te incomoda, mañana te libera.
             </p>
@@ -217,7 +226,7 @@ const Testimonials = () => {
         {/* Video Testimonial */}
         <div 
           ref={videoRef}
-          className={`relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden mb-20 transition-all duration-1000 delay-400 shadow-[0_0_25px_rgba(220,0,115,0.2)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
+          className={`relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden mb-20 transition-all duration-1000 delay-400 shadow-[0_0_25px_rgba(5,96,187,0.2)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
         >
           {!videoPlaying ? (
             <>
@@ -238,7 +247,7 @@ const Testimonials = () => {
               </p>
               <button 
                 onClick={handleCloseVideo}
-                className="px-4 py-2 bg-[#1D1616]/80 border border-[#DC0073]/30 text-white rounded-lg hover:bg-[#DC0073]/20 transition-colors"
+                className="px-4 py-2 bg-[#1D1616]/80 border border-primary/30 text-white rounded-lg hover:bg-primary/20 transition-colors"
               >
                 Cerrar video
               </button>
@@ -262,15 +271,15 @@ const Testimonials = () => {
         {/* Testimonial Stats */}
         <div className={`flex flex-wrap justify-center gap-12 mb-16 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <div className="text-center">
-            <div className="text-4xl font-bold text-[#DC0073] mb-2">98%</div>
+            <div className="text-4xl font-bold text-primary mb-2">98%</div>
             <p className="text-gray-300">Reporta cambios significativos</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-[#DC0073] mb-2">+500</div>
+            <div className="text-4xl font-bold text-primary mb-2">+500</div>
             <p className="text-gray-300">Personas transformadas</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-[#DC0073] mb-2">9.7/10</div>
+            <div className="text-4xl font-bold text-primary mb-2">9.7/10</div>
             <p className="text-gray-300">Nivel de satisfacción</p>
           </div>
         </div>
@@ -284,11 +293,11 @@ const Testimonials = () => {
           {/* CTA Button with pulsing effect */}
           <div className="relative inline-block">
             {/* Pulsing background effect */}
-            <div className="absolute -inset-4 bg-[#DC0073]/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
+            <div className="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
             
-            <button 
-              className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-[#DC0073] hover:text-white hover:bg-[#DC0073] border-2 border-[#DC0073] rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(220,0,115,0.5)] hover:shadow-[0_0_25px_rgba(220,0,115,0.8)]"
-              onClick={scrollToRegistration}
+            <button
+              onClick={() => scrollToSection('reserva')}
+              className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
               Vívelo tú también, reserva ahora
             </button>

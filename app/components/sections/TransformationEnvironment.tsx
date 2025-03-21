@@ -14,7 +14,7 @@ const EnvironmentFeature = ({
 }) => {
   return (
     <div className="flex items-start space-x-5 p-3 rounded-xl group transition-all duration-300 hover:bg-[#1D1616]/50">
-      <div className="flex-shrink-0 p-3 bg-[#DC0073]/20 rounded-xl text-[#DC0073]">
+      <div className="flex-shrink-0 p-3 bg-primary/20 rounded-xl text-primary">
         {icon}
       </div>
       <div>
@@ -30,6 +30,13 @@ const TransformationEnvironment = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [
+    '/images/venue/2.jpg',
+    '/images/venue/3.jpg',
+    '/images/venue/5.jpg',
+    '/images/venue/6.jpg'
+  ];
 
   // Handle parallax effect
   useEffect(() => {
@@ -70,31 +77,40 @@ const TransformationEnvironment = () => {
     };
   }, []);
 
-  // Images for the slider/carousel
-  const environmentImages = [
-    "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1511497584788-876760111969?w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1492496913980-501348b61469?w=1600&auto=format&fit=crop"
-  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change image every 5 seconds
 
-  const scrollToRegistration = () => {
-    const registration = document.getElementById('registro');
-    registration?.scrollIntoView({ behavior: 'smooth' });
+    return () => clearInterval(timer);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
     <section ref={sectionRef} id="transformacion" className="relative py-24 px-4 bg-[#1D1616] text-white overflow-hidden">
       {/* Background Elements - Enhanced with breathing/pulsating background gradients */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(220,0,115,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
       
       {/* Parallax background elements - more pronounced glow */}
       <div 
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#DC0073]/20 filter blur-3xl animate-breathe"
+        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
       ></div>
       <div 
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#DC0073]/15 filter blur-3xl animate-breathe"
+        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-primary/15 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
       
@@ -110,7 +126,7 @@ const TransformationEnvironment = () => {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#DC0073] text-sm font-medium tracking-wider">
+              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-primary text-sm font-medium tracking-wider">
                 NATURALEZA & DESPERTAR
               </span>
             </div>
@@ -118,8 +134,8 @@ const TransformationEnvironment = () => {
 
           {/* Quote */}
           <div className="relative max-w-3xl mx-auto mb-8">
-            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -left-6 top-0 text-3xl text-primary/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-primary/70">"</div>
             <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
               La naturaleza es el espejo de nuestra transformación interior.
             </p>
@@ -128,7 +144,7 @@ const TransformationEnvironment = () => {
           {/* Main Title with glow effect */}
           <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#DC0073]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
             
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               El Entorno: Donde Sucede La Transformación
@@ -142,36 +158,37 @@ const TransformationEnvironment = () => {
 
         {/* Two-Column Layout with staggered animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left Column - Image Carousel with enhanced transitions */}
-          <div className={`relative overflow-hidden rounded-xl aspect-[4/3] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            {environmentImages.map((src, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-all duration-500 ${
-                  activeIndex === index ? 'opacity-100' : 'opacity-0'
-                }`}
+          {/* Left Column - Image Gallery/Slider */}
+          <div className="relative w-full h-[500px] rounded-2xl overflow-hidden mb-8">
+            <div className="absolute inset-0">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out" 
+                style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
               >
-                <img
-                  src={src}
-                  alt={`Entorno natural ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 via-[#1D1616]/30 to-transparent"></div>
+                {images.map((src, index) => (
+                  <img 
+                    key={index}
+                    src={src} 
+                    alt={`Venue environment ${index + 1}`} 
+                    className="w-full h-[500px] object-cover flex-shrink-0"
+                  />
+                ))}
               </div>
-            ))}
-            
-            {/* Image indicators */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-              {environmentImages.map((_, index) => (
-                <button
+            </div>
+            {/* Navigation dots */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {images.map((_, index) => (
+                <button 
                   key={index}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    activeIndex === index ? 'bg-[#DC0073]' : 'bg-white/50'
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentImageIndex === index ? 'bg-white' : 'bg-white/50'
                   }`}
-                  onClick={() => setActiveIndex(index)}
                 />
               ))}
             </div>
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-transparent to-transparent"></div>
           </div>
 
           {/* Right Column - Features List with staggered animations */}
@@ -207,7 +224,7 @@ const TransformationEnvironment = () => {
             />
 
             {/* Testimonial Quote */}
-            <div className="p-5 bg-[#1D1616]/60 rounded-xl mt-8 border-l-4 border-[#DC0073]">
+            <div className="p-5 bg-[#1D1616]/60 rounded-xl mt-8 border-l-4 border-primary">
               <p className="italic text-gray-300">"La naturaleza es el puente entre quienes somos y quienes podemos llegar a ser. En este entorno, sucede la verdadera transformación."</p>
             </div>
           </div>
@@ -216,12 +233,12 @@ const TransformationEnvironment = () => {
         {/* Call to Action with enhanced animations */}
         <div className={`text-center mt-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Urgency message */}
-          <p className="text-[#DC0073] font-medium mb-4">Cupos limitados para esta experiencia en la naturaleza</p>
+          <p className="text-primary font-medium mb-4">Cupos limitados para esta experiencia en la naturaleza</p>
           
           {/* CTA Button */}
-          <button 
-            onClick={scrollToRegistration}
-            className="px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-[#DC0073] hover:text-white hover:bg-[#DC0073] border-2 border-[#DC0073] rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(220,0,115,0.5)] hover:shadow-[0_0_25px_rgba(220,0,115,0.8)]"
+          <button
+            onClick={() => scrollToSection('reserva')}
+            className="px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
           >
             Sólo quedan pocos cupos, reserva el tuyo ahora
           </button>

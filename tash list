@@ -1,0 +1,4 @@
+[33m53a9feb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Merge pull request #1 from chakanamunayki/feature/form-validation
+[33mb20142b[m[33m ([m[1;31morigin/feature/form-validation[m[33m)[m style: change highlight color from pink (#DC0073) to blue (#0560bb) in ExperienceHighlights section for consistency
+[33m79ea004[m style: standardize section headers and improve menu positioning
+[33mb7613e6[m Initial commit: Setup Next.js project with complete structure

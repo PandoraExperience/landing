@@ -101,6 +101,20 @@ export default function ExperienceHighlights() {
     };
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section 
       ref={sectionRef}
@@ -217,12 +231,9 @@ export default function ExperienceHighlights() {
             {/* Pulsing background effect */}
             <div className="absolute -inset-4 bg-[#0560bb]/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
             
-            <button 
+            <button
+              onClick={() => scrollToSection('reserva')}
               className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-[#0560bb] hover:text-white hover:bg-[#0560bb] border-2 border-[#0560bb] rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
-              onClick={() => {
-                const registration = document.getElementById('registro');
-                registration?.scrollIntoView({ behavior: 'smooth' });
-              }}
             >
               Reserva tu lugar antes que se agoten
             </button>
