@@ -108,15 +108,15 @@ export default function ExperienceHighlights() {
       className="relative py-24 px-4 bg-[#1D1616] text-white overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(220,0,115,0.2)_0%,rgba(33,33,33,0)_70%)] opacity-90"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] opacity-90"></div>
       
       {/* Parallax background elements */}
       <div 
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#DC0073]/20 filter blur-3xl"
+        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#0560bb]/20 filter blur-3xl"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
       ></div>
       <div 
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#DC0073]/15 filter blur-3xl"
+        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-[#0560bb]/15 filter blur-3xl"
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
 
@@ -133,7 +133,7 @@ export default function ExperienceHighlights() {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#DC0073] text-sm font-medium tracking-wider">
+              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#0560bb] text-sm font-medium tracking-wider">
                 EXPERIENCIA TRANSFORMADORA
               </span>
             </div>
@@ -149,7 +149,7 @@ export default function ExperienceHighlights() {
           {/* Main Title with glow effect */}
           <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#DC0073]/30 filter blur-[80px] rounded-full"></div>
+            <div className="absolute inset-0 bg-[#0560bb]/30 filter blur-[80px] rounded-full"></div>
             
             <h2 className="relative text-4xl md:text-5xl font-bold mb-8 text-white">
               ¿Qué vas a vivir en esta experiencia?
@@ -205,7 +205,7 @@ export default function ExperienceHighlights() {
               title="Renovación Espiritual" 
               description="Descubre una conexión más profunda contigo mismo y con la vida." 
               delay={800}
-              imageSrc="https://images.unsplash.com/photo-1582044177880-be563e99195b?w=800&auto=format&fit=crop"
+              imageSrc="/images/experience/Espiritual.jpg"
             />
           </div>
         </div>
@@ -215,10 +215,10 @@ export default function ExperienceHighlights() {
           {/* CTA Button with pulsing effect */}
           <div className="relative inline-block">
             {/* Pulsing background effect */}
-            <div className="absolute -inset-4 bg-[#DC0073]/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
+            <div className="absolute -inset-4 bg-[#0560bb]/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
             
             <button 
-              className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-[#DC0073] hover:text-white hover:bg-[#DC0073] border-2 border-[#DC0073] rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(220,0,115,0.5)] hover:shadow-[0_0_25px_rgba(220,0,115,0.8)]"
+              className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-[#0560bb] hover:text-white hover:bg-[#0560bb] border-2 border-[#0560bb] rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
               onClick={() => {
                 const registration = document.getElementById('registro');
                 registration?.scrollIntoView({ behavior: 'smooth' });
