@@ -6,7 +6,7 @@ const TargetAudience = () => {
   const [activeTab, setActiveTab] = useState('for-you');
   
   return (
-    <section id="about" className="relative py-24 px-4 bg-white overflow-hidden">
+    <section id="experiencia" className="relative py-24 px-4 bg-white overflow-hidden">
       {/* Subtle background patterns */}
       <div className="absolute bottom-0 right-0 w-full h-1/2 bg-[radial-gradient(circle,rgba(0,51,102,0.02)_0%,rgba(255,255,255,0)_70%)]"></div>
       <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-warm-orange/5 filter blur-3xl animate-float"></div>
@@ -14,17 +14,36 @@ const TargetAudience = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="mb-16 text-center">
-          <span className="inline-block text-[#DC0073] font-semibold mb-2 tracking-wider uppercase text-sm">Descubre</span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1D1616]">
-            ¿Para Quién Es Esta Experiencia?
-          </h2>
-          {/* Enhanced section separator */}
-          <div className="relative flex items-center justify-center mb-8">
-            <div className="absolute left-0 w-full h-px bg-gray-200"></div>
-            <div className="relative w-24 h-1 bg-[#DC0073] rounded-full"></div>
+          {/* Decorative top element */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="relative">
+              <span className="inline-block px-4 py-1 rounded-full bg-[#DC0073]/10 backdrop-blur-sm border border-[#DC0073]/20 text-[#DC0073] text-sm font-medium tracking-wider">
+                DESCUBRE TU CAMINO
+              </span>
+            </div>
           </div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-            Identifica si esta inmersión transformadora es para ti
+
+          {/* Quote */}
+          <div className="relative max-w-3xl mx-auto mb-8">
+            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-600">
+              El cambio comienza cuando te atreves a dar el primer paso.
+            </p>
+          </div>
+
+          {/* Main Title with glow effect */}
+          <div className="relative transition-all duration-300">
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-[#DC0073]/5 filter blur-[80px] rounded-full animate-breathe"></div>
+            
+            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-[#1D1616]">
+              ¿Para Quién Es Esta Experiencia?
+            </h2>
+          </div>
+          
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Identifica si esta inmersión transformadora es para ti y descubre cómo puede cambiar tu vida.
           </p>
           
           {/* Tabs Navigation */}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
@@ -42,9 +43,19 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* About */}
           <div className="text-center md:text-left">
-            <div className="relative inline-block mb-4">
-              <div className="absolute inset-0 bg-[#DC0073]/20 filter blur-md rounded-full animate-breathe"></div>
-              <h3 className="relative text-2xl font-bold">EL DESPERTAR DEL AVATAR</h3>
+            <div className="flex items-center mb-6 justify-center md:justify-start">
+              <div className="relative h-24 w-24 mr-4">
+                <Image 
+                  src="/images/logo/munay-ki.svg"
+                  alt="MUNAY-KI Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col">
+                <h3 className="text-2xl font-bold text-white">MUNAY-KI</h3>
+                <span className="text-gray-400 text-sm italic">El poder de amor</span>
+              </div>
             </div>
             <p className="text-gray-300 mb-6">
               Una experiencia transformadora de inmersión en hielo para conectar con tu fuerza interior.
@@ -58,10 +69,10 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a 
-                  href="#about" 
+                  href="#hero" 
                   className="text-gray-300 hover:text-white transition-colors relative group"
                 >
-                  <span className="relative z-10">Acerca de</span>
+                  <span className="relative z-10">Inicio</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>
@@ -76,19 +87,28 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="#testimonios" 
+                  href="#transformacion" 
                   className="text-gray-300 hover:text-white transition-colors relative group"
                 >
-                  <span className="relative z-10">Testimonios</span>
+                  <span className="relative z-10">Transformación</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>
               <li>
                 <a 
-                  href="#faq" 
+                  href="#precio" 
                   className="text-gray-300 hover:text-white transition-colors relative group"
                 >
-                  <span className="relative z-10">FAQ</span>
+                  <span className="relative z-10">Precio</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#testimonios" 
+                  className="text-gray-300 hover:text-white transition-colors relative group"
+                >
+                  <span className="relative z-10">Testimonios</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#DC0073] group-hover:w-full transition-all duration-300"></span>
                 </a>
               </li>

@@ -84,7 +84,7 @@ const TransformationEnvironment = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-4 bg-[#1D1616] text-white overflow-hidden">
+    <section ref={sectionRef} id="transformacion" className="relative py-24 px-4 bg-[#1D1616] text-white overflow-hidden">
       {/* Background Elements - Enhanced with breathing/pulsating background gradients */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(220,0,115,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
       
@@ -107,16 +107,37 @@ const TransformationEnvironment = () => {
       <div className="container mx-auto">
         {/* Header with fade-in animation */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 text-[#DC0073] text-sm font-medium backdrop-blur-sm border border-white/10">
-            NATURALEZA & DESPERTAR
-          </span>
-          <div className="relative mt-4">
+          {/* Decorative top element */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="relative">
+              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#DC0073] text-sm font-medium tracking-wider">
+                NATURALEZA & DESPERTAR
+              </span>
+            </div>
+          </div>
+
+          {/* Quote */}
+          <div className="relative max-w-3xl mx-auto mb-8">
+            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
+              La naturaleza es el espejo de nuestra transformación interior.
+            </p>
+          </div>
+
+          {/* Main Title with glow effect */}
+          <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#DC0073]/30 filter blur-[80px] rounded-full"></div>
-            <h2 className="relative text-4xl font-bold">
+            <div className="absolute inset-0 bg-[#DC0073]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            
+            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               El Entorno: Donde Sucede La Transformación
             </h2>
           </div>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Entre quebradas cristalinas y montañas, cada elemento potencia tu proceso de transformación.
+          </p>
         </div>
 
         {/* Two-Column Layout with staggered animations */}

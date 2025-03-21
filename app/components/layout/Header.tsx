@@ -9,6 +9,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Add scroll effect to header
   useEffect(() => {
@@ -19,6 +20,12 @@ const Header = () => {
       } else {
         setScrolled(false);
       }
+
+      // Calculate scroll progress
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      setScrollProgress(scrolled);
 
       // Update active section based on scroll position
       const sections = [
@@ -84,12 +91,20 @@ const Header = () => {
     <>
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-            ? 'bg-[#1D1616]/95 py-3 shadow-xl backdrop-blur-md border-b border-white/5' 
-            : 'bg-[#1D1616]/50 py-4 backdrop-blur-sm'
+          scrolled 
+            ? 'bg-[#1D1616]/95 py-1 shadow-xl backdrop-blur-md border-b border-white/5' 
+            : 'bg-[#1D1616]/50 py-1 backdrop-blur-sm'
         }`}
       >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Scroll Progress Bar */}
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/10">
+          <div 
+            className="h-full bg-[#DC0073] transition-all duration-300"
+            style={{ width: `${scrollProgress}%` }}
+          ></div>
+        </div>
+
+        <div className="container mx-auto px-4 flex justify-between items-center">
           {/* Logo/Brand */}
           <div className="flex items-center -my-2">
             <a 
@@ -116,7 +131,7 @@ const Header = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex justify-center space-x-8">
+          <nav className="hidden md:flex justify-center space-x-4">
             {[
               { id: 'experiencia', label: 'Experiencia' },
               { id: 'transformacion', label: 'Transformación' },
@@ -131,7 +146,7 @@ const Header = () => {
                   activeSection === item.id
                     ? 'text-[#DC0073]'
                     : 'text-white hover:text-[#DC0073]'
-                } transition-colors duration-300`}
+                } transition-all duration-300 transform hover:scale-105`}
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(item.id);
@@ -139,15 +154,21 @@ const Header = () => {
               >
                 {item.label}
                 <span 
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-[#DC0073] transition-all duration-300 origin-left ${
                     activeSection === item.id
-                      ? 'w-full bg-[#DC0073]'
-                      : 'w-0 bg-[#DC0073] group-hover:w-full'
-                  } transition-all duration-300`}
+                      ? 'w-full'
+                      : 'w-0 group-hover:w-full'
+                  }`}
+                ></span>
+                {/* Add hover glow effect */}
+                <span 
+                  className={`absolute inset-0 bg-[#DC0073]/0 group-hover:bg-[#DC0073]/5 rounded-lg -z-10 transition-all duration-300 ${
+                    activeSection === item.id ? 'bg-[#DC0073]/10' : ''
+                  }`}
                 ></span>
               </a>
             ))}
-        </nav>
+          </nav>
         
           {/* Mobile menu button */}
         <button 

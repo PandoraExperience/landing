@@ -39,23 +39,10 @@ const BenefitBadge = ({ text }: { text: string }) => {
   );
 };
 
-// Countdown unit component
-const CountdownUnit = ({ value, label }: { value: number, label: string }) => {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="bg-[#DC0073]/10 rounded-lg p-2 min-w-[60px] text-center">
-        <span className="text-2xl font-bold text-[#DC0073]">{value}</span>
-      </div>
-      <span className="text-xs text-gray-400 mt-1">{label}</span>
-    </div>
-  );
-};
-
 const PricingAvailability = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentSpot, setCurrentSpot] = useState(15); // Starting with 15 spots left (out of 25)
-  const [countdown, setCountdown] = useState({ days: 5, hours: 23, minutes: 59, seconds: 59 });
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
 
   // Handle parallax effect
@@ -107,26 +94,6 @@ const PricingAvailability = () => {
     }
   }, [isVisible, currentSpot]);
 
-  // Countdown timer
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   const scrollToRegistration = () => {
     const registration = document.getElementById('registro');
     registration?.scrollIntoView({ behavior: 'smooth' });
@@ -150,36 +117,64 @@ const PricingAvailability = () => {
       <div className="container mx-auto relative z-10 max-w-6xl">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#DC0073] text-sm font-medium tracking-wider">
-            INVERSIÓN & EXCLUSIVIDAD
-          </span>
-          <div className="relative mt-4">
-            <div className="absolute inset-0 bg-[#DC0073]/30 filter blur-[80px] rounded-full"></div>
-            <h2 className="relative text-4xl md:text-5xl font-bold text-white">
+          {/* Decorative top element */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="relative">
+              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#DC0073] text-sm font-medium tracking-wider">
+                INVERSIÓN & EXCLUSIVIDAD
+              </span>
+            </div>
+          </div>
+
+          {/* Quote */}
+          <div className="relative max-w-3xl mx-auto mb-8">
+            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
+              Invierte en ti, el retorno es infinito.
+            </p>
+          </div>
+
+          {/* Main Title with glow effect */}
+          <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-[#DC0073]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            
+            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               Precio y Disponibilidad
             </h2>
           </div>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Invierte en tu transformación personal con una experiencia única y exclusiva.
+          </p>
         </div>
 
         {/* Early Bird Countdown and Guarantee Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Early Bird Countdown */}
+          {/* Early Bird Bonus */}
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="h-full bg-[#1D1616]/80 rounded-2xl p-6 border border-[#DC0073]/20 shadow-[0_0_20px_rgba(220,0,115,0.2)]">
-              <p className="text-lg text-[#DC0073] font-semibold mb-4">¡Oferta Early Bird - Tiempo Limitado!</p>
-              <div className="flex justify-center gap-4">
-                <CountdownUnit value={countdown.days} label="Días" />
-                <CountdownUnit value={countdown.hours} label="Horas" />
-                <CountdownUnit value={countdown.minutes} label="Minutos" />
-                <CountdownUnit value={countdown.seconds} label="Segundos" />
+            <div className="h-full bg-[#1D1616]/80 backdrop-blur-sm rounded-2xl p-8 border border-[#DC0073]/20 shadow-[0_0_20px_rgba(220,0,115,0.2)]">
+              <div className="flex items-center space-x-4">
+                <div className="flex-shrink-0 p-3 bg-[#DC0073]/20 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#DC0073]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold text-white mb-2">Bono Exclusivo</h4>
+                  <p className="text-gray-400">
+                    Sesión de lectura de guías espirituales para los primeros 10 inscritos
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Guarantee box */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="h-full bg-[#1D1616]/70 rounded-2xl p-6 border border-[#DC0073]/20 shadow-[0_0_15px_rgba(220,0,115,0.2)]">
-              <div className="flex items-center h-full space-x-4">
+            <div className="h-full bg-[#1D1616]/70 rounded-2xl p-8 border border-[#DC0073]/20 shadow-[0_0_15px_rgba(220,0,115,0.2)]">
+              <div className="flex items-center space-x-4">
                 <div className="flex-shrink-0 p-3 bg-[#DC0073]/20 rounded-lg">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#DC0073]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -215,7 +210,7 @@ const PricingAvailability = () => {
                     <div className="flex items-center justify-center">
                       <span className="text-gray-400 text-xl mr-2 line-through">547.000 COP</span>
                       <span className="bg-[#DC0073]/20 text-[#DC0073] px-2 py-0.5 rounded text-sm">
-                        ¡Descuento!
+                        ¡Descuento Primeros 10!
                       </span>
                     </div>
                     <div className="flex items-baseline justify-center mt-1">
