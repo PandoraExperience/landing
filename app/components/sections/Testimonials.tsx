@@ -193,32 +193,36 @@ const Testimonials = () => {
       {/* Content Container */}
       <div className="container mx-auto relative z-10 max-w-6xl">
         {/* Section Header */}
-        <div className="mb-16 text-center">
+        <div className="text-center mb-20">
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-primary text-sm font-medium tracking-wider">
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 HISTORIAS DE TRANSFORMACIÓN
               </span>
             </div>
           </div>
 
+          {/* Quote */}
+          <div className="relative max-w-3xl mx-auto mb-8">
+            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
+              Lo que hoy te incomoda, mañana te libera.
+            </p>
+          </div>
+
           {/* Main Title with glow effect */}
           <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
             
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               Testimonios Reales
             </h2>
-          </div>
-
-          {/* Main Quote */}
-          <div className="relative max-w-3xl mx-auto mb-12">
-            <div className="absolute -left-6 top-0 text-3xl text-primary/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-primary/70">"</div>
-            <p className={`text-2xl md:text-3xl italic font-light px-8 text-gray-300 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Lo que hoy te incomoda, mañana te libera.
+            
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Descubre cómo esta experiencia ha transformado la vida de otros.
             </p>
           </div>
         </div>

@@ -137,44 +137,31 @@ export default function Hero() {
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
         {/* Logo or brand identifier above title */}
         <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex items-center justify-center bg-gray-900/30 px-4 py-1.5 rounded-full backdrop-blur-sm border border-primary/10">
-            <span className="text-primary text-sm font-medium tracking-wider">MUNAY-KI EXPERIENCE</span>
+          <div className="flex items-center justify-center">
+            <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
+              MUNAY-KI EXPERIENCE
+            </span>
           </div>
         </div>
         
         {/* Quote */}
         <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="absolute -left-6 top-0 text-3xl text-primary/70">"</div>
-          <div className="absolute -right-6 bottom-0 text-3xl text-primary/70">"</div>
+          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
           <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-            Esta experiencia no se trata de luchar contra el dolor, sino de transformarlo en claridad y fortaleza.
+          Un llamado para quienes buscan conectar con su ser más profundo, activar su energía y liberar bloqueos mentales y emocionales.
           </p>
         </div>
         
         {/* Main title with improved visual treatment */}
-        <div className={`relative mb-6 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          {/* Background glow effect */}
-          <div className="absolute inset-0 bg-primary/40 filter blur-[100px] rounded-full animate-breathe"></div>
-          
-          <div className="relative">
-            <h1 className="mb-2">
-              {/* Title with improved shimmer effect - First line */}
-              <div className="relative overflow-hidden leading-tight p-2 rounded-lg bg-black/5 backdrop-blur-sm shadow-[0_0_30px_rgba(5,96,187,0.2)]">
-                <div className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-[0_10px_8px_rgba(0,0,0,0.5)]" 
-                  style={{ 
-                    textShadow: '0 1px 0 rgba(255,255,255,0.4), 0 2px 0 rgba(255,255,255,0.3), 0 3px 0 rgba(255,255,255,0.2), 0 4px 0 rgba(255,255,255,0.1), 0 5px 10px rgba(0,0,0,0.6), 0 15px 15px rgba(0,0,0,0.3)',
-                    letterSpacing: '1px'
-                  }}>
-                  EL DESPERTAR DEL AVATAR
-                </div>
-                {/* New shimmer implementation with slower animation - more pronounced */}
-                <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[shimmer_8s_ease-in-out_infinite]"></div>
-                
-                {/* Light flare effect */}
-                <div className="absolute -top-10 -right-10 w-20 h-20 rounded-full bg-white/30 blur-xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-              </div>
-            </h1>
-          </div>
+        <div className={`relative mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+          <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
+            Descubre Tu Poder Interior
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
+          </p>
         </div>
         
         {/* Featured video with HeroVideoDialog component */}
@@ -202,7 +189,7 @@ export default function Hero() {
           
           {/* Countdown timer with improved styling */}
           <div className="p-5 bg-[#1D1616]/30 backdrop-blur-sm rounded-xl border border-primary/10 shadow-lg">
-            <p className="text-sm text-white/70 mb-4">Reserva tu lugar antes que se agoten los cupos</p>
+            <p className="text-sm text-white/70 mb-4">Reserva tu lugar y sé parte de esta experiencia.</p>
             <div className="flex justify-center gap-3 md:gap-6">
               <CountdownUnit value={countdown.days} label="Días" color="bg-primary" />
               <CountdownUnit value={countdown.hours} label="Horas" color="bg-primary" />
@@ -224,20 +211,8 @@ export default function Hero() {
               onClick={() => scrollToSection('reserva')}
               className="relative px-8 py-5 text-lg font-bold bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] group-hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
-              RESERVA TU LUGAR AHORA
+              QUIERO ESTAR AHÍ
             </button>
-          </div>
-          
-          {/* Social proof indicators */}
-          <div className="flex items-center text-sm text-white/70 mt-3">
-            <div className="flex -space-x-2 mr-3">
-              {/* User avatars - replace with actual images if available */}
-              <div className="w-6 h-6 rounded-full border border-white/20 bg-gray-700 flex items-center justify-center text-xs">M</div>
-              <div className="w-6 h-6 rounded-full border border-white/20 bg-gray-700 flex items-center justify-center text-xs">J</div>
-              <div className="w-6 h-6 rounded-full border border-white/20 bg-gray-700 flex items-center justify-center text-xs">L</div>
-              <div className="w-6 h-6 rounded-full border border-white/20 bg-gray-700 flex items-center justify-center text-xs">+</div>
-            </div>
-            <span>Más de 200 personas han experimentado la transformación</span>
           </div>
         </div>
       </div>

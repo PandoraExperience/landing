@@ -32,7 +32,7 @@ const TargetAudience = () => {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 text-primary text-sm font-medium tracking-wider">
+              <span className="inline-block px-6 py-2 rounded-full bg-white backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 DESCUBRE TU CAMINO
               </span>
             </div>
@@ -40,26 +40,23 @@ const TargetAudience = () => {
 
           {/* Quote */}
           <div className="relative max-w-3xl mx-auto mb-8">
-            <div className="absolute -left-6 top-0 text-3xl text-primary/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-primary/70">"</div>
+            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
             <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-600">
-              El cambio comienza cuando te atreves a dar el primer paso.
+              Sé el cambio que quieres ver en el mundo  
             </p>
           </div>
 
           {/* Main Title with glow effect */}
           <div className="relative transition-all duration-300">
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-primary/5 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
             
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-[#1D1616]">
               ¿Para Quién Es Esta Experiencia?
             </h2>
+            
           </div>
-          
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Identifica si esta inmersión transformadora es para ti y descubre cómo puede cambiar tu vida.
-          </p>
           
           {/* Tabs Navigation */}
           <div className="flex justify-center mb-12">
@@ -126,7 +123,7 @@ const TargetAudience = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Reinvención Personal</h4>
+                      <h4 className="text-xl font-semibold text-primary mb-1">Reinvención Personal y Reconexión con tu SER</h4>
                       <p className="text-gray-700">Estás en un proceso de transformación y buscas herramientas para facilitar este camino</p>
                     </div>
                   </li>
@@ -275,6 +272,19 @@ const TargetAudience = () => {
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Wave divider with subtle gradient */}
+      <div className="absolute bottom-0 left-0 w-full">
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#1D1616] to-transparent opacity-5"></div>
+        <svg 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none" 
+          className="w-full h-20"
+          fill="#1D1616"
+        >
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C0,0,131,95,321.39,56.44Z"></path>
+        </svg>
       </div>
     </section>
   );

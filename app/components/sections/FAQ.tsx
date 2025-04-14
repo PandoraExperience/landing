@@ -33,52 +33,62 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-24 px-4 bg-[#1D1616]">
-      <div className="max-w-3xl mx-auto">
+    <section id="faq" className="relative py-24 px-4 bg-[#1D1616] overflow-hidden">
+      {/* Subtle background patterns and glow effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,51,102,0.1)_0%,rgba(29,22,22,0)_70%)]"></div>
+      <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-primary/5 filter blur-3xl animate-float"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-primary/5 filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+      
+      <div className="max-w-3xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 text-primary text-sm font-medium mb-4">
+          <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)] mb-4">
             RESUELVE TUS DUDAS
           </span>
-          <h2 className="text-3xl text-white font-bold mb-2">
-            Preguntas Frecuentes
-          </h2>
+          
+          {/* Title with glow effect */}
+          <div className="relative mb-4">
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <h2 className="relative text-3xl text-white font-bold">
+              Preguntas Frecuentes
+            </h2>
+          </div>
+          
           <p className="text-gray-300 text-sm">
             Encuentra respuestas a las dudas más comunes sobre la experiencia
           </p>
         </div>
 
-        <div className="space-y-4">
-          {questions.map((item, index) => (
-            <div key={index}>
-              <div
-                className="bg-black/40 p-4 rounded-lg cursor-pointer flex justify-between items-center"
-                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+        {questions.map((item, index) => (
+          <div key={index} className="mb-4">
+            <div
+              className="bg-black/40 p-4 rounded-lg cursor-pointer flex justify-between items-center border border-white/5 hover:border-primary/20 transition-all duration-300"
+              onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+            >
+              <h3 className="text-white font-medium">{item.question}</h3>
+              <svg
+                className={`w-5 h-5 text-primary transition-transform ${
+                  activeIndex === index ? 'rotate-180' : ''
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <h3 className="text-white font-medium">{item.question}</h3>
-                <svg
-                  className={`w-5 h-5 text-primary transition-transform ${
-                    activeIndex === index ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-              {activeIndex === index && (
-                <div className="bg-black/40 p-4 mt-1 rounded-lg text-gray-300">
-                  {item.answer}
-                </div>
-              )}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
             </div>
-          ))}
-        </div>
+            {activeIndex === index && (
+              <div className="bg-black/40 p-4 mt-1 rounded-lg text-gray-300 border border-white/5">
+                {item.answer}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );

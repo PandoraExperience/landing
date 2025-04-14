@@ -126,7 +126,7 @@ const TransformationEnvironment = () => {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-primary text-sm font-medium tracking-wider">
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 NATURALEZA & DESPERTAR
               </span>
             </div>
@@ -134,26 +134,15 @@ const TransformationEnvironment = () => {
 
           {/* Quote */}
           <div className="relative max-w-3xl mx-auto mb-8">
-            <div className="absolute -left-6 top-0 text-3xl text-primary/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-primary/70">"</div>
-            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-              La naturaleza es el espejo de nuestra transformación interior.
-            </p>
           </div>
 
           {/* Main Title with glow effect */}
-          <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {/* Background glow effect */}
-            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
-            
-            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
-              El Entorno: Donde Sucede La Transformación
+          <div className="relative mb-8">
+            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <h2 className="relative text-4xl md:text-5xl font-bold text-white text-center">
+              Transformación Profunda
             </h2>
           </div>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Entre quebradas cristalinas y montañas, cada elemento potencia tu proceso de transformación.
-          </p>
         </div>
 
         {/* Two-Column Layout with staggered animations */}
@@ -200,7 +189,7 @@ const TransformationEnvironment = () => {
                 </svg>
               }
               title="Ubicación exclusiva en la naturaleza"
-              description="Entre quebradas cristalinas, montañas y aves silvestres, cada elemento potencia el proceso de transformación."
+              description="Solo una hora de Medellín, este territorio ancestral y de sanación, via Yolombó de facil acceso en transporte público y vehículo propio."
             />
 
             <EnvironmentFeature
@@ -220,12 +209,12 @@ const TransformationEnvironment = () => {
                 </svg>
               }
               title="Rituales ancestrales"
-              description="Una combinación de ciencia, meditación y conexión con los elementos naturales para potenciar el proceso."
+              description="Una combinación de ciencia, meditación y conexión con los elementos naturales para acompañar el proceso."
             />
 
             {/* Testimonial Quote */}
             <div className="p-5 bg-[#1D1616]/60 rounded-xl mt-8 border-l-4 border-primary">
-              <p className="italic text-gray-300">"La naturaleza es el puente entre quienes somos y quienes podemos llegar a ser. En este entorno, sucede la verdadera transformación."</p>
+              <p className="italic text-gray-300">"La naturaleza no sana con fuerza, sino con presencia"</p>
             </div>
           </div>
         </div>
@@ -240,7 +229,7 @@ const TransformationEnvironment = () => {
             onClick={() => scrollToSection('reserva')}
             className="px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
           >
-            Sólo quedan pocos cupos, reserva el tuyo ahora
+            QUIERO PARTICIPAR
           </button>
         </div>
       </div>

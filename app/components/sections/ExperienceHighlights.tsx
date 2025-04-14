@@ -4,14 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // ExperienceCard Component
 const ExperienceCard = ({ 
-  icon, 
-  title, 
   description, 
   imageSrc,
   delay 
 }: { 
-  icon: React.ReactNode;
-  title: string;
   description: string;
   imageSrc: string;
   delay: number;
@@ -27,19 +23,9 @@ const ExperienceCard = ({
           <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/90 to-transparent z-10"></div>
           <img 
             src={imageSrc} 
-            alt={title} 
+            alt="Experience image" 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          
-          {/* Icon Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 z-20 flex items-center space-x-4">
-            <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#DC0073] text-white transform group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(220,0,115,0.5)]">
-              {icon}
-            </div>
-            <h3 className="text-xl font-bold text-white group-hover:translate-x-1 transition-transform duration-300">
-              {title}
-            </h3>
-          </div>
         </div>
         
         {/* Content */}
@@ -147,42 +133,41 @@ export default function ExperienceHighlights() {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-[#0560bb] text-sm font-medium tracking-wider">
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 EXPERIENCIA TRANSFORMADORA
               </span>
             </div>
           </div>
 
           {/* Quote */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-2xl md:text-3xl font-medium italic text-white/80 mb-6 leading-relaxed">
-              "Cuando te dejas de resistir, empiezas a sanar."
+          <div className="relative max-w-3xl mx-auto mb-8">
+            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
+              Cuando te dejas de resistir, empiezas a sanar.
             </p>
           </div>
 
           {/* Main Title with glow effect */}
           <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#0560bb]/30 filter blur-[80px] rounded-full"></div>
+            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
             
-            <h2 className="relative text-4xl md:text-5xl font-bold mb-8 text-white">
+            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               ¿Qué vas a vivir en esta experiencia?
             </h2>
+            
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Acá te contamos lo que vas a vivir. 
+            </p>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* Card 1 - Mental Transformation */}
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <ExperienceCard 
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-9 9c0 3.2 1.9 6.5 4 8.5 1 1 2.5 2.5 5 2.5s4-1.5 5-2.5c2.1-2 4-5.3 4-8.5z"></path>
-                  <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                </svg>
-              } 
-              title="Transformación Mental" 
-              description="Rompe patrones limitantes y reprograma tu mente para la resiliencia." 
+              description="Técnicas milenarias de respiración para habitar el cuerpo." 
               delay={400}
               imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&auto=format&fit=crop"
             />
@@ -191,15 +176,7 @@ export default function ExperienceHighlights() {
           {/* Card 2 - Emotional Expansion */}
           <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <ExperienceCard 
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22L22 12 12 2 2 12 12 22z"></path>
-                  <path d="M12 22L22 12 12 2"></path>
-                  <path d="M2 12L12 22 12 2"></path>
-                </svg>
-              } 
-              title="Expansión Emocional" 
-              description="Aprenderás a convertir el miedo y la incomodidad en tus aliados." 
+              description="Meditación para conectar con tu ser interior y recordar quien eres." 
               delay={600}
               imageSrc="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&auto=format&fit=crop"
             />
@@ -208,18 +185,18 @@ export default function ExperienceHighlights() {
           {/* Card 3 - Spiritual Renewal */}
           <div className={`transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <ExperienceCard 
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 15c-1.95 0-3.75-1.2-4.5-3 .75-1.8 2.55-3 4.5-3s3.75 1.2 4.5 3c-.75 1.8-2.55 3-4.5 3z"></path>
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="16"></line>
-                  <line x1="8" y1="12" x2="16" y2="12"></line>
-                </svg>
-              } 
-              title="Renovación Espiritual" 
-              description="Descubre una conexión más profunda contigo mismo y con la vida." 
+              description="Reprogramación mental para aprender a observarte y dejar de reaccionar" 
               delay={800}
               imageSrc="/images/experience/Espiritual.jpg"
+            />
+          </div>
+          
+          {/* Card 4 - Ice Immersion */}
+          <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+            <ExperienceCard 
+              description="Inmersión en Hielo para hackear tu biología y rendirte a la vida." 
+              delay={1000}
+              imageSrc="https://images.unsplash.com/photo-1562714529-94d68c2da83b?w=800&auto=format&fit=crop"
             />
           </div>
         </div>

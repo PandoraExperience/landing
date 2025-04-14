@@ -181,17 +181,29 @@ const RegistrationForm = () => {
       
       <div className="container mx-auto relative z-10 max-w-5xl">
         {/* Section Header */}
-        <div className="mb-16 text-center">
+        <div className="text-center mb-12">
+          {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-4 py-1 rounded-full bg-gray-900/30 backdrop-blur-sm border border-white/10 text-primary text-sm font-medium tracking-wider">
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 EL PRIMER PASO HACIA TU TRANSFORMACIÓN
               </span>
             </div>
           </div>
 
+          {/* Quote */}
+          <div className="relative max-w-3xl mx-auto mb-8">
+            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
+              Las grandes transformaciones comienzan con un solo paso.
+            </p>
+          </div>
+
+          {/* Main Title with glow effect */}
           <div className="relative">
-            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               Reserva Tu Espacio Ahora
             </h2>
