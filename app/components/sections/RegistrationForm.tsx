@@ -205,13 +205,12 @@ const RegistrationForm = () => {
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
-              Reserva Tu Espacio Ahora
+              RESERVA TU CUPO AHORA
             </h2>
           </div>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Inicia tu camino hacia la transformación personal completando el siguiente formulario. 
-            ¡Te contactaremos a la brevedad!
+            Para ser parte de experiencia, solo debes llenar el siguiente formulario, para separar tu cupo. Encontraras, los detalles de pago y nos pondremos en contacto contigo.
           </p>
         </div>
 
@@ -226,7 +225,7 @@ const RegistrationForm = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-white text-xl font-semibold mb-1">Bono Exclusivo</h3>
+                <h3 className="text-white text-xl font-semibold mb-1">Bonos primeros valientes</h3>
                 <p className="text-gray-400">Sesión de lectura de guías espirituales para los primeros 10 inscritos</p>
               </div>
             </div>

@@ -19,17 +19,18 @@ const ExperienceCard = ({
     >
       <div className="relative overflow-hidden flex flex-col h-full rounded-2xl bg-[#1D1616] border border-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
         {/* Image Container */}
-        <div className="relative w-full h-48 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/90 to-transparent z-10"></div>
+        <div className="relative w-full aspect-[16/9] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-[#1D1616]/70 to-transparent z-10"></div>
           <img 
             src={imageSrc} 
             alt="Experience image" 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
           />
         </div>
         
         {/* Content */}
-        <div className="p-6">
+        <div className="p-6 flex-grow">
           <p className="text-gray-300 leading-relaxed group-hover:translate-x-1 transition-transform duration-500">
             {description}
           </p>
@@ -169,7 +170,7 @@ export default function ExperienceHighlights() {
             <ExperienceCard 
               description="Técnicas milenarias de respiración para habitar el cuerpo." 
               delay={400}
-              imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&auto=format&fit=crop"
+              imageSrc="/images/experience/ex_breathe.jpg"
             />
           </div>
           
@@ -178,7 +179,7 @@ export default function ExperienceHighlights() {
             <ExperienceCard 
               description="Meditación para conectar con tu ser interior y recordar quien eres." 
               delay={600}
-              imageSrc="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&auto=format&fit=crop"
+              imageSrc="/images/experience/ex_meditation.jpg"
             />
           </div>
           
@@ -187,7 +188,7 @@ export default function ExperienceHighlights() {
             <ExperienceCard 
               description="Reprogramación mental para aprender a observarte y dejar de reaccionar" 
               delay={800}
-              imageSrc="/images/experience/Espiritual.jpg"
+              imageSrc="/images/experience/ex_mental.jpg"
             />
           </div>
           
@@ -196,7 +197,7 @@ export default function ExperienceHighlights() {
             <ExperienceCard 
               description="Inmersión en Hielo para hackear tu biología y rendirte a la vida." 
               delay={1000}
-              imageSrc="https://images.unsplash.com/photo-1562714529-94d68c2da83b?w=800&auto=format&fit=crop"
+              imageSrc="/images/experience/ex_ice.jpg"
             />
           </div>
         </div>

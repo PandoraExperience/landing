@@ -32,10 +32,17 @@ const TransformationEnvironment = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [
-    '/images/venue/2.jpg',
-    '/images/venue/3.jpg',
     '/images/venue/5.jpg',
-    '/images/venue/6.jpg'
+    '/images/venue/3.jpg',
+    '/images/venue/6.jpg',
+    '/images/venue/venue1.jpg',
+    '/images/venue/venue2.jpg',
+    '/images/venue/venue3.jpg',
+    '/images/venue/venue4.jpg',
+    '/images/venue/venue5.jpg',
+    '/images/venue/venue6.jpg',
+    '/images/venue/venue8.jpg',
+    '/images/venue/venue9.jpg'
   ];
 
   // Handle parallax effect
@@ -77,13 +84,14 @@ const TransformationEnvironment = () => {
     };
   }, []);
 
+  // Auto-rotate images
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
+    }, 4000); // Change image every 4 seconds
 
     return () => clearInterval(timer);
-  }, []);
+  }, [images.length]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -97,6 +105,15 @@ const TransformationEnvironment = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  // Image navigation functions
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   return (
@@ -148,36 +165,71 @@ const TransformationEnvironment = () => {
         {/* Two-Column Layout with staggered animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
           {/* Left Column - Image Gallery/Slider */}
-          <div className="relative w-full h-[500px] rounded-2xl overflow-hidden mb-8">
-            <div className="absolute inset-0">
+          <div className="relative w-full h-[500px] rounded-2xl overflow-hidden mb-8 group">
+            <div className="absolute inset-0 w-full h-full">
               <div 
-                className="flex transition-transform duration-500 ease-in-out" 
-                style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                className="flex h-full transition-transform duration-700 ease-in-out" 
+                style={{ width: `${images.length * 100}%`, transform: `translateX(-${currentImageIndex * (100 / images.length)}%)` }}
               >
                 {images.map((src, index) => (
-                  <img 
-                    key={index}
-                    src={src} 
-                    alt={`Venue environment ${index + 1}`} 
-                    className="w-full h-[500px] object-cover flex-shrink-0"
-                  />
+                  <div key={index} className="relative h-full" style={{ width: `${100 / images.length}%` }}>
+                    <img 
+                      src={src} 
+                      alt={`Venue environment ${index + 1}`} 
+                      className="w-full h-full object-cover"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
-            {/* Navigation dots */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            
+            {/* Navigation controls - Make them more visible with z-index */}
+            <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+              <button 
+                onClick={handlePrevImage}
+                className="w-12 h-12 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors focus:outline-none"
+                aria-label="Previous image"
+                type="button"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <button 
+                onClick={handleNextImage}
+                className="w-12 h-12 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors focus:outline-none"
+                aria-label="Next image"
+                type="button"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Navigation dots - Improved visibility and interaction */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 py-2 px-4 bg-black/40 rounded-full z-10">
               {images.map((_, index) => (
                 <button 
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentImageIndex === index ? 'bg-white' : 'bg-white/50'
+                  className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none ${
+                    currentImageIndex === index ? 'bg-white w-4' : 'bg-white/50'
                   }`}
+                  aria-label={`Go to image ${index + 1}`}
+                  type="button"
                 />
               ))}
             </div>
+            
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-transparent to-transparent"></div>
+            
+            {/* Image counter */}
+            <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded-full text-sm text-white z-10">
+              {currentImageIndex + 1} / {images.length}
+            </div>
           </div>
 
           {/* Right Column - Features List with staggered animations */}

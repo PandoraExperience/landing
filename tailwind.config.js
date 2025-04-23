@@ -33,6 +33,7 @@ module.exports = {
         'float': 'float 6s ease-in-out infinite',
         'flow': 'flow 20s linear infinite',
         'shimmer': 'shimmer 12s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'text-glow': 'text-glow 3s ease-in-out infinite alternate',
       },
       keyframes: {
         rainbow: {
@@ -54,6 +55,16 @@ module.exports = {
         shimmer: {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(100%)' },
+        },
+        'text-glow': {
+          '0%': { 
+            textShadow: '0 0 5px rgba(5, 96, 187, 0.5), 0 0 10px rgba(5, 96, 187, 0.3)', 
+            filter: 'brightness(1)'
+          },
+          '100%': { 
+            textShadow: '0 0 10px rgba(5, 96, 187, 0.8), 0 0 20px rgba(5, 96, 187, 0.5), 0 0 30px rgba(5, 96, 187, 0.3)', 
+            filter: 'brightness(1.2)'
+          },
         }
       }
     },
