@@ -121,8 +121,8 @@ const Header = () => {
             >
               <div className={`relative ${scrolled ? 'h-32 w-32 -mb-6' : 'h-36 w-36 -mb-8'} transition-all duration-300`}>
                 <Image 
-                  src="/images/logo/MUNAY-KI_White.png"
-                  alt="MUNAY-KI Logo"
+                  src="/images/logo/logochakana.png"
+                  alt="La Chakana Logo"
                   fill
                   className="object-contain"
                 />

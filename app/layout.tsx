@@ -6,23 +6,23 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://eldespetardelavatar.com'),
-  title: "El Despertar del Avatar - Experiencia de Inmersión en Hielo | MUNAY-KI",
+  metadataBase: new URL('https://landing.chakana.io/'),
+  title: "Pandora experience - Experiencia de Inmersión en Hielo | LA CHAKANA",
   description: "Descubre la transformadora experiencia de inmersión en hielo MUNAY-KI, donde aprenderás a convertir el miedo y la incomodidad en tus aliados. Transforma tu vida con claridad y fortaleza a través de técnicas ancestrales.",
   keywords: "inmersión en hielo, transformación personal, despertar del avatar, superación del miedo, resiliencia, experiencia transformadora, MUNAY-KI, técnicas ancestrales, desarrollo personal, meditación en frío, terapia de frío",
   authors: [{ name: "MUNAY-KI" }],
   category: "Desarrollo Personal",
   openGraph: {
-    title: "El Despertar del Avatar - Experiencia de Inmersión en Hielo | MUNAY-KI",
+    title: "PANDORA EXPERIENCE - Experiencia de Inmersión en Hielo | MUNAY-KI",
     description: "Descubre la transformadora experiencia de inmersión en hielo MUNAY-KI. Aprende a convertir el miedo en fortaleza y encuentra tu poder interior.",
-    url: "https://eldespetardelavatar.com",
-    siteName: "El Despertar del Avatar - MUNAY-KI",
+    url: "https://landing.chakana.io/",
+    siteName: "PANDORA EXPERIENCE- MUNAY-KI",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "El Despertar del Avatar - MUNAY-KI Experience",
+        alt: "PANDORA EXPERIENCE- MUNAY-KI Experience",
       },
     ],
     locale: "es_ES",
@@ -93,7 +93,7 @@ export default function RootLayout({
               "name": "El Despertar del Avatar - MUNAY-KI Experience",
               "description": "Una experiencia transformadora de inmersión en hielo donde aprenderás a convertir el miedo y la incomodidad en tus aliados.",
               "image": [
-                "https://eldespetardelavatar.com/og-image.jpg"
+                "https:///og-image.jpg"
               ],
               "offers": {
                 "@type": "Offer",

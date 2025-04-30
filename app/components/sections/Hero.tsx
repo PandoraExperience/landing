@@ -139,7 +139,7 @@ export default function Hero() {
         <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex items-center justify-center">
             <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
-              MUNAY-KI EXPERIENCE
+              PANDORA EXPERIENCE
             </span>
           </div>
         </div>
@@ -158,8 +158,8 @@ export default function Hero() {
           <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
           <h2 className="relative text-4xl md:text-6xl font-bold mb-4 text-white tracking-wider">
             <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.15em] leading-relaxed relative">
-              <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">DESPERTAR DEL AVATAR</span>
-              DESPERTAR DEL AVATAR
+              <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">PANDORA EXPERIENCE</span>
+              PANDORA EXPERIENCE
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-8">

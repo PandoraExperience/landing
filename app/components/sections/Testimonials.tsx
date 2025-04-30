@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
+import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
 
 // Testimonial card component
 const TestimonialCard = ({ 
@@ -173,6 +176,16 @@ const Testimonials = () => {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Descubre cómo esta experiencia ha transformado la vida de otros.
             </p>
+          </div>
+
+          {/* Video Testimonial */}
+          <div className={`w-full max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+            <HeroVideoDialog
+              animationStyle="from-center"
+              videoSrc="https://www.youtube.com/embed/PLACEHOLDER"
+              thumbnailSrc="/images/testi/testi.JPG"
+              thumbnailAlt="Testimonios de transformación - Munay-Ki"
+            />
           </div>
         </div>
 

@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import { cn } from '@/app/lib/utils';
+import Image from 'next/image';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 // Simple EnvironmentFeature component
 const EnvironmentFeature = ({ 
@@ -27,11 +30,12 @@ const EnvironmentFeature = ({
 
 const TransformationEnvironment = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [
+  
+  // Array of gallery images - clean simple array with just the image paths
+  const galleryImages = [
     '/images/venue/5.jpg',
     '/images/venue/3.jpg',
     '/images/venue/6.jpg',
@@ -87,12 +91,12 @@ const TransformationEnvironment = () => {
   // Auto-rotate images
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % galleryImages.length);
     }, 4000); // Change image every 4 seconds
 
     return () => clearInterval(timer);
-  }, [images.length]);
-
+  }, [galleryImages.length]);
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -107,21 +111,25 @@ const TransformationEnvironment = () => {
     }
   };
 
-  // Image navigation functions
+  // Gallery navigation functions
   const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
+    );
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentImageIndex((prevIndex) => 
+      (prevIndex + 1) % galleryImages.length
+    );
   };
 
   return (
-    <section ref={sectionRef} id="transformacion" className="relative py-24 px-4 bg-[#1D1616] text-white overflow-hidden">
-      {/* Background Elements - Enhanced with breathing/pulsating background gradients */}
+    <section ref={sectionRef} id="ambiente" className="relative py-24 px-4 bg-[#1D1616] text-white overflow-hidden">
+      {/* Background Elements */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
       
-      {/* Parallax background elements - more pronounced glow */}
+      {/* Parallax background elements */}
       <div 
         className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
@@ -131,7 +139,7 @@ const TransformationEnvironment = () => {
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
       
-      {/* Very subtle light streaks */}
+      {/* Light streaks */}
       <div className="absolute w-full h-full overflow-hidden opacity-30">
         <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
         <div className="absolute top-2/3 left-0 w-full h-[1px] bg-white/5 rotate-6 transform animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
@@ -149,10 +157,6 @@ const TransformationEnvironment = () => {
             </div>
           </div>
 
-          {/* Quote */}
-          <div className="relative max-w-3xl mx-auto mb-8">
-          </div>
-
           {/* Main Title with glow effect */}
           <div className="relative mb-8">
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
@@ -164,72 +168,52 @@ const TransformationEnvironment = () => {
 
         {/* Two-Column Layout with staggered animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left Column - Image Gallery/Slider */}
-          <div className="relative w-full h-[500px] rounded-2xl overflow-hidden mb-8 group">
-            <div className="absolute inset-0 w-full h-full">
+          {/* Left Column - Image Gallery */}
+          <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group">
+            {/* Images */}
+            {galleryImages.map((image, index) => (
               <div 
-                className="flex h-full transition-transform duration-700 ease-in-out" 
-                style={{ width: `${images.length * 100}%`, transform: `translateX(-${currentImageIndex * (100 / images.length)}%)` }}
+                key={index}
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
+                  index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                }`}
               >
-                {images.map((src, index) => (
-                  <div key={index} className="relative h-full" style={{ width: `${100 / images.length}%` }}>
-                    <img 
-                      src={src} 
-                      alt={`Venue environment ${index + 1}`} 
-                      className="w-full h-full object-cover"
-                      loading={index === 0 ? "eager" : "lazy"}
-                    />
-                  </div>
-                ))}
+                <img 
+                  src={image}
+                  alt={`Venue image ${index + 1}`}
+                  className="w-full h-full object-cover"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
               </div>
-            </div>
+            ))}
             
-            {/* Navigation controls - Make them more visible with z-index */}
-            <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+            {/* Always visible navigation controls with better hover effects */}
+            <div className="absolute inset-0 flex items-center justify-between p-4">
               <button 
                 onClick={handlePrevImage}
-                className="w-12 h-12 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors focus:outline-none"
+                className="w-12 h-12 flex items-center justify-center bg-black/50 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none z-10 shadow-lg"
                 aria-label="Previous image"
                 type="button"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
+                <ArrowLeft className="w-6 h-6" />
               </button>
               <button 
                 onClick={handleNextImage}
-                className="w-12 h-12 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors focus:outline-none"
+                className="w-12 h-12 flex items-center justify-center bg-black/50 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none z-10 shadow-lg"
                 aria-label="Next image"
                 type="button"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
+                <ArrowRight className="w-6 h-6" />
               </button>
             </div>
             
-            {/* Navigation dots - Improved visibility and interaction */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 py-2 px-4 bg-black/40 rounded-full z-10">
-              {images.map((_, index) => (
-                <button 
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none ${
-                    currentImageIndex === index ? 'bg-white w-4' : 'bg-white/50'
-                  }`}
-                  aria-label={`Go to image ${index + 1}`}
-                  type="button"
-                />
-              ))}
-            </div>
-            
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-transparent to-transparent"></div>
-            
             {/* Image counter */}
-            <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded-full text-sm text-white z-10">
-              {currentImageIndex + 1} / {images.length}
+            <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded-full text-sm text-white">
+              {currentImageIndex + 1} / {galleryImages.length}
             </div>
+            
+            {/* Subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-transparent to-transparent"></div>
           </div>
 
           {/* Right Column - Features List with staggered animations */}
@@ -289,4 +273,4 @@ const TransformationEnvironment = () => {
   );
 };
 
-export default TransformationEnvironment; 
+export default TransformationEnvironment;
