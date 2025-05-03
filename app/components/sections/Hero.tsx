@@ -138,9 +138,7 @@ export default function Hero() {
         {/* Logo or brand identifier above title */}
         <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex items-center justify-center">
-            <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
-              PANDORA EXPERIENCE
-            </span>
+            
           </div>
         </div>
         
@@ -171,7 +169,7 @@ export default function Hero() {
         <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <HeroVideoDialog
             animationStyle="from-center"
-            videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+            videoSrc="https://www.youtube.com/embed/wC0eNjoEqbs"
             thumbnailSrc="/images/Hero/hero-video.webp"
             thumbnailAlt="Mujer en agua - Experiencia transformadora Munay-Ki"
           />

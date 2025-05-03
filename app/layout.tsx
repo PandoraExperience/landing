@@ -97,7 +97,7 @@ export default function RootLayout({
               ],
               "offers": {
                 "@type": "Offer",
-                "price": "497000",
+                "price": "480000",
                 "priceCurrency": "COP",
                 "availability": "https://schema.org/LimitedAvailability",
                 "validFrom": "2024-01-01",
