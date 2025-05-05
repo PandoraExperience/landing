@@ -140,7 +140,7 @@ const RegistrationForm = () => {
       newErrors.phone = 'El teléfono es requerido';
       isValid = false;
     } else if (formData.phone.length < 10) {
-      newErrors.phone = 'Ingresa un número de teléfono completo (+57 300 1234567)';
+      newErrors.phone = 'Ingresa un número de teléfono completo (+57) 300 1234567';
       isValid = false;
     }
 
@@ -322,10 +322,13 @@ const RegistrationForm = () => {
                 <PhoneInput
                   displayInitialValueAsLocalNumber
                   defaultCountry="CO"
+                  id="phone"
+                  name="phone"
                   value={formData.phone}
                   onChange={(value) => handleChange({ target: { name: 'phone', value: value ? value : '' } })}
                   placeholder="Tu número de teléfono"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  className={`w-full transition-all duration-300 appearance-none`}
+                  numberInputProps={{ className: 'w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border text-white placeholder-gray-500 border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none' }}
                 />
               </FormField>
 
