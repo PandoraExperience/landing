@@ -1,0 +1,33 @@
+/* Custom styles for PhoneInput component in dark mode */
+
+/* Style the country dropdown */
+.PhoneInputCountrySelect option {
+  background-color: #1D1616 !important;
+  color: white !important;
+}
+
+/* The input itself */
+.PhoneInputInput {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+/* Country select dropdown */
+.country-dropdown {
+  background-color: #1D1616 !important;
+  color: white !important;
+}
+
+/* Additional styles to force dark mode on select elements */
+select option {
+  background-color: #1D1616 !important;
+  color: white !important;
+}
+
+/* Override browser default styles */
+@supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
+  select option {
+    background-color: #1D1616 !important;
+    color: white !important;
+  }
+} 
