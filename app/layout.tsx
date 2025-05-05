@@ -5,24 +5,44 @@ import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Variables setup
+const metadataBase = new URL('https://landing.chakana.io/');
+const siteName = "PANDORA EXPERIENCE - Experiencia de Inmersión en Hielo | MUNAY-KI";
+const siteDescription = "Descubre la transformadora experiencia de inmersión en hielo MUNAY-KI, donde aprenderás a convertir el miedo y la incomodidad en tus aliados. Transforma tu vida con claridad y fortaleza a través de técnicas ancestrales.";
+const siteKeywords = ["inmersión en hielo", "transformación personal", "despertar del avatar", "superación del miedo", "resiliencia", "experiencia transformadora", "MUNAY-KI", "técnicas ancestrales", "desarrollo personal", "meditación en frío", "terapia de frío"];
+const siteAuthors = [{ name: "MUNAY-KI" }];
+const siteCategory = "Desarrollo Personal";
+const siteTwitter = "@munayki";
+const siteGoogleAnalytics = "G-XXXXXXXXXX";
+const siteGoogleVerification = "your-google-verification-code";
+
+const eventOffer = {
+  "@type": "Offer",
+  "price": 480000,
+  "priceCurrency": "COP",
+  "availability": "https://schema.org/LimitedAvailability",
+  "validFrom": "2025-05-01",
+  "url": metadataBase + "#reserva"
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://landing.chakana.io/'),
-  title: "Pandora experience - Experiencia de Inmersión en Hielo | LA CHAKANA",
-  description: "Descubre la transformadora experiencia de inmersión en hielo MUNAY-KI, donde aprenderás a convertir el miedo y la incomodidad en tus aliados. Transforma tu vida con claridad y fortaleza a través de técnicas ancestrales.",
-  keywords: "inmersión en hielo, transformación personal, despertar del avatar, superación del miedo, resiliencia, experiencia transformadora, MUNAY-KI, técnicas ancestrales, desarrollo personal, meditación en frío, terapia de frío",
-  authors: [{ name: "MUNAY-KI" }],
-  category: "Desarrollo Personal",
+  metadataBase: metadataBase,
+  title: siteName,
+  description: siteDescription,
+  keywords: siteKeywords,
+  authors: siteAuthors,
+  category: siteCategory,
   openGraph: {
-    title: "PANDORA EXPERIENCE - Experiencia de Inmersión en Hielo | MUNAY-KI",
-    description: "Descubre la transformadora experiencia de inmersión en hielo MUNAY-KI. Aprende a convertir el miedo en fortaleza y encuentra tu poder interior.",
-    url: "https://landing.chakana.io/",
-    siteName: "PANDORA EXPERIENCE- MUNAY-KI",
+    title: siteName,
+    description: siteDescription,
+    url: metadataBase,
+    siteName: siteName,
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "PANDORA EXPERIENCE- MUNAY-KI Experience",
+        alt: siteName,
       },
     ],
     locale: "es_ES",
@@ -30,14 +50,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "El Despertar del Avatar - MUNAY-KI Experience",
-    description: "Transforma tu vida a través de la inmersión en hielo. Una experiencia única de MUNAY-KI.",
+    title: siteName,
+    description: siteDescription,
     images: ["/twitter-image.jpg"],
-    creator: "@munayki",
-    site: "@munayki",
+    creator: siteTwitter,
+    site: siteTwitter,
   },
   alternates: {
-    canonical: "https://eldespetardelavatar.com",
+    canonical: metadataBase,
   },
   robots: {
     index: true,
@@ -51,7 +71,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: siteGoogleVerification,
   },
 };
 
@@ -68,10 +88,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0560BB" />
-        
+
         {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          src={`https://www.googletagmanager.com/gtag/js?id=${siteGoogleAnalytics}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -79,7 +99,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
+            gtag('config', ${siteGoogleAnalytics});
           `}
         </Script>
 
@@ -90,23 +110,16 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Event",
-              "name": "El Despertar del Avatar - MUNAY-KI Experience",
-              "description": "Una experiencia transformadora de inmersión en hielo donde aprenderás a convertir el miedo y la incomodidad en tus aliados.",
+              "name": siteName,
+              "description": siteDescription,
               "image": [
                 "https:///og-image.jpg"
               ],
-              "offers": {
-                "@type": "Offer",
-                "price": "480000",
-                "priceCurrency": "COP",
-                "availability": "https://schema.org/LimitedAvailability",
-                "validFrom": "2024-01-01",
-                "url": "https://eldespetardelavatar.com/#reserva"
-              },
+              "offers": eventOffer,
               "organizer": {
                 "@type": "Organization",
                 "name": "MUNAY-KI",
-                "url": "https://eldespetardelavatar.com"
+                "url": metadataBase
               },
               "eventStatus": "https://schema.org/EventScheduled",
               "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",

@@ -3,64 +3,70 @@
 import React, { useState } from 'react';
 import TermsModal from './TermsModal';
 import PaymentDetails from './PaymentDetails';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css'
 
 // Form field component
-const FormField = ({ 
-  label, 
-  type, 
-  name, 
-  placeholder, 
-  value, 
-  onChange, 
+const FormField = ({
+  label,
+  type,
+  name,
+  placeholder,
+  value,
+  onChange,
   error,
-  required = true 
-}: { 
-  label: string, 
-  type: string, 
-  name: string, 
-  placeholder: string, 
-  value: string, 
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void, 
+  required = true,
+  children
+}: {
+  label: string,
+  type?: string,
+  name: string,
+  placeholder?: string,
+  value?: string,
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | { target: { name: string; value: string } }) => void,
   error: string | null,
-  required?: boolean 
+  required?: boolean,
+  children?: React.ReactNode
 }) => {
   return (
     <div className="mb-5">
       <label htmlFor={name} className="block text-white mb-2 text-sm font-medium">
         {label} {required && <span className="text-primary">*</span>}
       </label>
-      {type === 'select' ? (
-        <select
-          id={name}
-          name={name}
-          value={value}
-          onChange={onChange}
-          className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none`}
-          required={required}
-        >
-          <option value="" disabled>Selecciona una opción</option>
-          {name === 'howDidYouHear' && (
-            <>
-              <option value="social-media">Redes Sociales</option>
-              <option value="friend">Recomendación de un amigo</option>
-              <option value="search">Buscador</option>
-              <option value="event">Evento</option>
-              <option value="other">Otro</option>
-            </>
-          )}
-        </select>
-      ) : (
-        <input
-          type={type}
-          id={name}
-          name={name}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
-          required={required}
-        />
-      )}
+      {children ? children :
+        (type === 'select' ? (
+          <select
+            id={name}
+            name={name}
+            value={value}
+            onChange={onChange}
+            className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none`}
+            required={required}
+          >
+            <option value="" disabled>Selecciona una opción</option>
+            {name === 'howDidYouHear' && (
+              <>
+                <option value="social-media">Redes Sociales</option>
+                <option value="friend">Recomendación de un amigo</option>
+                <option value="search">Buscador</option>
+                <option value="event">Evento</option>
+                <option value="other">Otro</option>
+              </>
+            )}
+          </select>
+        ) : (
+          <input
+            type={type}
+            id={name}
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
+            required={required}
+          />
+        ))
+      }
       {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>
   );
@@ -76,9 +82,9 @@ const RegistrationForm = () => {
     howDidYouHear: '',
     agreeToTerms: false
   });
-  
+
   // Error state
-  const [errors, setErrors] = useState<{[key: string]: string | null}>({
+  const [errors, setErrors] = useState<{ [key: string]: string | null }>({
     fullName: null,
     email: null,
     phone: null,
@@ -86,22 +92,23 @@ const RegistrationForm = () => {
     howDidYouHear: null,
     agreeToTerms: null
   });
-  
+
   // UI state
   const [showPayment, setShowPayment] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> |
+  { target: { name: string; value: string; type?: string } }) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
-    
+
     setFormData({
       ...formData,
       [name]: type === 'checkbox' ? checked : value
     });
-    
+
     // Clear error when field is edited
     if (errors[name]) {
       setErrors({
@@ -110,17 +117,17 @@ const RegistrationForm = () => {
       });
     }
   };
-  
+
   // Validate form
   const validateForm = () => {
     const newErrors = { ...errors };
     let isValid = true;
-    
+
     if (!formData.fullName.trim()) {
       newErrors.fullName = 'El nombre es requerido';
       isValid = false;
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'El email es requerido';
       isValid = false;
@@ -128,12 +135,12 @@ const RegistrationForm = () => {
       newErrors.email = 'Dirección de email inválida';
       isValid = false;
     }
-    
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'El teléfono es requerido';
+
+    if (!formData.phone.trim() || formData.phone.length < 10) {
+      newErrors.phone = 'El teléfono completo es requerido (+57 300 1234567)';
       isValid = false;
     }
-    
+
     if (!formData.age.trim()) {
       newErrors.age = 'La edad es requerida';
       isValid = false;
@@ -141,25 +148,25 @@ const RegistrationForm = () => {
       newErrors.age = 'Debes ser mayor de 18 años';
       isValid = false;
     }
-    
+
     if (!formData.howDidYouHear) {
       newErrors.howDidYouHear = 'Por favor selecciona una opción';
       isValid = false;
     }
-    
+
     if (!formData.agreeToTerms) {
       newErrors.agreeToTerms = 'Debes aceptar los términos y condiciones';
       isValid = false;
     }
-    
+
     setErrors(newErrors);
     return isValid;
   };
-  
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsSubmitting(true);
       try {
@@ -178,7 +185,7 @@ const RegistrationForm = () => {
     <section id="reserva" className="relative py-24 px-4 overflow-hidden bg-[#1D1616] text-white">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
-      
+
       <div className="container mx-auto relative z-10 max-w-5xl">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -208,7 +215,7 @@ const RegistrationForm = () => {
               RESERVA TU CUPO AHORA
             </h2>
           </div>
-          
+
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Para ser parte de experiencia, solo debes llenar el siguiente formulario, para separar tu cupo. Encontraras, los detalles de pago y nos pondremos en contacto contigo.
           </p>
@@ -220,8 +227,8 @@ const RegistrationForm = () => {
             <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                 </svg>
               </div>
               <div>
@@ -233,7 +240,7 @@ const RegistrationForm = () => {
             <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
               </div>
               <div>
@@ -245,8 +252,8 @@ const RegistrationForm = () => {
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
-                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd"/>
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                 </svg>
               </div>
               <div>
@@ -264,7 +271,7 @@ const RegistrationForm = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
                 Información Personal
               </h2>
-              
+
               <FormField
                 label="Nombre completo"
                 type="text"
@@ -274,7 +281,7 @@ const RegistrationForm = () => {
                 onChange={handleChange}
                 error={errors.fullName}
               />
-              
+
               <FormField
                 label="Email"
                 type="email"
@@ -284,17 +291,23 @@ const RegistrationForm = () => {
                 onChange={handleChange}
                 error={errors.email}
               />
-              
+
               <FormField
                 label="Teléfono"
-                type="tel"
                 name="phone"
-                placeholder="Tu número de teléfono"
-                value={formData.phone}
-                onChange={handleChange}
                 error={errors.phone}
-              />
-              
+                required={true}
+              >
+                <PhoneInput
+                  displayInitialValueAsLocalNumber
+                  defaultCountry="CO"
+                  value={formData.phone}
+                  onChange={(value) => handleChange({ target: { name: 'phone', value: value ? value : '' } })}
+                  placeholder="Tu número de teléfono"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </FormField>
+
               <FormField
                 label="Edad"
                 type="number"
@@ -304,7 +317,7 @@ const RegistrationForm = () => {
                 onChange={handleChange}
                 error={errors.age}
               />
-              
+
               <FormField
                 label="¿Cómo nos encontraste?"
                 type="select"
@@ -314,7 +327,7 @@ const RegistrationForm = () => {
                 onChange={handleChange}
                 error={errors.howDidYouHear}
               />
-              
+
               <div className="mb-6">
                 <label className="flex items-start gap-3 cursor-pointer group">
                   <input
@@ -340,7 +353,7 @@ const RegistrationForm = () => {
                   <p className="mt-1 text-sm text-red-500">{errors.agreeToTerms}</p>
                 )}
               </div>
-              
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -375,4 +388,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm; 
+export default RegistrationForm;
