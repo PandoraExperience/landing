@@ -41,28 +41,7 @@ const Testimonials = () => {
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   
   // Sample testimonial data (to be replaced with real content)
-  const testimonials = [
-    {
-      name: "Ana María Gutiérrez",
-      role: "Emprendedora, 34 años",
-      quote: "Esta experiencia cambió completamente mi perspectiva. El entorno, la guía y la transformación que viví superaron por mucho el valor de la inversión. Incomparable."
-    },
-    {
-      name: "Carlos Rodríguez",
-      role: "Profesional de TI, 29 años",
-      quote: "Llegué escéptico y me fui transformado. El viaje interior que experimenté en tan solo un día ha tenido un impacto que sigo sintiendo meses después."
-    },
-    {
-      name: "Lucía Martínez",
-      role: "Terapeuta, 42 años",
-      quote: "Como profesional en el campo, puedo decir que esta metodología es excepcional. La combinación de naturaleza y rituales crea un espacio de transformación único."
-    },
-    {
-      name: "Javier Mendoza",
-      role: "Empresario, 38 años",
-      quote: "Increíble cómo en un día pude desconectarme del ruido y encontrar claridad. Mi equipo notó el cambio en mi liderazgo apenas regresé."
-    },
-  ];
+  const testimonials = [];
 
   // Handle parallax effect
   useEffect(() => {
@@ -182,26 +161,14 @@ const Testimonials = () => {
           <div className={`w-full max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             <HeroVideoDialog
               animationStyle="from-center"
-              videoSrc="https://www.youtube.com/embed/PLACEHOLDER"
+              videoSrc="https://www.youtube.com/embed/dQBCkuUtw4k"
               thumbnailSrc="/images/testi/testi.JPG"
               thumbnailAlt="Testimonios de transformación - Munay-Ki"
             />
           </div>
         </div>
 
-        {/* Written Testimonials */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              name={testimonial.name}
-              role={testimonial.role}
-              quote={testimonial.quote}
-            />
-          ))}
-        </div>
-
-        {/* Final Call to Action */}
+        {/* Remove Written Testimonials section and keep only Final Call to Action */}
         <div className={`text-center transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
             Tú también puedes vivir esta experiencia transformadora

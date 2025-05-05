@@ -217,19 +217,7 @@ const RegistrationForm = () => {
         {/* Benefit Boxes */}
         <div className="max-w-2xl mx-auto mb-12">
           <div className="bg-[#111111] rounded-xl p-8">
-            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white text-xl font-semibold mb-1">Bonos primeros valientes</h3>
-                <p className="text-gray-400">Sesión de lectura de guías espirituales para los primeros 10 inscritos</p>
-              </div>
-            </div>
-
+            {/* 1. Garantía de Satisfacción */}
             <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
@@ -242,7 +230,22 @@ const RegistrationForm = () => {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            {/* 2. Bonos primeros valientes */}
+            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-1">Bonos primeros valientes</h3>
+                <p className="text-gray-400">Si decides separar tu cupo con el 100%, premiamos tu valentía con sesión canalizada del oráculo donde tus guías espirituales te brindaran claridad.</p>
+              </div>
+            </div>
+
+            {/* 3. Métodos de Pago Flexibles */}
+            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
@@ -251,7 +254,21 @@ const RegistrationForm = () => {
               </div>
               <div>
                 <h3 className="text-white text-xl font-semibold mb-1">Métodos de Pago Flexibles</h3>
-                <p className="text-gray-400">Aceptamos múltiples formas de pago: tarjetas de crédito, transferencias bancarias y efectivo</p>
+                <p className="text-gray-400">Aceptamos múltiples formas de pago: Transferencia, Nequi, Daviplata o Tarjetas de crédito (Cargo del 4.5%).</p>
+              </div>
+            </div>
+
+            {/* 4. Pago en 2 cuotas */}
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-1">Pago en 2 cuotas</h3>
+                <p className="text-gray-400">Separa tu cupo ahora con el 50% y paga el restante faltando 8 días para el evento.</p>
               </div>
             </div>
           </div>

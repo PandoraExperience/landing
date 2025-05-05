@@ -53,23 +53,11 @@ const YourGuide = () => {
             <div>
               <h3 className="text-primary text-xl font-semibold mb-4">Sobre Mí</h3>
               <p className="text-gray-300 leading-relaxed">
-                Terapeuta holística del instituto IIN en NewYork, certificada en 
-                el método de respiración ovárica de Saajeva Hurtado, Maestra 
-                en sacedorcio Ancestral por la Escuela de Mujeres que 
-                Despiertan.
+              Terapeuta holística del instituto IIN en NewYork, certificada en el método de respiración Ovárica, Maestra en Sacerdocio Ancestral y certificada como ICE Trainer, respiración energética e inmersión en hielo.
               </p>
             </div>
 
-            {/* Expertise Section */}
-            <div>
-              <h3 className="text-primary text-xl font-semibold mb-4">Especialización</h3>
-              <p className="text-gray-300 leading-relaxed">
-                Mentora de negocios conscientes, experta en 
-                eliminación de barreras mentales y conexión con el ser 
-                espiritual. Facilitadora de procesos de transformación y 
-                despertar de consciencia.
-              </p>
-            </div>
+
 
             {/* Experience Section */}
             <div>
@@ -81,6 +69,7 @@ const YourGuide = () => {
                 ampliación de estados de consciencia.
               </p>
             </div>
+
           </div>
         </div>
 
@@ -88,15 +77,15 @@ const YourGuide = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
           <div className="bg-black/40 rounded-xl p-6 border border-white/5">
             <h4 className="text-primary font-semibold mb-2">Certificada</h4>
-            <p className="text-gray-300 text-sm">Instituto IIN NewYork</p>
+            <p className="text-gray-300 text-sm">Ice trainer, respiración energética e inmersión en hielo</p>
           </div>
           <div className="bg-black/40 rounded-xl p-6 border border-white/5">
             <h4 className="text-primary font-semibold mb-2">Especialista</h4>
-            <p className="text-gray-300 text-sm">Respiración Ovárica</p>
+            <p className="text-gray-300 text-sm">Liberación emocional</p>
           </div>
           <div className="bg-black/40 rounded-xl p-6 border border-white/5">
-            <h4 className="text-primary font-semibold mb-2">Maestra</h4>
-            <p className="text-gray-300 text-sm">Sacerdocio Ancestral</p>
+            <h4 className="text-primary font-semibold mb-2">Enfoque</h4>
+            <p className="text-gray-300 text-sm">Respiración y Consciencia</p>
           </div>
         </div>
 
