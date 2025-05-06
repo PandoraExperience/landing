@@ -104,7 +104,8 @@ const TargetAudience = () => {
                     alt="Persona lista para la transformación" 
                     className="w-full h-[500px] object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div>
+                  {/* Removed dark overlay gradient */}
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div> */}
                   <div className="absolute bottom-0 left-0 p-8">
                     <h3 className="text-3xl font-bold text-white mb-3">Esta experiencia es para ti si:</h3>
                     <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
@@ -262,7 +263,8 @@ const TargetAudience = () => {
                     alt="Persona evitando desafíos" 
                     className="w-full h-[500px] object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div>
+                  {/* Removed dark overlay gradient */}
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div> */}
                   <div className="absolute bottom-0 left-0 p-8">
                     <h3 className="text-3xl font-bold text-white mb-3">Esta experiencia NO es para ti si:</h3>
                     <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>

@@ -212,8 +212,8 @@ const TransformationEnvironment = () => {
               {currentImageIndex + 1} / {galleryImages.length}
             </div>
             
-            {/* Subtle gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-transparent to-transparent"></div>
+            {/* Subtle gradient overlay - Removed to show original images */}
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-transparent to-transparent"></div> */}
           </div>
 
           {/* Right Column - Features List with staggered animations */}

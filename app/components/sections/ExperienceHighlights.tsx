@@ -20,7 +20,8 @@ const ExperienceCard = ({
       <div className="relative overflow-hidden flex flex-col h-full rounded-2xl bg-[#1D1616] border border-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
         {/* Image Container */}
         <div className="relative w-full aspect-[16/9] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-[#1D1616]/70 to-transparent z-10"></div>
+          {/* Removed dark overlay gradient */}
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-[#1D1616]/70 to-transparent z-10"></div> */}
           <img 
             src={imageSrc} 
             alt="Experience image" 
