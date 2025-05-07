@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import TermsModal from './TermsModal';
 import PaymentDetails from './PaymentDetails';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css'
+import 'react-phone-number-input/style.css';
+import './phone-input.css';
 
 // Form field component
 const FormField = ({
@@ -15,58 +16,54 @@ const FormField = ({
   value,
   onChange,
   error,
-  required = true,
-  children
+  required = true
 }: {
   label: string,
-  type?: string,
+  type: string,
   name: string,
-  placeholder?: string,
-  value?: string,
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | { target: { name: string; value: string } }) => void,
+  placeholder: string,
+  value: string,
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void,
   error: string | null,
-  required?: boolean,
-  children?: React.ReactNode
+  required?: boolean
 }) => {
   return (
     <div className="mb-5">
       <label htmlFor={name} className="block text-white mb-2 text-sm font-medium">
         {label} {required && <span className="text-primary">*</span>}
       </label>
-      {children ? children :
-        (type === 'select' ? (
-          <select
-            id={name}
-            name={name}
-            value={value}
-            onChange={onChange}
-            className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none`}
-            required={required}
-          >
-            <option value="" disabled>Selecciona una opción</option>
-            {name === 'howDidYouHear' && (
-              <>
-                <option value="social-media">Redes Sociales</option>
-                <option value="friend">Recomendación de un amigo</option>
-                <option value="search">Buscador</option>
-                <option value="event">Evento</option>
-                <option value="other">Otro</option>
-              </>
-            )}
-          </select>
-        ) : (
-          <input
-            type={type}
-            id={name}
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
-            required={required}
-          />
-        ))
-      }
+      {type === 'select' ? (
+        <select
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none`}
+          required={required}
+        >
+          <option value="" disabled>Selecciona una opción</option>
+          {name === 'howDidYouHear' && (
+            <>
+              <option value="social-media">Redes Sociales</option>
+              <option value="friend">Recomendación de un amigo</option>
+              <option value="search">Buscador</option>
+              <option value="event">Evento</option>
+              <option value="other">Otro</option>
+            </>
+          )}
+        </select>
+      ) : (
+        <input
+          type={type}
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
+          required={required}
+        />
+      )}
       {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>
   );
@@ -99,8 +96,7 @@ const RegistrationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> |
-  { target: { name: string; value: string; type?: string } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
 
@@ -114,6 +110,22 @@ const RegistrationForm = () => {
       setErrors({
         ...errors,
         [name]: null
+      });
+    }
+  };
+
+  // Handle phone input changes
+  const handlePhoneChange = (value: string | undefined) => {
+    setFormData({
+      ...formData,
+      phone: value || ''
+    });
+
+    // Clear error when field is edited
+    if (errors.phone) {
+      setErrors({
+        ...errors,
+        phone: null
       });
     }
   };
@@ -140,7 +152,7 @@ const RegistrationForm = () => {
       newErrors.phone = 'El teléfono es requerido';
       isValid = false;
     } else if (formData.phone.length < 10) {
-      newErrors.phone = 'Ingresa un número de teléfono completo (+57) 300 1234567';
+      newErrors.phone = 'Ingresa un número de teléfono completo (+57 300 1234567)';
       isValid = false;
     }
 
@@ -167,14 +179,13 @@ const RegistrationForm = () => {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
       setIsSubmitting(true);
       try {
         // Simulate form submission delay
-        console.log('Form submitted:', formData);
         await new Promise(resolve => setTimeout(resolve, 1000));
         setShowPayment(true);
       } catch (error) {
@@ -245,8 +256,8 @@ const RegistrationForm = () => {
             <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
                 </svg>
               </div>
               <div>
@@ -273,8 +284,8 @@ const RegistrationForm = () => {
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd"/>
                 </svg>
               </div>
               <div>
@@ -313,24 +324,50 @@ const RegistrationForm = () => {
                 error={errors.email}
               />
 
-              <FormField
-                label="Teléfono"
-                name="phone"
-                error={errors.phone}
-                required={true}
-              >
-                <PhoneInput
-                  displayInitialValueAsLocalNumber
-                  defaultCountry="CO"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={(value) => handleChange({ target: { name: 'phone', value: value ? value : '' } })}
-                  placeholder="Tu número de teléfono"
-                  className={`w-full transition-all duration-300 appearance-none`}
-                  numberInputProps={{ className: 'w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border text-white placeholder-gray-500 border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none' }}
-                />
-              </FormField>
+              {/* Phone Input with custom styles */}
+              <div className="mb-5">
+                <label htmlFor="phone" className="block text-white mb-2 text-sm font-medium">
+                  Teléfono <span className="text-primary">*</span>
+                </label>
+                <div className="phone-input-wrapper">
+                  <PhoneInput
+                    international
+                    defaultCountry="CO"
+                    placeholder="Tu número de teléfono"
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    className={`w-full rounded-lg bg-[#1D1616]/80 border ${errors.phone ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
+                  />
+                  <style jsx global>{`
+                    /* Override dropdown styles for dark theme */
+                    .PhoneInputCountrySelectArrow {
+                      color: white;
+                    }
+                    .PhoneInputCountrySelect option {
+                      background-color: #1D1616;
+                      color: white;
+                    }
+                    .PhoneInputCountrySelect {
+                      color: white;
+                    }
+                    /* Dropdown styling */
+                    .PhoneInputCountrySelectDropdown {
+                      background-color: #1D1616;
+                      color: white;
+                    }
+                    /* Ensure the flag has proper spacing */
+                    .PhoneInputCountry {
+                      margin-right: 0.5rem;
+                    }
+                    /* Style the dropdown list */
+                    .PhoneInputCountrySelect option {
+                      background-color: #1D1616;
+                      color: white;
+                    }
+                  `}</style>
+                </div>
+                {errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone}</p>}
+              </div>
 
               <FormField
                 label="Edad"
