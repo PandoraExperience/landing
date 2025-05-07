@@ -75,8 +75,6 @@ const RegistrationForm = () => {
     fullName: '',
     email: '',
     phone: '',
-    age: '',
-    howDidYouHear: '',
     agreeToTerms: false
   });
 
@@ -85,8 +83,6 @@ const RegistrationForm = () => {
     fullName: null,
     email: null,
     phone: null,
-    age: null,
-    howDidYouHear: null,
     agreeToTerms: null
   });
 
@@ -94,6 +90,7 @@ const RegistrationForm = () => {
   const [showPayment, setShowPayment] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -156,19 +153,6 @@ const RegistrationForm = () => {
       isValid = false;
     }
 
-    if (!formData.age.trim()) {
-      newErrors.age = 'La edad es requerida';
-      isValid = false;
-    } else if (isNaN(Number(formData.age)) || Number(formData.age) < 18) {
-      newErrors.age = 'Debes ser mayor de 18 años';
-      isValid = false;
-    }
-
-    if (!formData.howDidYouHear) {
-      newErrors.howDidYouHear = 'Por favor selecciona una opción';
-      isValid = false;
-    }
-
     if (!formData.agreeToTerms) {
       newErrors.agreeToTerms = 'Debes aceptar los términos y condiciones';
       isValid = false;
@@ -179,20 +163,37 @@ const RegistrationForm = () => {
   };
 
   // Handle form submission
-    const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (validateForm()) {
       setIsSubmitting(true);
       try {
-        // Simulate form submission delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Prepare data for webhook
+        const payload = {
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          timestamp: new Date().toISOString(),
+          source: 'landing-chakana'
+        };
+        // Send data to webhook
+        const response = await fetch('https://automan.apiflujos.com/webhook-test/f991b5cc-01dc-43fd-9ba1-25d78491994f', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) {
+          throw new Error('Webhook error');
+        }
         setShowPayment(true);
       } catch (error) {
-        console.error('Error submitting form:', error);
-      } finally {
+        setSubmitError('Lo sentimos, ocurrió un error. Por favor contacta al +57 312 7811615 vía WhatsApp.');
         setIsSubmitting(false);
+        return;
       }
+      setIsSubmitting(false);
     }
   };
 
@@ -369,26 +370,6 @@ const RegistrationForm = () => {
                 {errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone}</p>}
               </div>
 
-              <FormField
-                label="Edad"
-                type="number"
-                name="age"
-                placeholder="Tu edad"
-                value={formData.age}
-                onChange={handleChange}
-                error={errors.age}
-              />
-
-              <FormField
-                label="¿Cómo nos encontraste?"
-                type="select"
-                name="howDidYouHear"
-                placeholder=""
-                value={formData.howDidYouHear}
-                onChange={handleChange}
-                error={errors.howDidYouHear}
-              />
-
               <div className="mb-6">
                 <label className="flex items-start gap-3 cursor-pointer group">
                   <input
@@ -414,6 +395,12 @@ const RegistrationForm = () => {
                   <p className="mt-1 text-sm text-red-500">{errors.agreeToTerms}</p>
                 )}
               </div>
+
+              {submitError && (
+                <div className="mb-4 p-3 bg-red-900/80 text-red-200 rounded text-center">
+                  {submitError}
+                </div>
+              )}
 
               <button
                 type="submit"
