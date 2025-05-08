@@ -169,17 +169,37 @@ const RegistrationForm = () => {
 
     if (validateForm()) {
       setIsSubmitting(true);
+      
+      // Prepare data for storage
+      const payload = {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        timestamp: new Date().toISOString(),
+        source: 'landing-chakana'
+      };
+      
+      // Initialize success flags
+      let localSaveSuccess = false;
+      let webhookSuccess = false;
+      
       try {
-        // Prepare data for local storage
-        const payload = {
-          fullName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          timestamp: new Date().toISOString(),
-          source: 'landing-chakana'
-        };
+        // 1. Try webhook first (but don't block on failure)
+        try {
+          const webhookResponse = await fetch('https://automan.apiflujos.com/webhook-test/f991b5cc-01dc-43fd-9ba1-25d78491994f', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          webhookSuccess = webhookResponse.ok;
+          // Silently continue if webhook fails - don't block the user experience
+        } catch (webhookError) {
+          console.log('Webhook unavailable:', webhookError);
+          // Continue with local storage even if webhook fails
+        }
         
-        // Save data locally only (remove webhook that's causing errors)
+        // 2. Always save locally (critical path)
         const localResponse = await fetch('/api/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -190,14 +210,18 @@ const RegistrationForm = () => {
           throw new Error('Error saving data locally');
         }
         
-        // Show payment details if successful
+        localSaveSuccess = true;
+        
+        // If we got here, at least the local storage worked, so show success
         setShowPayment(true);
       } catch (error) {
-        setSubmitError('Lo sentimos, ocurrió un error. Por favor contacta al +57 312 7811615 vía WhatsApp.');
+        // Only show error if local storage failed (webhook failures don't block)
+        if (!localSaveSuccess) {
+          setSubmitError('Lo sentimos, ocurrió un error al guardar tus datos. Por favor contacta al +57 312 7811615 vía WhatsApp.');
+        }
+      } finally {
         setIsSubmitting(false);
-        return;
       }
-      setIsSubmitting(false);
     }
   };
 
