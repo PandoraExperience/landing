@@ -170,7 +170,7 @@ const RegistrationForm = () => {
     if (validateForm()) {
       setIsSubmitting(true);
       try {
-        // Prepare data for webhook
+        // Prepare data for local storage
         const payload = {
           fullName: formData.fullName,
           email: formData.email,
@@ -178,15 +178,19 @@ const RegistrationForm = () => {
           timestamp: new Date().toISOString(),
           source: 'landing-chakana'
         };
-        // Send data to webhook
-        const response = await fetch('https://automan.apiflujos.com/webhook-test/f991b5cc-01dc-43fd-9ba1-25d78491994f', {
+        
+        // Save data locally only (remove webhook that's causing errors)
+        const localResponse = await fetch('/api/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        if (!response.ok) {
-          throw new Error('Webhook error');
+        
+        if (!localResponse.ok) {
+          throw new Error('Error saving data locally');
         }
+        
+        // Show payment details if successful
         setShowPayment(true);
       } catch (error) {
         setSubmitError('Lo sentimos, ocurrió un error. Por favor contacta al +57 312 7811615 vía WhatsApp.');

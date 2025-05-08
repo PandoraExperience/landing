@@ -11,44 +11,32 @@ const PaymentDetails: React.FC<PaymentDetailsProps> = ({ userName }) => {
       {/* Welcome Message */}
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-          ¡Gracias {userName}!
+          ¡Vamos con toda!
         </h2>
-        <p className="text-gray-300">
-          Estás a un paso de comenzar tu viaje de transformación con MUNAY-KI.
+        <p className="text-gray-300 mb-4">
+          Qué alegría que te unas a esta bonita experiencia, {userName}. ¡Estoy feliz de acompañarte en este camino!
+        </p>
+        <p className="text-white font-medium">
+          Para asegurar tu cupo, aquí tienes los datos de pago:
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Payment Methods */}
-        <div className="space-y-6">
-          <div className="bg-[#111111] rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-white mb-4">BANCOLOMBIA</h3>
-            <div className="space-y-2 text-gray-300">
-              <p>Cuenta de ahorros #</p>
-              <p className="text-white font-medium">2231120570</p>
-              <p>MUNAY-KI</p>
-              <p>CC. 1016060350</p>
-            </div>
-          </div>
-
-          <div className="bg-[#111111] rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-white mb-4">NEQUI/DAVIPLATA</h3>
-            <p className="text-white font-medium">3165137110</p>
-          </div>
+      <div className="bg-[#111111] rounded-lg p-6 mb-6">
+        <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+          <span className="mr-2">🏦</span> BANCOLOMBIA
+        </h3>
+        <div className="space-y-3 text-gray-300">
+          <p className="flex items-center"><span className="mr-2 text-white">💳</span> Tipo de cuenta: <span className="ml-2 text-white font-medium">Ahorros</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">🔢</span> Número de cuenta: <span className="ml-2 text-white font-medium">22311203570</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">👤</span> Titular: <span className="ml-2 text-white font-medium">Karen Nathaly Díaz</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">🆔</span> Cédula: <span className="ml-2 text-white font-medium">1016060350</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">💵</span> Inversión: <span className="ml-2 text-white font-medium">$480.000</span></p>
         </div>
+      </div>
 
-        {/* QR Code */}
-        <div className="flex flex-col items-center justify-center bg-[#111111] rounded-lg p-6">
-          <div className="relative w-48 h-48">
-            <Image
-              src="/images/payment-qr.png"
-              alt="QR de pago Bancolombia"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <p className="text-gray-300 mt-4 text-center">QR de pago Bancolombia</p>
-        </div>
+      <div className="bg-[#111111] rounded-lg p-6 mb-6">
+        <h3 className="text-xl font-semibold text-white mb-4">Otros medios de pago:</h3>
+        <p className="flex items-center text-gray-300"><span className="mr-2 text-white">📱</span> Nequi / Daviplata: <span className="ml-2 text-white font-medium">316 513 7110</span></p>
       </div>
 
       {/* Contact Message */}
