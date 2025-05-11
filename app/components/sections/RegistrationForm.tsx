@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import TermsModal from './TermsModal';
 import PaymentDetails from './PaymentDetails';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput, { parsePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import './phone-input.css';
+import WompiButton from './PaymentWompi';
 
 // Form field component
 const FormField = ({
@@ -70,11 +71,15 @@ const FormField = ({
 };
 
 const RegistrationForm = () => {
+  // Reference for Wompi Payment
+  const paymentReference = crypto.randomUUID();
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
+    phoneCountry: '+57', // Default to Colombia
     agreeToTerms: false
   });
 
@@ -113,9 +118,12 @@ const RegistrationForm = () => {
 
   // Handle phone input changes
   const handlePhoneChange = (value: string | undefined) => {
+    console.log(formData.phoneCountry);
+    const phoneNumber = parsePhoneNumber(value || formData.phoneCountry);
     setFormData({
       ...formData,
-      phone: value || ''
+      phone: value || '',
+      phoneCountry: phoneNumber ? `+${phoneNumber.countryCallingCode}` : formData.phoneCountry
     });
 
     // Clear error when field is edited
@@ -169,7 +177,7 @@ const RegistrationForm = () => {
 
     if (validateForm()) {
       setIsSubmitting(true);
-      
+
       // Prepare data for storage
       const payload = {
         fullName: formData.fullName,
@@ -178,11 +186,11 @@ const RegistrationForm = () => {
         timestamp: new Date().toISOString(),
         source: 'landing-chakana'
       };
-      
+
       // Initialize success flags
       let localSaveSuccess = false;
       let webhookSuccess = false;
-      
+
       try {
         // 1. Try webhook first (but don't block on failure)
         try {
@@ -191,27 +199,27 @@ const RegistrationForm = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          
+
           webhookSuccess = webhookResponse.ok;
           // Silently continue if webhook fails - don't block the user experience
         } catch (webhookError) {
           console.log('Webhook unavailable:', webhookError);
           // Continue with local storage even if webhook fails
         }
-        
+
         // 2. Always save locally (critical path)
         const localResponse = await fetch('/api/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        
+
         if (!localResponse.ok) {
           throw new Error('Error saving data locally');
         }
-        
+
         localSaveSuccess = true;
-        
+
         // If we got here, at least the local storage worked, so show success
         setShowPayment(true);
       } catch (error) {
@@ -285,8 +293,8 @@ const RegistrationForm = () => {
             <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                 </svg>
               </div>
               <div>
@@ -313,8 +321,8 @@ const RegistrationForm = () => {
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
-                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd"/>
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                 </svg>
               </div>
               <div>
@@ -358,43 +366,17 @@ const RegistrationForm = () => {
                 <label htmlFor="phone" className="block text-white mb-2 text-sm font-medium">
                   Teléfono <span className="text-primary">*</span>
                 </label>
-                <div className="phone-input-wrapper">
-                  <PhoneInput
-                    international
-                    defaultCountry="CO"
-                    placeholder="Tu número de teléfono"
-                    value={formData.phone}
-                    onChange={handlePhoneChange}
-                    className={`w-full rounded-lg bg-[#1D1616]/80 border ${errors.phone ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
-                  />
-                  <style jsx global>{`
-                    /* Override dropdown styles for dark theme */
-                    .PhoneInputCountrySelectArrow {
-                      color: white;
-                    }
-                    .PhoneInputCountrySelect option {
-                      background-color: #1D1616;
-                      color: white;
-                    }
-                    .PhoneInputCountrySelect {
-                      color: white;
-                    }
-                    /* Dropdown styling */
-                    .PhoneInputCountrySelectDropdown {
-                      background-color: #1D1616;
-                      color: white;
-                    }
-                    /* Ensure the flag has proper spacing */
-                    .PhoneInputCountry {
-                      margin-right: 0.5rem;
-                    }
-                    /* Style the dropdown list */
-                    .PhoneInputCountrySelect option {
-                      background-color: #1D1616;
-                      color: white;
-                    }
-                  `}</style>
-                </div>
+                <PhoneInput
+                  displayInitialValueAsLocalNumber
+                  defaultCountry="CO"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  placeholder="Tu número de teléfono"
+                  className={`w-full transition-all duration-300 appearance-none`}
+                  numberInputProps={{ className: `w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 text-white placeholder-gray-500 border ${errors.phone ? 'border-red-500' : 'border-white/10'} focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none` }}
+                />
                 {errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone}</p>}
               </div>
 
@@ -444,13 +426,23 @@ const RegistrationForm = () => {
                     Procesando...
                   </div>
                 ) : (
-                  'Siguiente'
+                  'Continuar con el pago'
                 )}
               </button>
             </form>
           ) : (
-            // Payment Details
-            <PaymentDetails userName={formData.fullName.split(' ')[0]} />
+            <>
+              <PaymentDetails userName={formData.fullName.split(' ')[0]} />
+              <WompiButton
+                reference={paymentReference}
+                email={formData.email}
+                fullName={formData.fullName}
+                phoneNumber={formData.phone}
+                numberPrefix={formData.phoneCountry}
+                className={"w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"}
+                children="Pagar con Wompi (TDC / PSE)"
+              />
+            </>
           )}
         </div>
       </div>
