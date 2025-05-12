@@ -103,6 +103,12 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Wompi */}
+        <Script
+          src="https://checkout.wompi.co/widget.js"
+          strategy="afterInteractive"
+        />
+
         {/* Structured Data for Event */}
         <script
           type="application/ld+json"

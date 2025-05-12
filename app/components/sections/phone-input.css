@@ -1,9 +1,39 @@
 /* Custom styles for PhoneInput component in dark mode */
 
+/* Override dropdown styles for dark theme */
+.PhoneInputCountrySelectArrow {
+  color: lightgrey;
+}
+
+.PhoneInputCountrySelect:focus+.PhoneInputCountryIcon+.PhoneInputCountrySelectArrow {
+  opacity: 1;
+  color: white;
+}
+
 /* Style the country dropdown */
 .PhoneInputCountrySelect option {
   background-color: #1D1616 !important;
   color: white !important;
+}
+
+.PhoneInputCountrySelect {
+  color: white;
+}
+
+/* Add focus styles */
+.PhoneInputCountrySelect:focus+.PhoneInputCountryIcon--border {
+  box-shadow: inset 0 0 0 white;
+}
+
+/* Dropdown styling */
+.PhoneInputCountrySelectDropdown {
+  background-color: #1D1616;
+  color: white;
+}
+
+/* Ensure the flag has proper spacing */
+.PhoneInputCountry {
+  margin-left: 0.5rem;
 }
 
 /* The input itself */
@@ -30,4 +60,4 @@ select option {
     background-color: #1D1616 !important;
     color: white !important;
   }
-} 
+}
