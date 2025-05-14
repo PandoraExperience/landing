@@ -203,13 +203,13 @@ type WompiResponse = {
       id: number, // 12010
       name: string, // AVE GROUP SAS
       legalName: string, // AVE GROUP SAS
-      contactName: string, // WILFER BUSTAMANTE
+      contactName: string, // ESTEBAN CASTILLO
       phoneNumber: string, // +573007759857
       logoUrl: string | null,
       legalIdType: string, // NIT
       email: string, // diradmin@aveonline.co
       legalId: string, // 900595261
-      publicKey: string // pub_test_syWuNAWB0feEchNfZdqQSzEClvj60Y6i
+      publicKey: string // pub_test_syWu...
     },
     canRetry: boolean,
     signatureIntegrityRetry: string | null
