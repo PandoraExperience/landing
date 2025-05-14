@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { experience } from "@/app/variables";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script';
@@ -6,20 +7,21 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
 
 // Variables setup
+const mark = "MUNAY-KI";
 const metadataBase = new URL('https://landing.chakana.io/');
-const siteName = "PANDORA EXPERIENCE - Experiencia de Inmersión en Hielo | MUNAY-KI";
-const siteDescription = "Descubre la transformadora experiencia de inmersión en hielo MUNAY-KI, donde aprenderás a convertir el miedo y la incomodidad en tus aliados. Transforma tu vida con claridad y fortaleza a través de técnicas ancestrales.";
-const siteKeywords = ["inmersión en hielo", "transformación personal", "despertar del avatar", "superación del miedo", "resiliencia", "experiencia transformadora", "MUNAY-KI", "técnicas ancestrales", "desarrollo personal", "meditación en frío", "terapia de frío"];
-const siteAuthors = [{ name: "MUNAY-KI" }];
-const siteCategory = "Desarrollo Personal";
+const siteName = `${experience.name} - ${experience.shortDescription} | ${mark}`;
+const siteDescription = experience.longDescription;
+const siteKeywords = [...experience.category.keywords, mark];
+const siteAuthors = [{ name: mark }];
+const siteCategory = experience.category.name;
 const siteTwitter = "@munayki";
 const siteGoogleAnalytics = "G-XXXXXXXXXX";
 const siteGoogleVerification = "your-google-verification-code";
 
 const eventOffer = {
   "@type": "Offer",
-  "price": 480000,
-  "priceCurrency": "COP",
+  "price": experience.price.amountInCents / 100,
+  "priceCurrency": experience.price.currency,
   "availability": "https://schema.org/LimitedAvailability",
   "validFrom": "2025-05-01",
   "url": metadataBase + "#reserva"

@@ -1,5 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
+import { formatNumber } from '@/app/lib/utils';
+import { experience } from '@/app/variables';
 
 interface PaymentDetailsProps {
   userName: string;
@@ -28,15 +29,15 @@ const PaymentDetails: React.FC<PaymentDetailsProps> = ({ userName }) => {
         <div className="space-y-3 text-gray-300">
           <p className="flex items-center"><span className="mr-2 text-white">💳</span> Tipo de cuenta: <span className="ml-2 text-white font-medium">Ahorros</span></p>
           <p className="flex items-center"><span className="mr-2 text-white">🔢</span> Número de cuenta: <span className="ml-2 text-white font-medium">22311203570</span></p>
-          <p className="flex items-center"><span className="mr-2 text-white">👤</span> Titular: <span className="ml-2 text-white font-medium">Karen Nathaly Díaz</span></p>
-          <p className="flex items-center"><span className="mr-2 text-white">🆔</span> Cédula: <span className="ml-2 text-white font-medium">1016060350</span></p>
-          <p className="flex items-center"><span className="mr-2 text-white">💵</span> Inversión: <span className="ml-2 text-white font-medium">$480.000</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">👤</span> Titular: <span className="ml-2 text-white font-medium">{experience.guide.name}</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">🆔</span> Cédula: <span className="ml-2 text-white font-medium">{experience.guide.legalId}</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">💵</span> Inversión: <span className="ml-2 text-white font-medium">${formatNumber(experience.price.amountInCents / 100)}</span></p>
         </div>
       </div>
 
       <div className="bg-[#111111] rounded-lg p-6 mb-6">
         <h3 className="text-xl font-semibold text-white mb-4">Otros medios de pago:</h3>
-        <p className="flex items-center text-gray-300"><span className="mr-2 text-white">📱</span> Nequi / Daviplata: <span className="ml-2 text-white font-medium">316 513 7110</span></p>
+        <p className="flex items-center text-gray-300"><span className="mr-2 text-white">📱</span> Nequi / Daviplata: <span className="ml-2 text-white font-medium">{experience.guide.phoneNumber}</span></p>
       </div>
 
       {/* Contact Message */}
