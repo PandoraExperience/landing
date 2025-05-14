@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import { experience } from '@/app/variables';
 import TermsModal from './TermsModal';
 import PaymentDetails from './PaymentDetails';
+import WompiButton from './PaymentWompi';
 import PhoneInput, { parsePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import './phone-input.css';
-import WompiButton from './PaymentWompi';
 
 // Form field component
 const FormField = ({
@@ -72,7 +73,7 @@ const FormField = ({
 
 const RegistrationForm = () => {
   // Reference for Wompi Payment
-  const paymentReference = crypto.randomUUID();
+  const paymentReference = `${experience.reference}-${crypto.randomUUID()}`;
 
   // Form state
   const [formData, setFormData] = useState({
@@ -118,7 +119,6 @@ const RegistrationForm = () => {
 
   // Handle phone input changes
   const handlePhoneChange = (value: string | undefined) => {
-    console.log(formData.phoneCountry);
     const phoneNumber = parsePhoneNumber(value || formData.phoneCountry);
     setFormData({
       ...formData,
@@ -203,7 +203,7 @@ const RegistrationForm = () => {
           webhookSuccess = webhookResponse.ok;
           // Silently continue if webhook fails - don't block the user experience
         } catch (webhookError) {
-          console.log('Webhook unavailable:', webhookError);
+          console.warn('Webhook unavailable:', webhookError);
           // Continue with local storage even if webhook fails
         }
 

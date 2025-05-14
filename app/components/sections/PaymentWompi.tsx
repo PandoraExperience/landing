@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { wompiAPI } from '@/app/variables';
+import './PaymentWompi.css';
 
 interface WompiProps {
   reference: string;
@@ -103,6 +104,38 @@ const WompiButton = ({
 };
 
 export default WompiButton;
+
+type WidgetProps = {
+  currency: string, // USD or COP
+  amountInCents: number,
+  reference: string,
+  publicKey: string,
+  signature: {
+    integrity: string
+  },
+  redirectUrl?: string, // Optional
+  expirationTime?: string, // Optional
+  defaultLanguage?: string, // Optional
+  taxInCents?: { // Optional
+    vat: number,
+  },
+  customerData: { // Optional
+    email: string,
+    fullName: string,
+    phoneNumber: string, // 3040777777
+    phoneNumberPrefix: string, // +57
+    legalId?: string, // 123456789
+    legalIdType?: string // CC, CE, NIT, etc
+  },
+  shippingAddress?: { // Optional
+    addressLine1: string, // Calle 123 # 4-5
+    city: string, // Ciudad de Panama
+    phoneNumber: string, // 63608989
+    region: string, // Panama
+    country: string // PA
+  }
+}
+
 
 type WompiResponse = {
   transaction: {
