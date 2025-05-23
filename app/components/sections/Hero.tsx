@@ -183,7 +183,7 @@ export default function Hero() {
               </svg>
               <span className="font-semibold">Próximo Evento:</span>
             </div>
-            <span className="text-white font-semibold text-lg">20 de Junio, 2025</span>
+            <span className="text-white font-semibold text-lg">{eventDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
           </div>
 
           {/* Countdown timer with improved styling */}
