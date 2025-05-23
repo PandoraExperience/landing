@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { experience } from "@/app/variables";
+import { eventDate, experience } from "@/app/variables";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script';
@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Variables setup
 const mark = "MUNAY-KI";
-const metadataBase = new URL('https://landing.chakana.io/');
+const metadataBase = new URL(experience.rrss.website);
 const siteName = `${experience.name} - ${experience.shortDescription} | ${mark}`;
 const siteDescription = experience.longDescription;
 const siteKeywords = [...experience.category.keywords, mark];
@@ -23,7 +23,7 @@ const eventOffer = {
   "price": experience.price.amountInCents / 100,
   "priceCurrency": experience.price.currency,
   "availability": "https://schema.org/LimitedAvailability",
-  "validFrom": "2025-05-01",
+  "validFrom": eventDate.toISOString(),
   "url": metadataBase + "#reserva"
 };
 

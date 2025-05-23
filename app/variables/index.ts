@@ -10,7 +10,7 @@ export const experience = {
     legalIdType: "CC"
   },
   price: {
-    amountInCents: 48000000,
+    amountInCents: 49900000,
     currency: "COP",
     promoApplied: {
       percentage: 10
@@ -25,11 +25,21 @@ export const experience = {
     ]
   },
   rrss: {
-    twitter: "@munayki",
-    facebook: "https://www.facebook.com/munayki",
-    instagram: "https://www.instagram.com/munayki",
-    linkedin: "https://www.linkedin.com/company/munayki"
+    website: "https://landing.chakana.io/",
+    email: "kndiaza08@gmail.com",
+    phoneNumber: "+57 316 513 7110",
+    twitter: "@estebmaister",
+    instagram: "https://www.instagram.com/pandora.experiences",
+    facebook: "https://www.facebook.com/universare",
+    // linkedin: "https://www.linkedin.com/company/pandoraexperience"
   }
+};
+
+export const eventDate = new Date('2025-06-14T00:00:00');
+
+export const whatsappContact = {
+  number: "+573127811615", // Formatted for WhatsApp (removed spaces)
+  message: "Hola! Me interesa saber más sobre la experiencia PANDORA. Mi nombre es: "
 };
 
 export const wompiAPI = {

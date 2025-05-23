@@ -112,7 +112,8 @@ La optimización SEO incluye:
 
 1. **Textos**: Modificar directamente en los componentes de sección correspondientes
 2. **Imágenes**: Reemplazar en la carpeta `/public` manteniendo los mismos nombres de archivo
-3. **Fecha del evento**: Actualizar la variable `eventDate` en el componente Hero
+3. **Fecha del evento**: Actualizar la variable `eventDate` en el variables/index.ts
+4. **Whatsapp**: Actualizar la variable `whatsappContact` en el variables/index.ts
 
 ### Cómo añadir testimonios
 

@@ -24,7 +24,19 @@ export const formatNumber = (num: number) => {
 }
 
 export const roundLocalNumber = (num: number, zeros: number = 0) => {
+  num = Math.ceil(num); // Delete decimals
+
+  // Zeros can't be greater than the number length or the will be erased
+  let numLength = num.toString().length;
+  if (zeros > numLength-1) {
+    console.warn("Zeros can't be greater than the number length using roundLocalNumber");
+    zeros = numLength-1;
+  }
+
+  // Zeros can't be negative
   if (zeros < 0) return num;
+
+  // Round to the nearest number with the specified number of zeros
   const divider = 10**zeros;
   return formatNumber(Math.ceil(num/divider)*divider);
 }

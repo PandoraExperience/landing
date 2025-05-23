@@ -1,11 +1,12 @@
 'use client';
 
+import { whatsappContact } from '@/app/variables';
 import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 // WhatsApp configuration
-const WHATSAPP_NUMBER = '+573127811615'; // Formatted for WhatsApp (removed spaces)
-const DEFAULT_MESSAGE = 'Hola! Me interesa la experiencia PANDORA. ¿Podrían darme más información?';
+const WHATSAPP_NUMBER = whatsappContact.number;
+const DEFAULT_MESSAGE = whatsappContact.message;
 
 export default function WhatsAppWidget() {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,10 +29,10 @@ export default function WhatsAppWidget() {
       >
         {/* Breathing glow effect */}
         <div className="absolute inset-0 bg-[#25D366] rounded-full opacity-75 animate-breathe"></div>
-        
+
         {/* WhatsApp Icon */}
-        <FaWhatsapp 
-          className="relative z-10 w-6 h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform duration-300" 
+        <FaWhatsapp
+          className="relative z-10 w-6 h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform duration-300"
         />
 
         {/* Notification badge for attention */}

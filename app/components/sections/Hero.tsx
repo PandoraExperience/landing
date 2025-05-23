@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
-
-// Event date: June 20, 2025
-const eventDate = new Date('2025-06-20T00:00:00');
+import { eventDate } from '@/app/variables';
 
 // CountdownUnit Component
 const CountdownUnit = ({ value, label, color }: { value: number, label: string, color: string }) => {
@@ -71,26 +69,26 @@ export default function Hero() {
     const updateCountdown = () => {
       const now = new Date();
       const diff = eventDate.getTime() - now.getTime();
-      
+
       if (diff <= 0) {
         setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
-      
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      
+
       setCountdown({ days, hours, minutes, seconds });
     };
-    
+
     // Initial update
     updateCountdown();
-    
+
     // Update every second
     const interval = setInterval(updateCountdown, 1000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -100,7 +98,7 @@ export default function Hero() {
       const headerOffset = 120;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -113,35 +111,35 @@ export default function Hero() {
       {/* Enhanced breathing/pulsating background gradients */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.3)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
       <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-[radial-gradient(circle,rgba(46,139,87,0.2)_0%,rgba(0,0,0,0)_70%)] animate-breathe opacity-90" style={{ animationDelay: '3s' }}></div>
-      
+
       {/* Parallax background elements - more pronounced glow */}
-      <div 
+      <div
         className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
       ></div>
-      <div 
+      <div
         className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-white/15 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
-      <div 
+      <div
         className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-[#2E8B57]/15 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * 0.15}px, ${parallaxOffset.y * 0.15}px)`, animationDelay: '4s' }}
       ></div>
-      
+
       {/* Very subtle light streaks */}
       <div className="absolute w-full h-full overflow-hidden opacity-30">
         <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
         <div className="absolute top-2/3 left-0 w-full h-[1px] bg-white/5 rotate-6 transform animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
       </div>
-      
+
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
         {/* Logo or brand identifier above title */}
         <div className={`mb-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex items-center justify-center">
-            
+
           </div>
         </div>
-        
+
         {/* Main title with improved visual treatment */}
         <div className={`relative mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
@@ -152,10 +150,10 @@ export default function Hero() {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-2">
-          No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
+            No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
           </p>
         </div>
-        
+
         {/* Featured video with HeroVideoDialog component */}
         <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <HeroVideoDialog
@@ -171,7 +169,7 @@ export default function Hero() {
           <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
           <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
           <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-          Un llamado para quienes buscan conectar con su ser más profundo, activar su energía y liberar bloqueos mentales y emocionales.
+            Un llamado para quienes buscan conectar con su ser más profundo, activar su energía y liberar bloqueos mentales y emocionales.
           </p>
         </div>
 
@@ -187,7 +185,7 @@ export default function Hero() {
             </div>
             <span className="text-white font-semibold text-lg">20 de Junio, 2025</span>
           </div>
-          
+
           {/* Countdown timer with improved styling */}
           <div className="p-5 bg-[#1D1616]/30 backdrop-blur-sm rounded-xl border border-primary/10 shadow-lg">
             <p className="text-sm text-white/70 mb-4">Reserva tu lugar y sé parte de esta experiencia.</p>
@@ -206,7 +204,7 @@ export default function Hero() {
           <div className="relative mb-5 group">
             {/* Animated glow effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary-light to-primary rounded-full opacity-80 blur-md animate-pulse group-hover:opacity-100"></div>
-            
+
             {/* Button with white background for high contrast */}
             <button
               onClick={() => scrollToSection('reserva')}
@@ -217,13 +215,13 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      
+
       {/* Wave divider with subtle gradient */}
       <div className="absolute bottom-0 left-0 w-full">
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent opacity-5"></div>
-        <svg 
-          viewBox="0 0 1200 120" 
-          preserveAspectRatio="none" 
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
           className="w-full h-20"
           fill="white"
         >
