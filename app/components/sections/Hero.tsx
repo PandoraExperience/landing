@@ -136,22 +136,22 @@ export default function Hero() {
       
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
         {/* Logo or brand identifier above title */}
-        <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`mb-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex items-center justify-center">
             
           </div>
         </div>
         
         {/* Main title with improved visual treatment */}
-        <div className={`relative mb-6 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`relative mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
-          <h2 className="relative text-3xl md:text-6xl font-bold mb-2 text-white tracking-wide md:tracking-wider">
+          <h2 className="relative text-3xl md:text-6xl font-bold mb-1 text-white tracking-wide md:tracking-wider">
             <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.05em] md:tracking-[0.15em] leading-relaxed relative">
               <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">PANDORA EXPERIENCE</span>
               PANDORA EXPERIENCE
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-3">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-2">
           No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
           </p>
         </div>
