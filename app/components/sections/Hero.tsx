@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
 
-// Event date: May 17, 2025
-const eventDate = new Date('2025-05-17T00:00:00');
+// Event date: June 20, 2025
+const eventDate = new Date('2025-06-20T00:00:00');
 
 // CountdownUnit Component
 const CountdownUnit = ({ value, label, color }: { value: number, label: string, color: string }) => {
@@ -142,31 +142,22 @@ export default function Hero() {
           </div>
         </div>
         
-        {/* Quote */}
-        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-          <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-          Un llamado para quienes buscan conectar con su ser más profundo, activar su energía y liberar bloqueos mentales y emocionales.
-          </p>
-        </div>
-        
         {/* Main title with improved visual treatment */}
-        <div className={`relative mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`relative mb-6 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
-          <h2 className="relative text-4xl md:text-6xl font-bold mb-4 text-white tracking-wider">
-            <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.15em] leading-relaxed relative">
+          <h2 className="relative text-3xl md:text-6xl font-bold mb-2 text-white tracking-wide md:tracking-wider">
+            <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.05em] md:tracking-[0.15em] leading-relaxed relative">
               <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">PANDORA EXPERIENCE</span>
               PANDORA EXPERIENCE
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-8">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-3">
           No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
           </p>
         </div>
         
         {/* Featured video with HeroVideoDialog component */}
-        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <HeroVideoDialog
             animationStyle="from-center"
             videoSrc="https://www.youtube.com/embed/wC0eNjoEqbs"
@@ -175,8 +166,17 @@ export default function Hero() {
           />
         </div>
 
+        {/* Quote */}
+        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+          <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
+          Un llamado para quienes buscan conectar con su ser más profundo, activar su energía y liberar bloqueos mentales y emocionales.
+          </p>
+        </div>
+
         {/* Event date and countdown section */}
-        <div className={`mb-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`mb-10 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Event date */}
           <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-2">
             <div className="flex items-center text-primary">
@@ -185,7 +185,7 @@ export default function Hero() {
               </svg>
               <span className="font-semibold">Próximo Evento:</span>
             </div>
-            <span className="text-white font-semibold text-lg">17 de Mayo, 2025</span>
+            <span className="text-white font-semibold text-lg">20 de Junio, 2025</span>
           </div>
           
           {/* Countdown timer with improved styling */}
@@ -201,7 +201,7 @@ export default function Hero() {
         </div>
 
         {/* CTA button with social proof element */}
-        <div className={`flex flex-col items-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`flex flex-col items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Enhanced CTA with improved visibility and contrast */}
           <div className="relative mb-5 group">
             {/* Animated glow effect */}

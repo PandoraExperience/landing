@@ -10,6 +10,7 @@ import PricingAvailability from '@/app/components/sections/PricingAvailability';
 import Testimonials from '@/app/components/sections/Testimonials';
 import FAQ from '@/app/components/sections/FAQ';
 import YourGuide from '@/app/components/sections/YourGuide';
+import WhatsAppWidget from '@/app/components/ui/WhatsAppWidget';
 
 export default function Home() {
   return (
@@ -25,6 +26,9 @@ export default function Home() {
       <YourGuide />
       <FAQ />
       <Footer />
+      
+      {/* Sticky WhatsApp Widget */}
+      <WhatsAppWidget />
     </main>
   );
 }
