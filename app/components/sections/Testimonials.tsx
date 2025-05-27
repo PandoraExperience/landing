@@ -2,8 +2,36 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { Star, ArrowLeft, ArrowRight } from 'lucide-react';
 import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
+
+// Testimonial video data structure
+const testimonialVideos = [
+  {
+    id: 1,
+    videoSrc: "https://www.youtube.com/embed/dQBCkuUtw4k",
+    thumbnailSrc: "/images/testi/testi.JPG",
+    thumbnailAlt: "Testimonio de transformación 1 - Munay-Ki"
+  },
+  {
+    id: 2,
+    videoSrc: "https://www.youtube.com/embed/cBY4QI2ahnE",
+    thumbnailSrc: "/images/testi/influ.JPG",
+    thumbnailAlt: "Testimonio de transformación 2 - Munay-Ki"
+  },
+  {
+    id: 3,
+    videoSrc: "https://www.youtube.com/embed/5ZnHDCggpXA",
+    thumbnailSrc: "/images/testi/vid1.JPG",
+    thumbnailAlt: "Testimonio de transformación 3 - Munay-Ki"
+  },
+  {
+    id: 4,
+    videoSrc: "https://www.youtube.com/embed/9BU2mVWnIvk",
+    thumbnailSrc: "/images/testi/vid2.JPG",
+    thumbnailAlt: "Testimonio de transformación 4 - Munay-Ki"
+  }
+];
 
 // Testimonial card component
 const TestimonialCard = ({ 
@@ -39,6 +67,7 @@ const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   
   // Sample testimonial data (to be replaced with real content)
   const testimonials = [];
@@ -94,6 +123,19 @@ const Testimonials = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  // Carousel navigation functions
+  const handlePrevVideo = () => {
+    setCurrentVideoIndex((prevIndex) => 
+      prevIndex === 0 ? testimonialVideos.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextVideo = () => {
+    setCurrentVideoIndex((prevIndex) => 
+      (prevIndex + 1) % testimonialVideos.length
+    );
   };
 
   return (
@@ -157,18 +199,46 @@ const Testimonials = () => {
             </p>
           </div>
 
-          {/* Video Testimonial */}
+          {/* Video Testimonials Carousel */}
           <div className={`w-full max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-            <HeroVideoDialog
-              animationStyle="from-center"
-              videoSrc="https://www.youtube.com/embed/dQBCkuUtw4k"
-              thumbnailSrc="/images/testi/testi.JPG"
-              thumbnailAlt="Testimonios de transformación - Munay-Ki"
-            />
+            <div className="relative">
+              {/* Current Video */}
+              <HeroVideoDialog
+                animationStyle="from-center"
+                videoSrc={testimonialVideos[currentVideoIndex].videoSrc}
+                thumbnailSrc={testimonialVideos[currentVideoIndex].thumbnailSrc}
+                thumbnailAlt={testimonialVideos[currentVideoIndex].thumbnailAlt}
+              />
+              
+              {/* Navigation Arrows */}
+              <div className="absolute inset-0 flex items-center justify-between p-4 pointer-events-none">
+                <button 
+                  onClick={handlePrevVideo}
+                  className="w-14 h-14 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none shadow-lg backdrop-blur-sm border border-white/10 pointer-events-auto"
+                  aria-label="Video testimonial anterior"
+                  type="button"
+                >
+                  <ArrowLeft className="w-7 h-7" />
+                </button>
+                <button 
+                  onClick={handleNextVideo}
+                  className="w-14 h-14 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none shadow-lg backdrop-blur-sm border border-white/10 pointer-events-auto"
+                  aria-label="Siguiente video testimonial"
+                  type="button"
+                >
+                  <ArrowRight className="w-7 h-7" />
+                </button>
+              </div>
+              
+              {/* Video counter */}
+              <div className="absolute bottom-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">
+                {currentVideoIndex + 1} / {testimonialVideos.length}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Remove Written Testimonials section and keep only Final Call to Action */}
+        {/* Final Call to Action */}
         <div className={`text-center transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
             Tú también puedes vivir esta experiencia transformadora
