@@ -10,7 +10,7 @@ export const experience = {
     legalIdType: "CC"
   },
   price: {
-    amountInCents: 42000000,
+    amountInCents: 49900000,
     currency: "COP",
     promoApplied: {
       percentage: 10
