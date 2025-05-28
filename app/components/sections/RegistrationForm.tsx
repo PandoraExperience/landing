@@ -262,7 +262,7 @@ const RegistrationForm = () => {
           </h2>
 
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Para ser parte de experiencia, solo debes llenar el siguiente formulario, para separar tu cupo. Encontraras, los detalles de pago y nos pondremos en contacto contigo.
+            Llena el formulario para separar tu lugar. Al terminar, te compartiremos los datos de pago y cómo completar tu inscripción.
           </p>
         </div>
 
