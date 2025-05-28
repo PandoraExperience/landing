@@ -1,0 +1,11 @@
+services:
+  app:
+    container_name: landing-page-chakana
+    image: image-landing-page-chakana
+    build: .
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    ports:
+      - 3000:3000
