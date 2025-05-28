@@ -250,7 +250,7 @@ const Testimonials = () => {
             <div className="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
             
             <button
-              onClick={() => scrollToSection('reserva')}
+              onClick={() => scrollToSection('precio')}
               className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
               Vívelo tú también, reserva ahora

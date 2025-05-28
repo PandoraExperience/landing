@@ -207,7 +207,7 @@ export default function Hero() {
 
             {/* Button with white background for high contrast */}
             <button
-              onClick={() => scrollToSection('reserva')}
+              onClick={() => scrollToSection('precio')}
               className="relative px-8 py-5 text-lg font-bold bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] group-hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
               QUIERO ESTAR AHÍ

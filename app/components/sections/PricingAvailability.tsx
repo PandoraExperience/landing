@@ -126,14 +126,11 @@ const PricingAvailability = () => {
               </div>
 
               {/* Bonus */}
-              <div className="text-left bg-[#DC0073]/10 rounded-lg p-4 mb-6 border border-[#DC0073]/20">
-                <p className="text-[#DC0073] text-lg font-bold mb-2">Bonos primeros valientes:</p>
-                <p className="text-base text-gray-200">Sesión canalizada del oráculo donde tus guías espirituales te brindaran claridad y guía para los primeros 3 inscritos.</p>
-              </div>
+
               <div className="text-left bg-[#DC0073]/10 rounded-lg p-4 mb-6 border border-[#DC0073]/20">
                 <p className="text-[#DC0073] text-lg font-bold mb-2">Bono de lanzamiento:</p>
-                <p className="text-base text-gray-200">Si conectas con la medicina ancestral, queremos regalarte —por ser el
-                  lanzamiento— un bono opcional para que vivas la ceremonia de Yagé en la noche.</p>
+                <p className="text-base text-gray-200">Si conectas con la medicina ancestral, queremos regalarte por ser el
+                  lanzamiento un bono opcional para que vivas la ceremonia de Yagé en la noche.</p>
               </div>
 
               {/* CTA Button */}

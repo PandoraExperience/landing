@@ -262,7 +262,7 @@ const TransformationEnvironment = () => {
           
           {/* CTA Button */}
           <button
-            onClick={() => scrollToSection('reserva')}
+            onClick={() => scrollToSection('precio')}
             className="px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
           >
             QUIERO PARTICIPAR

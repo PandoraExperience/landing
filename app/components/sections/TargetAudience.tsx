@@ -172,11 +172,11 @@ const TargetAudience = () => {
                 {/* CTA Button */}
                 <div className="mt-10">
                   <a 
-                    href="#reserva" 
+                    href="#precio" 
                     className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-medium rounded-xl shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                     onClick={(e) => {
                       e.preventDefault();
-                      scrollToSection('reserva');
+                      scrollToSection('precio');
                     }}
                   >
                     Esto es para mí
