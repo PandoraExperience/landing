@@ -14,6 +14,21 @@ const sections = [
   { id: 'faq', label: 'FAQ' }
 ];
 
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    // Adjust scroll position to account for fixed header (increased offset for larger header)
+    const headerOffset = 120;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+};
+
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -75,21 +90,11 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   // Handle smooth scrolling
-  const scrollToSection = (sectionId: string) => {
+  const handleScrollToSection = (sectionId: string) => {
+    scrollToSection(sectionId);
     setMobileMenuOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Adjust scroll position to account for fixed header (increased offset for larger header)
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
   };
+
 
   return (
     <>
@@ -107,15 +112,14 @@ const Header = () => {
           ></div>
         </div>
 
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          {/* Logo/Brand */}
+        {/* <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center -my-2">
             <a
               href="#hero"
               className="flex items-center transition-all duration-300 group"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection('hero');
+                handleScrollToSection('hero');
               }}
             >
               <div className={`relative ${scrolled ? 'h-32 w-32 -mb-6' : 'h-36 w-36 -mb-8'} transition-all duration-300`}>
@@ -129,7 +133,6 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex justify-center space-x-4">
             {sections.map((item) => (
               <a
@@ -151,38 +154,36 @@ const Header = () => {
                     : 'w-0 group-hover:w-full'
                     }`}
                 ></span>
-                {/* Add hover glow effect */}
-                <span
-                  className={`absolute inset-0 bg-primary/0 group-hover:bg-primary/5 rounded-lg -z-10 transition-all duration-300 ${activeSection === item.id ? 'bg-primary/10' : ''
-                    }`}
-                ></span>
-              </a>
+        <span
+          className={`absolute inset-0 bg-primary/0 group-hover:bg-primary/5 rounded-lg -z-10 transition-all duration-300 ${activeSection === item.id ? 'bg-primary/10' : ''
+            }`}
+        ></span>
+      </a>
             ))}
-          </nav>
+    </nav >
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-white hover:text-primary transition-colors outline-none focus:outline-none"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            <div className="w-6 h-6 relative">
-              <span
-                className={`absolute h-0.5 rounded-full bg-current transform transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'w-6 top-3 -rotate-45' : 'w-6 top-1'
-                  }`}
-              ></span>
-              <span
-                className={`absolute h-0.5 rounded-full bg-current transform transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'opacity-0 w-0' : 'w-4 top-3 opacity-100'
-                  }`}
-              ></span>
-              <span
-                className={`absolute h-0.5 rounded-full bg-current transform transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'w-6 top-3 rotate-45' : 'w-6 top-5'
-                  }`}
-              ></span>
-            </div>
-          </button>
+      <button
+        className="md:hidden text-white hover:text-primary transition-colors outline-none focus:outline-none"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+      >
+        <div className="w-6 h-6 relative">
+          <span
+            className={`absolute h-0.5 rounded-full bg-current transform transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'w-6 top-3 -rotate-45' : 'w-6 top-1'
+              }`}
+          ></span>
+          <span
+            className={`absolute h-0.5 rounded-full bg-current transform transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'opacity-0 w-0' : 'w-4 top-3 opacity-100'
+              }`}
+          ></span>
+          <span
+            className={`absolute h-0.5 rounded-full bg-current transform transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'w-6 top-3 rotate-45' : 'w-6 top-5'
+              }`}
+          ></span>
         </div>
-      </header>
+      </button>
+        </div > */}
+      </header >
 
       {/* Mobile menu - Fullscreen overlay */}
       {mobileMenuOpen && (
@@ -261,7 +262,7 @@ const Header = () => {
                 className="block w-full py-4 px-6 bg-primary text-white text-center font-bold rounded-lg relative overflow-hidden group transition-all duration-300 hover:shadow-[0_0_15px_rgba(5,96,187,0.5)]"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection('reserva');
+                  handleScrollToSection('reserva');
                   setMobileMenuOpen(false);
                 }}
               >
@@ -298,7 +299,7 @@ const Header = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div >
       )}
     </>
   );
