@@ -14,7 +14,7 @@
 - [ ] Crear componente Textarea
 - [ ] Crear componente Accordion (para FAQ)
 - [ ] Crear componente VideoPlayer
-- [ ] Crear componente Carousel (para testimonios)
+- [x] Crear componente Carousel (para testimonios)
 
 ## Secciones
 - [x] Implementar Header
@@ -23,7 +23,7 @@
 - [ ] Implementar sección "¿Qué Vas a Vivir en Esta Experiencia?"
 - [ ] Implementar sección "El Entorno: Donde Sucede la Transformación"
 - [ ] Implementar sección "Precio y Disponibilidad"
-- [ ] Implementar sección "Testimonios Reales"
+- [x] Implementar sección "Testimonios Reales"
 - [ ] Implementar sección "FAQ"
 - [x] Implementar sección "Registro y Reserva Tu Cupo Ahora" (básica)
 - [x] Implementar Footer

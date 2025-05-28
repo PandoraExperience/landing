@@ -33,18 +33,18 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="relative py-24 px-4 bg-[#1D1616] overflow-hidden">
+    <section id="faq" className="relative py-16 px-4 bg-[#1D1616] overflow-hidden">
       {/* Subtle background patterns and glow effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,51,102,0.1)_0%,rgba(29,22,22,0)_70%)]"></div>
       <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-primary/5 filter blur-3xl animate-float"></div>
       <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-primary/5 filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
-      
+
       <div className="max-w-3xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)] mb-4">
             RESUELVE TUS DUDAS
           </span>
-          
+
           {/* Title with glow effect */}
           <div className="relative mb-4">
             {/* Background glow effect */}
@@ -53,7 +53,7 @@ const FAQ = () => {
               Preguntas Frecuentes
             </h2>
           </div>
-          
+
           <p className="text-gray-300 text-sm">
             Encuentra respuestas a las dudas más comunes sobre la experiencia
           </p>
@@ -67,9 +67,8 @@ const FAQ = () => {
             >
               <h3 className="text-white font-medium">{item.question}</h3>
               <svg
-                className={`w-5 h-5 text-primary transition-transform ${
-                  activeIndex === index ? 'rotate-180' : ''
-                }`}
+                className={`w-5 h-5 text-primary transition-transform ${activeIndex === index ? 'rotate-180' : ''
+                  }`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

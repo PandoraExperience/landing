@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const TargetAudience = () => {
   const [activeTab, setActiveTab] = useState('for-you');
-  
+
   // Add scroll handler function
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -12,7 +12,7 @@ const TargetAudience = () => {
       const headerOffset = 120;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -21,12 +21,12 @@ const TargetAudience = () => {
   };
 
   return (
-    <section id="experiencia" className="relative py-24 px-4 bg-white overflow-hidden">
+    <section id="experiencia" className="relative pt-16 pb-24 px-4 bg-white overflow-hidden">
       {/* Subtle background patterns */}
       <div className="absolute bottom-0 right-0 w-full h-1/2 bg-[radial-gradient(circle,rgba(0,51,102,0.02)_0%,rgba(255,255,255,0)_70%)]"></div>
       <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-warm-orange/5 filter blur-3xl animate-float"></div>
       <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-forest-green/5 filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
-      
+
       <div className="container mx-auto relative z-10">
         <div className="mb-16 text-center">
           {/* Decorative top element */}
@@ -43,7 +43,7 @@ const TargetAudience = () => {
             <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
             <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
             <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-600">
-              Sé el cambio que quieres ver en el mundo  
+              Sé el cambio que quieres ver en el mundo
             </p>
           </div>
 
@@ -51,67 +51,63 @@ const TargetAudience = () => {
           <div className="relative transition-all duration-300">
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
-            
+
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-[#1D1616]">
               ¿Para Quién Es Esta Experiencia?
             </h2>
-            
+
           </div>
-          
+
           {/* Tabs Navigation */}
           <div className="flex justify-center mb-12">
             <div className="inline-flex rounded-xl bg-gray-100 p-1.5 shadow-inner">
-              <button
-                onClick={() => setActiveTab('for-you')}
-                className={`px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
-                  activeTab === 'for-you'
-                    ? 'bg-primary text-white shadow-md'
-                    : 'text-gray-600 hover:text-[#1D1616]'
-                }`}
+              <button onClick={() => setActiveTab('for-you')}
+                className={`px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 ${activeTab === 'for-you'
+                  ? 'bg-primary text-white shadow-md'
+                  : 'text-gray-600 hover:text-[#1D1616]'
+                  }`}
               >
                 Esta experiencia es para ti
               </button>
-              <button
-                onClick={() => setActiveTab('not-for-you')}
-                className={`px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
-                  activeTab === 'not-for-you'
-                    ? 'bg-[#1D1616] text-white shadow-md'
-                    : 'text-gray-600 hover:text-[#1D1616]'
-                }`}
+              <button onClick={() => setActiveTab('not-for-you')}
+                className={`px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 ${activeTab === 'not-for-you'
+                  ? 'bg-[#1D1616] text-white shadow-md'
+                  : 'text-gray-600 hover:text-[#1D1616]'
+                  }`}
               >
                 Esta experiencia NO es para ti
               </button>
             </div>
           </div>
         </div>
-        
+
         {/* Tab Content */}
         <div className="relative min-h-[580px]">
           {/* For You Tab */}
-          <div 
-            className={`transform transition-all duration-500 ${
-              activeTab === 'for-you' 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 translate-x-8 absolute inset-0 pointer-events-none'
+          <div className={`transform transition-all duration-500 ${activeTab === 'for-you'
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 translate-x-8 absolute inset-0 pointer-events-none'
             }`}
           >
             <div className="relative lg:flex items-center">
               {/* Visual Image Side */}
               <div className="lg:w-5/12 mb-10 lg:mb-0">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_70px_-10px_rgba(5,96,187,0.3)]">
-                  <img 
-                    src="/images/experience/experience-for.jpg" 
-                    alt="Persona lista para la transformación" 
+                  <img
+                    src="/images/experience/experience-for.jpg"
+                    alt="Persona lista para la transformación"
                     className="w-full h-[500px] object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div>
+                  {/* Removed dark overlay gradient */}
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div> */}
                   <div className="absolute bottom-0 left-0 p-8">
-                    <h3 className="text-3xl font-bold text-white mb-3">Esta experiencia es para ti si:</h3>
+                    <h3 className="text-3xl font-bold text-white mb-3 [text-shadow:4px_4px_6px_rgba(0,0,0,0.6)]">
+                      Esta experiencia es para ti si:</h3>
                     <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Content Side with Flowing Design */}
               <div className="lg:w-7/12 lg:pl-16">
                 <ul className="space-y-8">
@@ -127,7 +123,7 @@ const TargetAudience = () => {
                       <p className="text-gray-700">Estás en un proceso de transformación y buscas herramientas para facilitar este camino</p>
                     </div>
                   </li>
-                  
+
                   <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
                     {/* Unlock/key icon */}
                     <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
@@ -140,7 +136,7 @@ const TargetAudience = () => {
                       <p className="text-gray-700">Deseas liberar patrones limitantes que te impiden avanzar en tu vida</p>
                     </div>
                   </li>
-                  
+
                   <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
                     {/* Calming wave icon */}
                     <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
@@ -153,7 +149,7 @@ const TargetAudience = () => {
                       <p className="text-gray-700">Buscas herramientas efectivas para gestionar estados emocionales desafiantes</p>
                     </div>
                   </li>
-                  
+
                   <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
                     {/* Shield/strength icon */}
                     <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
@@ -167,35 +163,32 @@ const TargetAudience = () => {
                     </div>
                   </li>
                 </ul>
-                
-                {/* CTA Button */}
-                <div className="mt-10">
-                  <a 
-                    href="#reserva" 
-                    className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-medium rounded-xl shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('reserva');
-                    }}
-                  >
-                    Esto es para mí
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
-          
+
           {/* Not For You Tab */}
-          <div 
-            className={`transform transition-all duration-500 ${
-              activeTab === 'not-for-you' 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 -translate-x-8 absolute inset-0 pointer-events-none'
-            }`}
+          <div
+            className={`transform transition-all duration-500 ${activeTab === 'not-for-you'
+              ? 'opacity-100 translate-x-0'
+              : 'opacity-0 -translate-x-8 absolute inset-0 pointer-events-none'
+              }`}
           >
+            {/* Visual Image Side */}
+            <div className="lg:w-5/12 mb-10 lg:mb-0 order-1 lg:order-2">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_70px_-10px_rgba(5,96,187,0.3)]">
+                <img
+                  src="/images/experience/experience-not.jpg"
+                  alt="Persona evitando desafíos"
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute bottom-0 left-0 p-8">
+                  <h3 className="text-3xl font-bold text-white mb-3 [text-shadow:4px_4px_6px_rgba(0,0,0,0.6)]">
+                    Esta experiencia NO es para ti si:</h3>
+                  <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
+                </div>
+              </div>
+            </div>
             <div className="relative lg:flex items-center">
               {/* Content Side with Flowing Design */}
               <div className="lg:w-7/12 lg:pr-16 order-2 lg:order-1">
@@ -212,7 +205,7 @@ const TargetAudience = () => {
                       <p className="text-gray-700">Buscas una experiencia sin esfuerzo o implicación personal</p>
                     </div>
                   </li>
-                  
+
                   <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
                     {/* Comfort zone icon */}
                     <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
@@ -225,7 +218,7 @@ const TargetAudience = () => {
                       <p className="text-gray-700">No estás dispuesto a explorar más allá de tu zona de comfort para crecer</p>
                     </div>
                   </li>
-                  
+
                   <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
                     {/* Medical condition icon */}
                     <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
@@ -238,7 +231,7 @@ const TargetAudience = () => {
                       <p className="text-gray-700">Tienes condiciones de salud que contraindican la exposición al frío</p>
                     </div>
                   </li>
-                  
+
                   <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
                     {/* Instant results icon */}
                     <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
@@ -253,33 +246,18 @@ const TargetAudience = () => {
                   </li>
                 </ul>
               </div>
-              
-              {/* Visual Image Side */}
-              <div className="lg:w-5/12 mb-10 lg:mb-0 order-1 lg:order-2">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_70px_-10px_rgba(5,96,187,0.3)]">
-                  <img 
-                    src="/images/experience/experience-not.jpg" 
-                    alt="Persona evitando desafíos" 
-                    className="w-full h-[500px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 p-8">
-                    <h3 className="text-3xl font-bold text-white mb-3">Esta experiencia NO es para ti si:</h3>
-                    <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Wave divider with subtle gradient */}
       <div className="absolute bottom-0 left-0 w-full">
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#1D1616] to-transparent opacity-5"></div>
-        <svg 
-          viewBox="0 0 1200 120" 
-          preserveAspectRatio="none" 
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
           className="w-full h-20"
           fill="#1D1616"
         >

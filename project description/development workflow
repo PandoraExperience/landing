@@ -1,65 +1,65 @@
 Development Workflow for "EL DESPERTAR DEL AVATAR" Landing Page
 1. Project Initialization and Setup
-Initialize a Next.js project with TypeScript and Tailwind CSS
-Set up the folder structure and basic configuration files
-Configure ESLint and Prettier for code quality
-Set up Git for version control
-Install and configure required dependencies
+- Initialize a Next.js project with TypeScript and Tailwind CSS
+- Set up the folder structure and basic configuration files
+- Configure ESLint and Prettier for code quality
+- Set up Git for version control
+- Install and configure required dependencies
 2. Development Phases
-Phase 1: Foundation
+- Phase 1: Foundation
 Create base layout components
 Set up global styles and Tailwind theme configuration
 Implement the responsive layout structure
 Configure font loading and basic SEO settings
-Phase 2: Component Development
+- Phase 2: Component Development
 Build reusable UI components (buttons, cards, etc.)
 Create section components one by one, starting with the Hero section
 Implement responsive designs for all components
 Add placeholder content and images
-Phase 3: Interactivity
+- Phase 3: Interactivity
 Implement the countdown timer functionality
 Add scroll animations and transitions
 Create the form with validation
 Implement the FAQ accordion functionality
-Phase 4: Polish and Optimization
+- Phase 4: Polish and Optimization
 Optimize images and assets
 Implement SEO best practices
 Add analytics
 Improve accessibility
 Perform performance optimization
-Phase 5: Testing and Deployment
+- Phase 5: Testing and Deployment
 Test across different devices and browsers
 Fix any responsive design issues
 Deploy to Vercel for hosting
 Set up continuous integration/deployment
 3. Development Practices
-Component-Based Development:
+- Component-Based Development:
 Each section will be built as a standalone component
 Use props for component configuration
 Implement responsive behavior at the component level
-Mobile-First Approach:
+- Mobile-First Approach:
 Start with mobile layouts and expand to larger screens
 Use Tailwind's responsive breakpoints consistently
-Version Control Strategy:
+- Version Control Strategy:
 Commit changes frequently with descriptive messages
 Use feature branches for significant additions
 Maintain a clean main branch with working code
-Code Quality Assurance:
+- Code Quality Assurance:
 Follow TypeScript best practices
 Maintain consistent coding style with ESLint/Prettier
 Write clear, maintainable code with appropriate comments
-Performance Monitoring:
+- Performance Monitoring:
 Regularly check Lighthouse scores
 Monitor bundle sizes
 Optimize as development progresses
 4. Testing Strategy
-Responsive testing across multiple device sizes
-Cross-browser testing (Chrome, Firefox, Safari, Edge)
-Functionality testing for interactive elements
-Form validation testing
-Accessibility testing with tools like Axe
+- Responsive testing across multiple device sizes
+- Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- Functionality testing for interactive elements
+- Form validation testing
+- Accessibility testing with tools like Axe
 5. Communication and Review
-Regular progress updates
-Section-by-section reviews
-Gathering feedback after key features are implemented
-Iterative refinement based on feedback
+- Regular progress updates
+- Section-by-section reviews
+- Gathering feedback after key features are implemented
+- Iterative refinement based on feedback

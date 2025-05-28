@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
-
-// Event date: May 17, 2025
-const eventDate = new Date('2025-05-17T00:00:00');
+import { eventDate } from '@/app/variables';
+import { CTA_SECTION_ID } from '@/app/variables';
 
 // CountdownUnit Component
 const CountdownUnit = ({ value, label, color }: { value: number, label: string, color: string }) => {
@@ -71,26 +70,26 @@ export default function Hero() {
     const updateCountdown = () => {
       const now = new Date();
       const diff = eventDate.getTime() - now.getTime();
-      
+
       if (diff <= 0) {
         setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
-      
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      
+
       setCountdown({ days, hours, minutes, seconds });
     };
-    
+
     // Initial update
     updateCountdown();
-    
+
     // Update every second
     const interval = setInterval(updateCountdown, 1000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -100,7 +99,7 @@ export default function Hero() {
       const headerOffset = 120;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -113,83 +112,81 @@ export default function Hero() {
       {/* Enhanced breathing/pulsating background gradients */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.3)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
       <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-[radial-gradient(circle,rgba(46,139,87,0.2)_0%,rgba(0,0,0,0)_70%)] animate-breathe opacity-90" style={{ animationDelay: '3s' }}></div>
-      
+
       {/* Parallax background elements - more pronounced glow */}
-      <div 
+      <div
         className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
       ></div>
-      <div 
+      <div
         className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-white/15 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
-      <div 
+      <div
         className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-[#2E8B57]/15 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * 0.15}px, ${parallaxOffset.y * 0.15}px)`, animationDelay: '4s' }}
       ></div>
-      
+
       {/* Very subtle light streaks */}
       <div className="absolute w-full h-full overflow-hidden opacity-30">
         <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
         <div className="absolute top-2/3 left-0 w-full h-[1px] bg-white/5 rotate-6 transform animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
       </div>
-      
+
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
-        {/* Logo or brand identifier above title */}
-        <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex items-center justify-center">
-            <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
-              MUNAY-KI EXPERIENCE
-            </span>
-          </div>
-        </div>
-        
-        {/* Quote */}
-        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-          <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-          Un llamado para quienes buscan conectar con su ser más profundo, activar su energía y liberar bloqueos mentales y emocionales.
-          </p>
-        </div>
-        
         {/* Main title with improved visual treatment */}
-        <div className={`relative mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`relative mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
-          <h2 className="relative text-4xl md:text-6xl font-bold mb-4 text-white tracking-wider">
-            <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.15em] leading-relaxed relative">
-              <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">DESPERTAR DEL AVATAR</span>
-              DESPERTAR DEL AVATAR
+          <h2 className="relative text-3xl md:text-6xl font-bold mb-1 text-white tracking-wide md:tracking-wider">
+            <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.05em] md:tracking-[0.15em] leading-relaxed relative">
+              <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">PANDORA EXPERIENCE</span>
+              PANDORA EXPERIENCE
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-8">
-          No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-2">
+            No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
           </p>
         </div>
-        
+
         {/* Featured video with HeroVideoDialog component */}
-        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <HeroVideoDialog
             animationStyle="from-center"
-            videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+            videoSrc="https://www.youtube.com/embed/al54yJ5J59s"
             thumbnailSrc="/images/Hero/hero-video.webp"
             thumbnailAlt="Mujer en agua - Experiencia transformadora Munay-Ki"
           />
         </div>
 
+        {/* Quote */}
+        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
+          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
+          <p className="text-2xl md:text-2xl italic font-light px-8 text-gray-300">
+            Un llamado para quienes buscan
+            <span className="font-bold"> conectar con su Ser</span>,
+            <span className="font-bold"> activar su energía </span>
+            y
+            <span className="font-bold"> liberar bloqueos </span>
+            mentales y emocionales.
+          </p>
+        </div>
+
         {/* Event date and countdown section */}
-        <div className={`mb-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`mb-10 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Event date */}
           <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-2">
             <div className="flex items-center text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
               </svg>
-              <span className="font-semibold">Próximo Evento:</span>
+              <span className="font-semibold text-xl">Próximo Evento:</span>
             </div>
-            <span className="text-white font-semibold text-lg">17 de Mayo, 2025</span>
+            <span className="text-white font-semibold text-lg">- {
+              eventDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+            } -</span>
           </div>
-          
+
           {/* Countdown timer with improved styling */}
           <div className="p-5 bg-[#1D1616]/30 backdrop-blur-sm rounded-xl border border-primary/10 shadow-lg">
             <p className="text-sm text-white/70 mb-4">Reserva tu lugar y sé parte de esta experiencia.</p>
@@ -203,15 +200,15 @@ export default function Hero() {
         </div>
 
         {/* CTA button with social proof element */}
-        <div className={`flex flex-col items-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`flex flex-col items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Enhanced CTA with improved visibility and contrast */}
           <div className="relative mb-5 group">
             {/* Animated glow effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary-light to-primary rounded-full opacity-80 blur-md animate-pulse group-hover:opacity-100"></div>
-            
+
             {/* Button with white background for high contrast */}
             <button
-              onClick={() => scrollToSection('reserva')}
+              onClick={() => scrollToSection(CTA_SECTION_ID)}
               className="relative px-8 py-5 text-lg font-bold bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] group-hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
               QUIERO ESTAR AHÍ
@@ -219,13 +216,13 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      
+
       {/* Wave divider with subtle gradient */}
       <div className="absolute bottom-0 left-0 w-full">
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent opacity-5"></div>
-        <svg 
-          viewBox="0 0 1200 120" 
-          preserveAspectRatio="none" 
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
           className="w-full h-20"
           fill="white"
         >
