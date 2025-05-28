@@ -1,11 +1,20 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
+const sections = [
+  { id: 'experiencia', label: 'Experiencia' },
+  { id: 'transformacion', label: 'Transformación' },
+  { id: 'testimonios', label: 'Testimonios' },
+  { id: 'precio', label: 'Precio' },
+  // { id: 'benefits', label: 'Beneficios' },
+  { id: 'reserva', label: 'Reserva' },
+  { id: 'guia', label: 'Guía' },
+  { id: 'faq', label: 'FAQ' }
+];
+
 const Header = () => {
-  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -28,20 +37,11 @@ const Header = () => {
       setScrollProgress(scrolled);
 
       // Update active section based on scroll position
-      const sections = [
-        'hero',
-        'experiencia',
-        'transformacion',
-        'precio',
-        'testimonios',
-        'reserva',
-        'guia',
-        'faq'
-      ];
+      const sectionIds = sections.map(section => section.id);
 
       // Find the section that is currently in view
-      let currentSection = sections[0];
-      for (const section of sections) {
+      let currentSection = sectionIds[0];
+      for (const section of sectionIds) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -95,8 +95,8 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-            ? 'bg-[#1D1616]/95 py-1 shadow-xl backdrop-blur-md border-b border-white/5'
-            : 'bg-[#1D1616]/50 py-1 backdrop-blur-sm'
+          ? 'bg-[#1D1616]/95 py-1 shadow-xl backdrop-blur-md border-b border-white/5'
+          : 'bg-[#1D1616]/50 py-1 backdrop-blur-sm'
           }`}
       >
         {/* Scroll Progress Bar */}
@@ -131,21 +131,13 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex justify-center space-x-4">
-            {[
-              { id: 'experiencia', label: 'Experiencia' },
-              { id: 'transformacion', label: 'Transformación' },
-              { id: 'precio', label: 'Precio' },
-              { id: 'testimonios', label: 'Testimonios' },
-              { id: 'reserva', label: 'Reserva' },
-              { id: 'guia', label: 'Guía' },
-              { id: 'faq', label: 'FAQ' }
-            ].map((item) => (
+            {sections.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 className={`relative text-sm uppercase tracking-wider font-medium group ${activeSection === item.id
-                    ? 'text-primary'
-                    : 'text-white hover:text-primary'
+                  ? 'text-primary'
+                  : 'text-white hover:text-primary'
                   } transition-all duration-300 transform hover:scale-105`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -155,8 +147,8 @@ const Header = () => {
                 {item.label}
                 <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 origin-left ${activeSection === item.id
-                      ? 'w-full'
-                      : 'w-0 group-hover:w-full'
+                    ? 'w-full'
+                    : 'w-0 group-hover:w-full'
                     }`}
                 ></span>
                 {/* Add hover glow effect */}
@@ -200,8 +192,8 @@ const Header = () => {
             <div className="flex items-center">
               <div className="relative h-28 w-28">
                 <Image
-                  src="/images/logo/MUNAY-KI_White.png"
-                  alt="MUNAY-KI Logo"
+                  src="/images/logo/logochakana.png"
+                  alt="La Chakana Logo"
                   fill
                   className="object-contain"
                 />
@@ -222,21 +214,13 @@ const Header = () => {
           <div className="overflow-y-auto p-6 pt-8">
             {/* Main navigation */}
             <nav className="flex flex-col space-y-4 mb-12">
-              {[
-                { id: 'experiencia', label: 'Experiencia' },
-                { id: 'transformacion', label: 'Transformación' },
-                { id: 'precio', label: 'Precio' },
-                { id: 'testimonios', label: 'Testimonios' },
-                { id: 'reserva', label: 'Reserva' },
-                { id: 'guia', label: 'Tu Guía' },
-                { id: 'faq', label: 'FAQ' }
-              ].map((item) => (
+              {sections.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
                   className={`block py-4 px-4 text-2xl font-bold border-l-4 relative overflow-hidden group transition-all duration-300 ${activeSection === item.id
-                      ? 'text-primary border-primary bg-primary/10'
-                      : 'text-white border-transparent hover:border-primary/50 hover:bg-black/40 hover:pl-6'
+                    ? 'text-primary border-primary bg-primary/10'
+                    : 'text-white border-transparent hover:border-primary/50 hover:bg-black/40 hover:pl-6'
                     }`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -255,8 +239,8 @@ const Header = () => {
                   {/* Pink indicator dot for active item or on hover */}
                   <span
                     className={`absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300 ${activeSection === item.id
-                        ? 'bg-primary opacity-100'
-                        : 'bg-primary/70 opacity-0 group-hover:opacity-100'
+                      ? 'bg-primary opacity-100'
+                      : 'bg-primary/70 opacity-0 group-hover:opacity-100'
                       }`}
                   ></span>
                 </a>

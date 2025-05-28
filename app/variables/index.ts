@@ -37,6 +37,8 @@ export const experience = {
 
 export const eventDate = new Date('2025-06-14T00:00:00');
 
+export const CTA_SECTION_ID = "precio";
+
 export const whatsappContact = {
   number: "+573127811615", // Formatted for WhatsApp (removed spaces)
   message: "Hola! Me interesa saber más sobre la experiencia PANDORA. Mi nombre es: "

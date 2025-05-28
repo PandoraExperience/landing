@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Star, ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
+import { CTA_SECTION_ID } from '@/app/variables';
 
 // Testimonial video data structure
 const testimonialVideos = [
@@ -34,14 +34,14 @@ const testimonialVideos = [
 ];
 
 // Testimonial card component
-const TestimonialCard = ({ 
-  name, 
-  role, 
-  quote 
-}: { 
-  name: string, 
-  role: string, 
-  quote: string 
+const TestimonialCard = ({
+  name,
+  role,
+  quote
+}: {
+  name: string,
+  role: string,
+  quote: string
 }) => {
   return (
     <div className="relative p-6 bg-[#1D1616]/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 group border border-white/5">
@@ -68,7 +68,7 @@ const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  
+
   // Sample testimonial data (to be replaced with real content)
   const testimonials = [];
 
@@ -117,7 +117,7 @@ const Testimonials = () => {
       const headerOffset = 120;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -127,36 +127,36 @@ const Testimonials = () => {
 
   // Carousel navigation functions
   const handlePrevVideo = () => {
-    setCurrentVideoIndex((prevIndex) => 
+    setCurrentVideoIndex((prevIndex) =>
       prevIndex === 0 ? testimonialVideos.length - 1 : prevIndex - 1
     );
   };
 
   const handleNextVideo = () => {
-    setCurrentVideoIndex((prevIndex) => 
+    setCurrentVideoIndex((prevIndex) =>
       (prevIndex + 1) % testimonialVideos.length
     );
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="testimonios" 
-      className="relative py-24 px-4 overflow-hidden bg-[#1D1616] text-white"
+      id="testimonios"
+      className="relative py-16 px-4 overflow-hidden bg-[#1D1616] text-white"
     >
       {/* Background Elements - Enhanced with breathing/pulsating background gradients */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
-      
+
       {/* Parallax background elements - more pronounced glow */}
-      <div 
+      <div
         className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
       ></div>
-      <div 
+      <div
         className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-primary/15 filter blur-3xl animate-breathe"
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
-      
+
       {/* Very subtle light streaks */}
       <div className="absolute w-full h-full overflow-hidden opacity-30">
         <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
@@ -186,14 +186,14 @@ const Testimonials = () => {
           </div>
 
           {/* Main Title with glow effect */}
-          <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`relative pb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
-            
+
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               Testimonios Reales
             </h2>
-            
+
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Descubre cómo esta experiencia ha transformado la vida de otros.
             </p>
@@ -209,10 +209,10 @@ const Testimonials = () => {
                 thumbnailSrc={testimonialVideos[currentVideoIndex].thumbnailSrc}
                 thumbnailAlt={testimonialVideos[currentVideoIndex].thumbnailAlt}
               />
-              
+
               {/* Navigation Arrows */}
               <div className="absolute inset-0 flex items-center justify-between p-4 pointer-events-none">
-                <button 
+                <button
                   onClick={handlePrevVideo}
                   className="w-14 h-14 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none shadow-lg backdrop-blur-sm border border-white/10 pointer-events-auto"
                   aria-label="Video testimonial anterior"
@@ -220,7 +220,7 @@ const Testimonials = () => {
                 >
                   <ArrowLeft className="w-7 h-7" />
                 </button>
-                <button 
+                <button
                   onClick={handleNextVideo}
                   className="w-14 h-14 flex items-center justify-center bg-black/60 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none shadow-lg backdrop-blur-sm border border-white/10 pointer-events-auto"
                   aria-label="Siguiente video testimonial"
@@ -229,7 +229,7 @@ const Testimonials = () => {
                   <ArrowRight className="w-7 h-7" />
                 </button>
               </div>
-              
+
               {/* Video counter */}
               <div className="absolute bottom-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">
                 {currentVideoIndex + 1} / {testimonialVideos.length}
@@ -243,14 +243,14 @@ const Testimonials = () => {
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
             Tú también puedes vivir esta experiencia transformadora
           </h3>
-          
+
           {/* CTA Button with pulsing effect */}
           <div className="relative inline-block">
             {/* Pulsing background effect */}
             <div className="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
-            
+
             <button
-              onClick={() => scrollToSection('precio')}
+              onClick={() => scrollToSection(CTA_SECTION_ID)}
               className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
               Vívelo tú también, reserva ahora

@@ -1,19 +1,18 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { cn } from '@/app/lib/utils';
-import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { CTA_SECTION_ID } from '@/app/variables';
 
 // Simple EnvironmentFeature component
-const EnvironmentFeature = ({ 
-  icon, 
-  title, 
-  description 
-}: { 
-  icon: React.ReactNode, 
-  title: string, 
-  description: string 
+const EnvironmentFeature = ({
+  icon,
+  title,
+  description
+}: {
+  icon: React.ReactNode,
+  title: string,
+  description: string
 }) => {
   return (
     <div className="flex items-start space-x-5 p-3 rounded-xl group transition-all duration-300 hover:bg-[#1D1616]/50">
@@ -33,20 +32,15 @@ const TransformationEnvironment = () => {
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   // Array of gallery images - clean simple array with just the image paths
   const galleryImages = [
-    '/images/venue/5.jpg',
+    '/images/venue/2.jpg',
     '/images/venue/3.jpg',
-    '/images/venue/6.jpg',
     '/images/venue/venue1.jpg',
     '/images/venue/venue2.jpg',
     '/images/venue/venue3.jpg',
     '/images/venue/venue4.jpg',
-    '/images/venue/venue5.jpg',
-    '/images/venue/venue6.jpg',
-    '/images/venue/venue8.jpg',
-    '/images/venue/venue9.jpg'
   ];
 
   // Handle parallax effect
@@ -96,14 +90,14 @@ const TransformationEnvironment = () => {
 
     return () => clearInterval(timer);
   }, [galleryImages.length]);
-  
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       const headerOffset = 120;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -113,37 +107,19 @@ const TransformationEnvironment = () => {
 
   // Gallery navigation functions
   const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
     );
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       (prevIndex + 1) % galleryImages.length
     );
   };
 
   return (
-    <section ref={sectionRef} id="ambiente" className="relative py-24 px-4 bg-[#1D1616] text-white overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
-      
-      {/* Parallax background elements */}
-      <div 
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
-        style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
-      ></div>
-      <div 
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-primary/15 filter blur-3xl animate-breathe"
-        style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
-      ></div>
-      
-      {/* Light streaks */}
-      <div className="absolute w-full h-full overflow-hidden opacity-30">
-        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
-        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-white/5 rotate-6 transform animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-      </div>
+    <section ref={sectionRef} id="transformacion" className="relative py-16 px-4 bg-[#1D1616] text-white overflow-hidden">
 
       <div className="container mx-auto">
         {/* Header with fade-in animation */}
@@ -172,13 +148,12 @@ const TransformationEnvironment = () => {
           <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl group">
             {/* Images */}
             {galleryImages.map((image, index) => (
-              <div 
+              <div
                 key={index}
-                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-                  index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
               >
-                <img 
+                <img
                   src={image}
                   alt={`Venue image ${index + 1}`}
                   className="w-full h-full object-cover"
@@ -186,10 +161,10 @@ const TransformationEnvironment = () => {
                 />
               </div>
             ))}
-            
+
             {/* Always visible navigation controls with better hover effects */}
             <div className="absolute inset-0 flex items-center justify-between p-4">
-              <button 
+              <button
                 onClick={handlePrevImage}
                 className="w-12 h-12 flex items-center justify-center bg-black/50 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none z-10 shadow-lg"
                 aria-label="Previous image"
@@ -197,7 +172,7 @@ const TransformationEnvironment = () => {
               >
                 <ArrowLeft className="w-6 h-6" />
               </button>
-              <button 
+              <button
                 onClick={handleNextImage}
                 className="w-12 h-12 flex items-center justify-center bg-black/50 rounded-full text-white hover:bg-black/80 hover:scale-110 transition-all duration-300 focus:outline-none z-10 shadow-lg"
                 aria-label="Next image"
@@ -206,14 +181,12 @@ const TransformationEnvironment = () => {
                 <ArrowRight className="w-6 h-6" />
               </button>
             </div>
-            
+
             {/* Image counter */}
             <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded-full text-sm text-white">
               {currentImageIndex + 1} / {galleryImages.length}
             </div>
-            
-            {/* Subtle gradient overlay - Removed to show original images */}
-            {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-transparent to-transparent"></div> */}
+
           </div>
 
           {/* Right Column - Features List with staggered animations */}
@@ -258,11 +231,13 @@ const TransformationEnvironment = () => {
         {/* Call to Action with enhanced animations */}
         <div className={`text-center mt-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Urgency message */}
-          <p className="text-primary font-medium mb-4">Cupos limitados para esta experiencia en la naturaleza</p>
-          
+          <p className="text-primary font-medium mb-4">
+            Para garantizar una experiencia semi-personalizada, tenemos cupos limitados
+          </p>
+
           {/* CTA Button */}
           <button
-            onClick={() => scrollToSection('precio')}
+            onClick={() => scrollToSection(CTA_SECTION_ID)}
             className="px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
           >
             QUIERO PARTICIPAR

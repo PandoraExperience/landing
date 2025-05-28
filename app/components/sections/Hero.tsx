@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
 import { eventDate } from '@/app/variables';
+import { CTA_SECTION_ID } from '@/app/variables';
 
 // CountdownUnit Component
 const CountdownUnit = ({ value, label, color }: { value: number, label: string, color: string }) => {
@@ -158,7 +159,7 @@ export default function Hero() {
         <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <HeroVideoDialog
             animationStyle="from-center"
-            videoSrc="https://www.youtube.com/embed/wC0eNjoEqbs"
+            videoSrc="https://www.youtube.com/embed/al54yJ5J59s"
             thumbnailSrc="/images/Hero/hero-video.webp"
             thumbnailAlt="Mujer en agua - Experiencia transformadora Munay-Ki"
           />
@@ -168,8 +169,13 @@ export default function Hero() {
         <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
           <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-          <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-            Un llamado para quienes buscan conectar con su ser más profundo, activar su energía y liberar bloqueos mentales y emocionales.
+          <p className="text-2xl md:text-2xl italic font-light px-8 text-gray-300">
+            Un llamado para quienes buscan
+            <span className="font-bold"> conectar con su Ser</span>,
+            <span className="font-bold"> activar su energía </span>
+            y
+            <span className="font-bold"> liberar bloqueos </span>
+            mentales y emocionales.
           </p>
         </div>
 
@@ -181,9 +187,11 @@ export default function Hero() {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
               </svg>
-              <span className="font-semibold">Próximo Evento:</span>
+              <span className="font-semibold text-xl">Próximo Evento:</span>
             </div>
-            <span className="text-white font-semibold text-lg">{eventDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+            <span className="text-white font-semibold text-lg">- {
+              eventDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+            } -</span>
           </div>
 
           {/* Countdown timer with improved styling */}
@@ -207,7 +215,7 @@ export default function Hero() {
 
             {/* Button with white background for high contrast */}
             <button
-              onClick={() => scrollToSection('precio')}
+              onClick={() => scrollToSection(CTA_SECTION_ID)}
               className="relative px-8 py-5 text-lg font-bold bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] group-hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
               QUIERO ESTAR AHÍ

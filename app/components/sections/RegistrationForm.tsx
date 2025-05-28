@@ -234,9 +234,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <section id="reserva" className="relative py-24 px-4 overflow-hidden bg-[#1D1616] text-white">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
+    <section id="reserva" className="relative pt-24 pb-16 px-4 overflow-hidden bg-[#1D1616] text-white">
 
       <div className="container mx-auto relative z-10 max-w-5xl">
         {/* Section Header */}
@@ -259,95 +257,16 @@ const RegistrationForm = () => {
             </p>
           </div>
 
-          {/* Main Title with glow effect */}
-          <div className="relative">
-            {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
-            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
-              RESERVA TU CUPO AHORA
-            </h2>
-          </div>
+          <h2 className="relative text-4xl md:text-5xl font-bold mt-14 mb-6 text-white">
+            RESERVA TU CUPO AHORA
+          </h2>
 
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Para ser parte de experiencia, solo debes llenar el siguiente formulario, para separar tu cupo. Encontraras, los detalles de pago y nos pondremos en contacto contigo.
           </p>
         </div>
 
-        {/* Benefit Boxes */}
-        <div className="max-w-2xl mx-auto mb-12">
-          <div className="bg-[#111111] rounded-xl p-8">
-            {/* 1. Garantía de Satisfacción */}
-            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white text-xl font-semibold mb-1">Garantía de Satisfacción</h3>
-                <p className="text-gray-400">Si no estás completamente satisfecho con la experiencia, te devolvemos el 100% de tu inversión</p>
-              </div>
-            </div>
-
-            {/* 2. Bonos primeros valientes */}
-            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white text-xl font-semibold mb-1">Bonos primeros valientes</h3>
-                <p className="text-gray-400">Si decides separar tu cupo con el 100%, premiamos tu valentía con sesión canalizada del oráculo donde tus guías espirituales te brindaran claridad.</p>
-              </div>
-            </div>
-
-            {/* 3. Métodos de Pago Flexibles */}
-            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white text-xl font-semibold mb-1">Métodos de Pago Flexibles</h3>
-                <p className="text-gray-400">Aceptamos múltiples formas de pago: Transferencia, Nequi, Daviplata o Tarjetas de crédito (Cargo del 4.5%).</p>
-              </div>
-            </div>
-
-            {/* 4. Pago en 2 cuotas */}
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white text-xl font-semibold mb-1">Pago en 2 cuotas</h3>
-                <p className="text-gray-400">Separa tu cupo ahora con el 50% y paga el restante faltando 8 días para el evento.</p>
-              </div>
-            </div>
-
-            {/* WhatsApp Contact Button */}
-            <div className="mt-6 pt-6 border-t border-white/5">
-              <button
-                onClick={() => {
-                  window.open(`https://wa.me/${whatsappContact.number}?text=${whatsappContact.message}`, '_blank', 'noopener,noreferrer');
-                }}
-                className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.787" />
-                </svg>
-                ¿Necesitas mas información?
-              </button>
-            </div>
-          </div>
-        </div>
-
+        {/* Registration Form */}
         <div className="max-w-2xl mx-auto">
           {!showPayment ? (
             // Registration Form
@@ -460,6 +379,67 @@ const RegistrationForm = () => {
             </>
           )}
         </div>
+
+        {/* Benefit Boxes */}
+        <div className="max-w-2xl mx-auto mt-12">
+          <div className="bg-[#111111] rounded-xl p-8">
+            {/* 1. Garantía de Satisfacción */}
+            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-1">Garantía de Satisfacción</h3>
+                <p className="text-gray-400">Confiamos tanto en esta experiencia, que si no te aporto valor en lo absoluto, te devolvemos el valor de tu inversión.</p>
+              </div>
+            </div>
+
+            {/* 2. Bonos primeros valientes */}
+            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-1">Bonos primeros valientes</h3>
+                <p className="text-gray-400">Si decides separar tu cupo con el 100%, premiamos tu valentía con sesión canalizada del oráculo donde tus guías espirituales te brindaran claridad.</p>
+              </div>
+            </div>
+
+            {/* 3. Métodos de Pago Flexibles */}
+            <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-1">Métodos de Pago Flexibles</h3>
+                <p className="text-gray-400">Aceptamos múltiples formas de pago: Transferencia, Nequi, Daviplata o Tarjetas de crédito (Cargo del 4.5%).</p>
+              </div>
+            </div>
+
+            {/* 4. Pago en 2 cuotas */}
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#0560BB]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                  <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-1">Pago en 2 cuotas</h3>
+                <p className="text-gray-400">Separa tu cupo ahora con el 50% y paga el restante faltando 8 días para el evento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       {/* Terms Modal */}
