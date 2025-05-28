@@ -1,75 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { experience, whatsappContact } from '@/app/variables';
-import TermsModal from './TermsModal';
+import { experience, mailerLite, whatsappContact } from '@/app/variables';
+import TermsModal from '../TermsModal';
 import PaymentDetails from './PaymentDetails';
 import WompiButton from './PaymentWompi';
+import FormField from './FormField';
 import PhoneInput, { parsePhoneNumber } from 'react-phone-number-input';
+import MailerLite, { CreateOrUpdateSubscriberParams } from '@mailerlite/mailerlite-nodejs';
+import { AxiosError } from 'axios';
 import 'react-phone-number-input/style.css';
 import './phone-input.css';
-
-// Form field component
-const FormField = ({
-  label,
-  type,
-  name,
-  placeholder,
-  value,
-  onChange,
-  error,
-  required = true
-}: {
-  label: string,
-  type: string,
-  name: string,
-  placeholder: string,
-  value: string,
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void,
-  error: string | null,
-  required?: boolean
-}) => {
-  return (
-    <div className="mb-5">
-      <label htmlFor={name} className="block text-white mb-2 text-sm font-medium">
-        {label} {required && <span className="text-primary">*</span>}
-      </label>
-      {type === 'select' ? (
-        <select
-          id={name}
-          name={name}
-          value={value}
-          onChange={onChange}
-          className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none`}
-          required={required}
-        >
-          <option value="" disabled>Selecciona una opción</option>
-          {name === 'howDidYouHear' && (
-            <>
-              <option value="social-media">Redes Sociales</option>
-              <option value="friend">Recomendación de un amigo</option>
-              <option value="search">Buscador</option>
-              <option value="event">Evento</option>
-              <option value="other">Otro</option>
-            </>
-          )}
-        </select>
-      ) : (
-        <input
-          type={type}
-          id={name}
-          name={name}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className={`w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 border ${error ? 'border-red-500' : 'border-white/10'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
-          required={required}
-        />
-      )}
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
-    </div>
-  );
-};
+import { formatDateToMailerLite } from '@/app/lib/utils';
 
 const RegistrationForm = () => {
   // Reference for Wompi Payment
@@ -189,43 +131,61 @@ const RegistrationForm = () => {
 
       // Initialize success flags
       let localSaveSuccess = false;
-      let webhookSuccess = false;
-
       try {
-        // 1. Try webhook first (but don't block on failure)
-        try {
-          const webhookResponse = await fetch('https://automan.apiflujos.com/webhook-test/f991b5cc-01dc-43fd-9ba1-25d78491994f', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+        // 1. Save to MailerLite, ref: github.com/mailerlite/mailerlite-nodejs/blob/main/src/modules/subscribers/README.md
+        const params: CreateOrUpdateSubscriberParams = {
+          email: formData.email,
+          fields: {
+            name: formData.fullName.split(' ')[0],
+            last_name: formData.fullName.split(' ').length > 1 ? formData.fullName.split(' ')[1] : '',
+            company: "Pandora Experience",
+            phone: formData.phone,
+            country: parsePhoneNumber(formData.phone)?.country,
+          },
+          groups: [mailerLite.groupID],
+          status: "active",
+          subscribed_at: formatDateToMailerLite(),
+          opted_in_at: formatDateToMailerLite(),
+        };
+
+        new MailerLite({
+          api_key: mailerLite.apiKey || ""
+        }).subscribers.createOrUpdate(params)
+          .catch((error: AxiosError) => {
+            if (error.response) console.error(error.response.data);
           });
 
-          webhookSuccess = webhookResponse.ok;
+        // 2. Try webhook (but don't block on failure)
+        fetch('https://automan.apiflujos.com/webhook-test/f991b5cc-01dc-43fd-9ba1-25d78491994f', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch((webhookError) => {
           // Silently continue if webhook fails - don't block the user experience
-        } catch (webhookError) {
           console.warn('Webhook unavailable:', webhookError);
-          // Continue with local storage even if webhook fails
-        }
+        });
 
-        // 2. Always save locally (critical path)
+        // 3. Try save locally
         const localResponse = await fetch('/api/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-
         if (!localResponse.ok) {
-          throw new Error('Error saving data locally');
+          console.error('Error saving data locally:', localResponse.body);
+          // throw new Error('Error saving data locally');
+        } else {
+          localSaveSuccess = true;
         }
 
-        localSaveSuccess = true;
-
-        // If we got here, at least the local storage worked, so show success
+        // Advance to payment without blocking
         setShowPayment(true);
       } catch (error) {
         // Only show error if local storage failed (webhook failures don't block)
         if (!localSaveSuccess) {
-          setSubmitError('Lo sentimos, ocurrió un error al guardar tus datos. Por favor contacta al +57 312 7811615 vía WhatsApp.');
+          setSubmitError(
+            `Lo sentimos, ocurrió un error al guardar tus datos. Por favor contacta al ${whatsappContact} ` +
+            "a través del botón de WhatsApp que se encuentra en la parte inferior derecha de la pantalla.");
         }
       } finally {
         setIsSubmitting(false);
@@ -366,7 +326,7 @@ const RegistrationForm = () => {
             </form>
           ) : (
             <>
-              <PaymentDetails userName={formData.fullName.split(' ')[0]} />
+              <PaymentDetails userName={formData.fullName.split(' ')[0]} reference={formData.email} />
               <WompiButton
                 reference={paymentReference}
                 email={formData.email}

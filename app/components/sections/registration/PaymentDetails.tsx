@@ -4,9 +4,10 @@ import { experience } from '@/app/variables';
 
 interface PaymentDetailsProps {
   userName: string;
+  reference: string;
 }
 
-const PaymentDetails: React.FC<PaymentDetailsProps> = ({ userName }) => {
+const PaymentDetails: React.FC<PaymentDetailsProps> = ({ userName, reference }) => {
   return (
     <div className="w-full max-w-2xl mx-auto bg-[#1D1616] rounded-xl p-8">
       {/* Welcome Message */}
@@ -32,6 +33,7 @@ const PaymentDetails: React.FC<PaymentDetailsProps> = ({ userName }) => {
           <p className="flex items-center"><span className="mr-2 text-white">👤</span> Titular: <span className="ml-2 text-white font-medium">{experience.guide.name}</span></p>
           <p className="flex items-center"><span className="mr-2 text-white">🆔</span> Cédula: <span className="ml-2 text-white font-medium">{experience.guide.legalId}</span></p>
           <p className="flex items-center"><span className="mr-2 text-white">💵</span> Inversión: <span className="ml-2 text-white font-medium">${formatNumber(experience.price.amountInCents / 100)}</span></p>
+          <p className="flex items-center"><span className="mr-2 text-white">📋</span> Referencia: <span className="ml-2 text-white font-medium overflow-scroll">{reference}</span></p>
         </div>
       </div>
 

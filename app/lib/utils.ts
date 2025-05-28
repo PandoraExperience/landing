@@ -40,4 +40,15 @@ export const roundLocalNumber = (num: number, zeros: number = 0) => {
   const divider = 10**zeros;
   return formatNumber(Math.ceil(num/divider)*divider);
 }
-  
+
+const pad = (n: number) => n.toString().padStart(2, '0');
+
+export const formatDateToMailerLite = (d: Date = new Date()) => {
+  const Y = d.getFullYear();
+  const M = pad(d.getMonth() + 1); // 0-based
+  const D = pad(d.getDate());
+  const h = pad(d.getHours());
+  const m = pad(d.getMinutes());
+  const s = pad(d.getSeconds());
+  return `${Y}-${M}-${D} ${h}:${m}:${s}`;
+};

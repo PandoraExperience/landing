@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error saving registration:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to save registration' }, 
+      { success: false, error: 'Failed to save registration: ' + error }, 
       { status: 500 }
     );
   }

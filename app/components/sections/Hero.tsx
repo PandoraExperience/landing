@@ -134,13 +134,6 @@ export default function Hero() {
       </div>
 
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
-        {/* Logo or brand identifier above title */}
-        <div className={`mb-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex items-center justify-center">
-
-          </div>
-        </div>
-
         {/* Main title with improved visual treatment */}
         <div className={`relative mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
