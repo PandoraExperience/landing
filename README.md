@@ -104,4 +104,4 @@ El contenido principal se puede modificar en los componentes de sección ubicado
 
 ## Licencia
 
-Todos los derechos reservados © 2024
+Todos los derechos reservados © 2025
