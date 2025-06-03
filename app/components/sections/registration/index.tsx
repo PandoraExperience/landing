@@ -194,7 +194,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <section id="reserva" className="relative pt-24 pb-16 px-4 overflow-hidden bg-[#1D1616] text-white">
+    <section id="reserva" className="relative pt-24 pb-16 px-4 overflow-hidden bg-dark-bg text-white">
 
       <div className="container mx-auto relative z-10 max-w-5xl">
         {/* Section Header */}
@@ -269,7 +269,7 @@ const RegistrationForm = () => {
                   onChange={handlePhoneChange}
                   placeholder="Tu número de teléfono"
                   className={`w-full transition-all duration-300 appearance-none`}
-                  numberInputProps={{ className: `w-full px-4 py-3 rounded-lg bg-[#1D1616]/80 text-white placeholder-gray-500 border ${errors.phone ? 'border-red-500' : 'border-white/10'} focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none` }}
+                  numberInputProps={{ className: `w-full px-4 py-3 rounded-lg bg-dark-bg/80 text-white placeholder-gray-500 border ${errors.phone ? 'border-red-500' : 'border-white/10'} focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300 appearance-none` }}
                 />
                 {errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone}</p>}
               </div>
@@ -281,7 +281,7 @@ const RegistrationForm = () => {
                     name="agreeToTerms"
                     checked={formData.agreeToTerms}
                     onChange={handleChange}
-                    className="mt-1 text-primary border-white/10 rounded focus:ring-primary focus:ring-offset-0 focus:ring-offset-transparent bg-[#1D1616]/80"
+                    className="mt-1 text-primary border-white/10 rounded focus:ring-primary focus:ring-offset-0 focus:ring-offset-transparent bg-dark-bg/80"
                   />
                   <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
                     Acepto los{' '}

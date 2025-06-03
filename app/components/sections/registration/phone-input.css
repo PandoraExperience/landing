@@ -12,8 +12,8 @@
 
 /* Style the country dropdown */
 .PhoneInputCountrySelect option {
-  background-color: #1D1616 !important;
-  color: white !important;
+  background-color: var(--dark-bg);
+  color: white;
 }
 
 .PhoneInputCountrySelect {
@@ -27,7 +27,7 @@
 
 /* Dropdown styling */
 .PhoneInputCountrySelectDropdown {
-  background-color: #1D1616;
+  background-color: var(--dark-bg);
   color: white;
 }
 
@@ -38,26 +38,26 @@
 
 /* The input itself */
 .PhoneInputInput {
-  background-color: transparent !important;
-  color: white !important;
+  background-color: transparent;
+  color: white;
 }
 
 /* Country select dropdown */
 .country-dropdown {
-  background-color: #1D1616 !important;
-  color: white !important;
+  background-color: var(--dark-bg);
+  color: white;
 }
 
 /* Additional styles to force dark mode on select elements */
 select option {
-  background-color: #1D1616 !important;
-  color: white !important;
+  background-color: var(--dark-bg);
+  color: white;
 }
 
 /* Override browser default styles */
 @supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
   select option {
-    background-color: #1D1616 !important;
-    color: white !important;
+    background-color: var(--dark-bg);
+    color: white;
   }
 }

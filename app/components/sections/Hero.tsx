@@ -10,7 +10,7 @@ const CountdownUnit = ({ value, label, color }: { value: number, label: string, 
   return (
     <div className="relative group transition-transform duration-300 hover:scale-105">
       <div className={`absolute inset-0 ${color} rounded-lg blur-md opacity-20`}></div>
-      <div className="relative flex flex-col items-center bg-[#1D1616]/70 px-4 md:px-6 py-3 md:py-4 rounded-lg border border-primary/20 backdrop-blur-sm shadow-[0_0_15px_rgba(5,96,187,0.1)] overflow-hidden">
+      <div className="relative flex flex-col items-center bg-dark-bg/70 px-4 md:px-6 py-3 md:py-4 rounded-lg border border-primary/20 backdrop-blur-sm shadow-[0_0_15px_rgba(5,96,187,0.1)] overflow-hidden">
         <span className="text-3xl md:text-4xl font-bold text-white">{value.toString().padStart(2, '0')}</span>
         <span className="text-xs md:text-sm text-white/80">{label}</span>
         <div className={`absolute -bottom-1 left-0 w-full h-1 ${color} opacity-40`}></div>
@@ -108,10 +108,9 @@ export default function Hero() {
   };
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen bg-[#1D1616] text-white flex flex-col items-center justify-center px-4 pt-28 pb-20 overflow-hidden">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen bg-dark-bg text-white flex flex-col items-center justify-center px-4 pt-8 pb-20 overflow-hidden">
       {/* Enhanced breathing/pulsating background gradients */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.3)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
-      <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-[radial-gradient(circle,rgba(46,139,87,0.2)_0%,rgba(0,0,0,0)_70%)] animate-breathe opacity-90" style={{ animationDelay: '3s' }}></div>
 
       {/* Parallax background elements - more pronounced glow */}
       <div
@@ -188,7 +187,7 @@ export default function Hero() {
           </div>
 
           {/* Countdown timer with improved styling */}
-          <div className="p-5 bg-[#1D1616]/30 backdrop-blur-sm rounded-xl border border-primary/10 shadow-lg">
+          <div className="p-5 bg-dark-bg/30 backdrop-blur-sm rounded-xl border border-primary/10 shadow-lg">
             <p className="text-sm text-white/70 mb-4">Reserva tu lugar y sé parte de esta experiencia.</p>
             <div className="flex justify-center gap-3 md:gap-6">
               <CountdownUnit value={countdown.days} label="Días" color="bg-primary" />

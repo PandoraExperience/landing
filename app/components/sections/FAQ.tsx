@@ -33,7 +33,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="relative py-16 px-4 bg-[#1D1616] overflow-hidden">
+    <section id="faq" className="relative py-16 px-4 bg-dark-bg overflow-hidden">
       {/* Subtle background patterns and glow effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,51,102,0.1)_0%,rgba(29,22,22,0)_70%)]"></div>
       <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-primary/5 filter blur-3xl animate-float"></div>

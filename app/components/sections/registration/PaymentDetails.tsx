@@ -9,7 +9,7 @@ interface PaymentDetailsProps {
 
 const PaymentDetails: React.FC<PaymentDetailsProps> = ({ userName, reference }) => {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-[#1D1616] rounded-xl p-8">
+    <div className="w-full max-w-2xl mx-auto bg-dark-bg rounded-xl p-8">
       {/* Welcome Message */}
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">

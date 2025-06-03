@@ -78,7 +78,7 @@ yarn dev
 
 ### Colores
 
-Los colores de marca se definen en `tailwind.config.js`:
+Los colores de marca se definen en `tailwind.config.ts`:
 
 - **Colores Primarios**:
   - Deep Blue (#003366): Representa calma, resiliencia y claridad.

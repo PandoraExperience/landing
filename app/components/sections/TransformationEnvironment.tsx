@@ -15,7 +15,7 @@ const EnvironmentFeature = ({
   description: string
 }) => {
   return (
-    <div className="flex items-start space-x-5 p-3 rounded-xl group transition-all duration-300 hover:bg-[#1D1616]/50">
+    <div className="flex items-start space-x-5 p-3 rounded-xl group transition-all duration-300 hover:bg-dark-bg/50">
       <div className="flex-shrink-0 p-3 bg-primary/20 rounded-xl text-primary">
         {icon}
       </div>
@@ -119,7 +119,7 @@ const TransformationEnvironment = () => {
   };
 
   return (
-    <section ref={sectionRef} id="transformacion" className="relative py-16 px-4 bg-[#1D1616] text-white overflow-hidden">
+    <section ref={sectionRef} id="transformacion" className="relative py-16 px-4 bg-dark-bg text-white overflow-hidden">
 
       <div className="container mx-auto">
         {/* Header with fade-in animation */}
@@ -222,7 +222,7 @@ const TransformationEnvironment = () => {
             />
 
             {/* Testimonial Quote */}
-            <div className="p-5 bg-[#1D1616]/60 rounded-xl mt-8 border-l-4 border-primary">
+            <div className="p-5 bg-dark-bg/60 rounded-xl mt-8 border-l-4 border-primary">
               <p className="italic text-gray-300">"La naturaleza no sana con fuerza, sino con presencia"</p>
             </div>
           </div>

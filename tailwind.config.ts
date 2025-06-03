@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -7,19 +8,19 @@ module.exports = {
     extend: {
       colors: {
         // Primary Colors
-        'primary': '#0560BB', // Main blue color from the design
-        'primary-dark': '#003366', // Darker blue for depth
-        'primary-light': '#3B82F6', // Lighter blue for accents
-        'ice-white': '#F5F9FF', // Light background
-        
+        'primary': 'var(--primary)',
+        'primary-dark': 'var(--primary-dark)',
+        'primary-light': 'var(--primary-light)',
+        'ice-white': 'var(--ice-white)',
+
         // Secondary Colors
-        'dark-bg': '#1D1616', // Dark background color
-        'light-gray': '#E5E5E5', // Neutral tone for text
-        'text-light': '#94A3B8', // Light text color
-        
+        'dark-bg': 'var(--dark-bg)',
+        'light-gray': 'var(--light-gray)',
+        'text-light': 'var(--text-light)',
+
         // Accent Colors
-        'accent-blue': '#60A5FA', // Bright blue for highlights
-        'accent-purple': '#818CF8', // Purple accent for variety
+        'accent-blue': 'var(--accent-blue)',
+        'accent-purple': 'var(--accent-purple)',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -57,12 +58,12 @@ module.exports = {
           '100%': { transform: 'translateX(100%)' },
         },
         'text-glow': {
-          '0%': { 
-            textShadow: '0 0 5px rgba(5, 96, 187, 0.5), 0 0 10px rgba(5, 96, 187, 0.3)', 
+          '0%': {
+            textShadow: '0 0 5px rgba(5, 96, 187, 0.5), 0 0 10px rgba(5, 96, 187, 0.3)',
             filter: 'brightness(1)'
           },
-          '100%': { 
-            textShadow: '0 0 10px rgba(5, 96, 187, 0.8), 0 0 20px rgba(5, 96, 187, 0.5), 0 0 30px rgba(5, 96, 187, 0.3)', 
+          '100%': {
+            textShadow: '0 0 10px rgba(5, 96, 187, 0.8), 0 0 20px rgba(5, 96, 187, 0.5), 0 0 30px rgba(5, 96, 187, 0.3)',
             filter: 'brightness(1.2)'
           },
         }
@@ -70,4 +71,6 @@ module.exports = {
     },
   },
   plugins: [],
-} 
+}
+
+export default config;

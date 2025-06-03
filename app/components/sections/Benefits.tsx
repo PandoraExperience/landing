@@ -4,7 +4,7 @@ import React from 'react';
 
 const BenefitItem = ({ text, icon }: { text: string, icon: React.ReactNode }) => {
   return (
-    <div className="flex items-center space-x-4 p-5 bg-[#1D1616]/90 rounded-lg border border-white/10 hover:border-[#DC0073]/30 transition-colors shadow-md hover:shadow-lg group">
+    <div className="flex items-center space-x-4 p-5 bg-dark-bg/90 rounded-lg border border-white/10 hover:border-[#DC0073]/30 transition-colors shadow-md hover:shadow-lg group">
       <div className="w-10 h-10 rounded-lg bg-[#DC0073]/20 text-[#DC0073] flex items-center justify-center flex-shrink-0 group-hover:bg-[#DC0073]/30 transition-colors">
         {icon}
       </div>
@@ -15,7 +15,7 @@ const BenefitItem = ({ text, icon }: { text: string, icon: React.ReactNode }) =>
 
 const Benefits = () => {
   return (
-    <section id="benefits" className="relative pt-24 px-4 overflow-hidden bg-[#1D1616] text-white">
+    <section id="benefits" className="relative pt-24 px-4 overflow-hidden bg-dark-bg text-white">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,96,187,0.1)_0%,transparent_100%)]"></div>
 

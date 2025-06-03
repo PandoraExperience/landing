@@ -33,7 +33,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="relative bg-[#1D1616] text-white p-4 overflow-hidden">
+    <footer className="relative bg-dark-bg text-white p-4 overflow-hidden">
       {/* Parallax background elements */}
       <div
         className="absolute top-10 left-10 w-96 h-96 rounded-full bg-[#DC0073]/10 filter blur-3xl animate-breathe z-0"

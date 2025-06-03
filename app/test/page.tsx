@@ -11,7 +11,7 @@ import FAQ from '@/app/components/sections/FAQ';
 
 export default function TestPage() {
   return (
-    <main className="min-h-screen bg-[#1D1616]">
+    <main className="min-h-screen bg-dark-bg">
       <Header />
       <div className="pt-20 flex flex-col">
         <TransformationEnvironment />

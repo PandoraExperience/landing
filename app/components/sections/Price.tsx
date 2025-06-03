@@ -1,13 +1,13 @@
 "use client";
 
-import { formatNumber, roundLocalNumber, scrollToSection } from '@/app/lib/utils';
+import { formatNumber, roundLocalNumber, trackFbPixel, openWhatsApp } from '@/app/lib/utils';
 import { experience, whatsappContact } from '@/app/variables';
 import React from 'react';
 
 
 const PriceCard = () => {
   return (
-    <section id="precio" className="relative pb-14 px-4 overflow-hidden bg-[#1D1616] text-white">
+    <section id="precio" className="relative pb-14 px-4 overflow-hidden bg-dark-bg text-white">
       <div className="max-w-4xl mx-auto">
         {/* Price Card */}
         <div className="bg-black/50 rounded-xl border border-white/10 relative shadow-xl mt-8">
@@ -55,7 +55,8 @@ const PriceCard = () => {
               </div>
               <button
                 onClick={() => {
-                  window.open(`https://wa.me/${whatsappContact.number}?text=${whatsappContact.message}`, '_blank', 'noopener,noreferrer');
+                  trackFbPixel('Lead', { content_name: 'WhatsApp Contact' });
+                  openWhatsApp(whatsappContact.number, whatsappContact.message);
                 }}
                 className="w-full bg-[#DC0073] text-white py-4 px-6 rounded-lg text-lg font-bold hover:bg-[#DC0073]/90 transition-colors flex items-center justify-center space-x-3 shadow-lg hover:shadow-[#DC0073]/30"
               >

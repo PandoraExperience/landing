@@ -44,7 +44,7 @@ const TestimonialCard = ({
   quote: string
 }) => {
   return (
-    <div className="relative p-6 bg-[#1D1616]/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 group border border-white/5">
+    <div className="relative p-6 bg-dark-bg/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 group border border-white/5">
       <div className="p-5">
         <div className="mb-4">
           <h4 className="font-bold text-white">{name}</h4>
@@ -142,7 +142,7 @@ const Testimonials = () => {
     <section
       ref={sectionRef}
       id="testimonios"
-      className="relative py-16 px-4 overflow-hidden bg-[#1D1616] text-white"
+      className="relative py-16 px-4 overflow-hidden bg-dark-bg text-white"
     >
       {/* Background Elements - Enhanced with breathing/pulsating background gradients */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>

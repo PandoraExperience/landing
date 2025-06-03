@@ -10,7 +10,7 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-[#1D1616] rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col">
+      <div className="bg-dark-bg rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col">
         <div className="p-6 border-b border-white/10">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold text-white">

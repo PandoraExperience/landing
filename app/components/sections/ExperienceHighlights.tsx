@@ -18,11 +18,11 @@ const ExperienceCard = ({
       className="relative group transition-all duration-500 ease-out"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="relative overflow-hidden flex flex-col h-full rounded-2xl bg-[#1D1616] border border-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
+      <div className="relative overflow-hidden flex flex-col h-full rounded-2xl bg-dark-bg border border-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
         {/* Image Container */}
         <div className="relative w-full aspect-[16/9] overflow-hidden">
           {/* Removed dark overlay gradient */}
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-[#1D1616]/70 to-transparent z-10"></div> */}
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/70 to-transparent z-10"></div> */}
           <img
             src={imageSrc}
             alt="Experience image"
@@ -105,7 +105,7 @@ export default function ExperienceHighlights() {
   };
 
   return (
-    <section ref={sectionRef} id="experiencia" className="relative py-16 px-4 bg-[#1D1616] text-white overflow-hidden">
+    <section ref={sectionRef} id="experiencia" className="relative py-16 px-4 bg-dark-bg text-white overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] opacity-90"></div>
 

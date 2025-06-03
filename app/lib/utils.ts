@@ -52,3 +52,22 @@ export const formatDateToMailerLite = (d: Date = new Date()) => {
   const s = pad(d.getSeconds());
   return `${Y}-${M}-${D} ${h}:${m}:${s}`;
 };
+
+interface FbParams {
+    content_name?: string,
+    value?: number,
+    currency?: string,
+    contents?: [{id?: string, quantity?: number}],
+    content_type?: string,
+    content_ids?: string[],
+    content_category?: string,
+}
+
+export const trackFbPixel = (event: string, params: FbParams) => {
+  // @ts-ignore calling the facebook pixel
+  fbq('track', event, params);
+};
+
+export const openWhatsApp = (number: string, message: string) => {
+  window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+}

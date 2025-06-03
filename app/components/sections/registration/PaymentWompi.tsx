@@ -1,8 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { wompiAPI } from '@/app/variables';
+import { experience, mailerLite, wompiAPI } from '@/app/variables';
 import './PaymentWompi.css';
+import MailerLite from '@mailerlite/mailerlite-nodejs';
+import { formatDateToMailerLite, trackFbPixel } from '@/app/lib/utils';
+import { AxiosError } from 'axios';
 
 interface WompiProps {
   reference: string;
@@ -76,12 +79,41 @@ const WompiButton = ({
         disabled={disabled}
         onClick={() => {
           const widget = WompiWidgetCheckout({ reference, email, fullName, phoneNumber, numberPrefix }, hashHex);
+          trackFbPixel('InitiateCheckout', {
+            content_ids: [reference],
+            content_type: 'product',
+            content_category: 'experience',
+            content_name: experience.name,
+            value: wompiAPI.amountInCents / 100,
+            currency: wompiAPI.currency,
+          });
+
           widget.open((result: WompiResponse) => {
             var transaction = result.transaction;
             if (transaction.status === "APPROVED") {
-              // TODO: Send to DB
-              // console.log("Transaction ID: ", transaction.id);
-              // console.log("Transaction object: ", transaction);
+              // Record transaction on MailerLite
+              new MailerLite({ api_key: mailerLite.apiKey || "" }).subscribers
+                .createOrUpdate({
+                  email: email,
+                  fields: {
+                    purchase_id: reference,
+                    purchase_date: formatDateToMailerLite(),
+                    purchase_amount: wompiAPI.amountInCents / 100,
+                    purchase_currency: wompiAPI.currency,
+                  },
+                })
+                .catch((error: AxiosError) => {
+                  if (error.response) console.error(error.response.data);
+                });
+
+              trackFbPixel('Purchase', {
+                content_ids: [reference],
+                content_type: 'product',
+                content_category: 'experience',
+                content_name: experience.name,
+                currency: wompiAPI.currency,
+                value: wompiAPI.amountInCents / 100
+              });
             }
           });
         }}

@@ -100,8 +100,8 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-[#1D1616]/95 py-1 shadow-xl backdrop-blur-md border-b border-white/5'
-          : 'bg-[#1D1616]/50 py-1 backdrop-blur-sm'
+          ? 'bg-dark-bg/95 py-1 shadow-xl backdrop-blur-md border-b border-white/5'
+          : 'bg-dark-bg/50 py-1 backdrop-blur-sm'
           }`}
       >
         {/* Scroll Progress Bar */}
@@ -249,7 +249,7 @@ const Header = () => {
             </nav>
 
             {/* Promo box */}
-            <div className="my-8 p-6 bg-[#1D1616] border border-primary/30 rounded-lg">
+            <div className="my-8 p-6 bg-dark-bg border border-primary/30 rounded-lg">
               <div className="mb-3 inline-block py-1 px-3 bg-primary/20 rounded-full text-primary text-xs font-bold tracking-wider">
                 INVERSIÓN & EXCLUSIVIDAD
               </div>

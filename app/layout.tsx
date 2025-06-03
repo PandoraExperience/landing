@@ -15,8 +15,9 @@ const siteKeywords = [...experience.category.keywords, mark];
 const siteAuthors = [{ name: mark }];
 const siteCategory = experience.category.name;
 const siteTwitter = "@munayki";
-const siteGoogleAnalytics = "G-XXXXXXXXXX";
-const siteGoogleVerification = "your-google-verification-code";
+const siteGoogleAnalytics = "G-SV2W2VMK1M";
+const siteFacebookPixel = "569974109521705";
+// const siteGoogleVerification = "your-google-verification-code";
 
 const eventOffer = {
   "@type": "Offer",
@@ -73,15 +74,11 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: siteGoogleVerification,
+    google: "", // siteGoogleVerification
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <head>
@@ -91,11 +88,28 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0560BB" />
 
-        {/* Google Analytics */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${siteGoogleAnalytics}`}
-          strategy="afterInteractive"
-        />
+        {/* Google Analytics tag (gtag.js) */}
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${siteGoogleAnalytics}`} />
+        <Script>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${siteGoogleAnalytics}');`}
+        </Script>
+
+        {/* Meta Pixel Code */}
+        <Script>
+          {`!function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '${siteFacebookPixel}');
+          fbq('track', 'PageView');`}
+        </Script>
 
         {/* Wompi */}
         <Script
@@ -104,7 +118,7 @@ export default function RootLayout({
         />
 
         {/* Structured Data for Event */}
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -128,7 +142,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <img height="1" width="1" style={{ display: "none" }}
+          src={`https://www.facebook.com/tr?id=${siteFacebookPixel}&ev=PageView&noscript=1`}
+        />
+        {children}
+      </body>
     </html>
   );
 }

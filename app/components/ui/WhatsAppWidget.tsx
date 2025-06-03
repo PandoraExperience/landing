@@ -1,20 +1,16 @@
 'use client';
 
+import { trackFbPixel, openWhatsApp } from '@/app/lib/utils';
 import { whatsappContact } from '@/app/variables';
 import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
-
-// WhatsApp configuration
-const WHATSAPP_NUMBER = whatsappContact.number;
-const DEFAULT_MESSAGE = whatsappContact.message;
 
 export default function WhatsAppWidget() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleWhatsAppClick = () => {
-    const encodedMessage = encodeURIComponent(DEFAULT_MESSAGE);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    trackFbPixel('Lead', { content_name: 'WhatsApp Contact' });
+    openWhatsApp(whatsappContact.number, whatsappContact.message);
   };
 
   return (

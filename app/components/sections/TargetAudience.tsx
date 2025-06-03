@@ -52,7 +52,7 @@ const TargetAudience = () => {
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
 
-            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-[#1D1616]">
+            <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-dark-bg">
               ¿Para Quién Es Esta Experiencia?
             </h2>
 
@@ -64,15 +64,15 @@ const TargetAudience = () => {
               <button onClick={() => setActiveTab('for-you')}
                 className={`px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 ${activeTab === 'for-you'
                   ? 'bg-primary text-white shadow-md'
-                  : 'text-gray-600 hover:text-[#1D1616]'
+                  : 'text-gray-600 hover:text-dark-bg'
                   }`}
               >
                 Esta experiencia es para ti
               </button>
               <button onClick={() => setActiveTab('not-for-you')}
                 className={`px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 ${activeTab === 'not-for-you'
-                  ? 'bg-[#1D1616] text-white shadow-md'
-                  : 'text-gray-600 hover:text-[#1D1616]'
+                  ? 'bg-dark-bg text-white shadow-md'
+                  : 'text-gray-600 hover:text-dark-bg'
                   }`}
               >
                 Esta experiencia NO es para ti
@@ -99,7 +99,7 @@ const TargetAudience = () => {
                     className="w-full h-[500px] object-cover"
                   />
                   {/* Removed dark overlay gradient */}
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616]/80 to-transparent"></div> */}
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 to-transparent"></div> */}
                   <div className="absolute bottom-0 left-0 p-8">
                     <h3 className="text-3xl font-bold text-white mb-3 [text-shadow:4px_4px_6px_rgba(0,0,0,0.6)]">
                       Esta experiencia es para ti si:</h3>
@@ -174,22 +174,22 @@ const TargetAudience = () => {
               : 'opacity-0 -translate-x-8 absolute inset-0 pointer-events-none'
               }`}
           >
-            {/* Visual Image Side */}
-            <div className="lg:w-5/12 mb-10 lg:mb-0 order-1 lg:order-2">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_70px_-10px_rgba(5,96,187,0.3)]">
-                <img
-                  src="/images/experience/experience-not.jpg"
-                  alt="Persona evitando desafíos"
-                  className="w-full h-[500px] object-cover"
-                />
-                <div className="absolute bottom-0 left-0 p-8">
-                  <h3 className="text-3xl font-bold text-white mb-3 [text-shadow:4px_4px_6px_rgba(0,0,0,0.6)]">
-                    Esta experiencia NO es para ti si:</h3>
-                  <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
+            <div className="relative lg:flex items-center">
+              {/* Visual Image Side */}
+              <div className="lg:w-5/12 mb-10 lg:mb-0 order-1 lg:order-2">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_70px_-10px_rgba(5,96,187,0.3)]">
+                  <img
+                    src="/images/experience/experience-not.jpg"
+                    alt="Persona evitando desafíos"
+                    className="w-full h-[500px] object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 p-8">
+                    <h3 className="text-3xl font-bold text-white mb-3 [text-shadow:4px_4px_6px_rgba(0,0,0,0.6)]">
+                      Esta experiencia NO es para ti si:</h3>
+                    <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="relative lg:flex items-center">
               {/* Content Side with Flowing Design */}
               <div className="lg:w-7/12 lg:pr-16 order-2 lg:order-1">
                 <ul className="space-y-8">
@@ -254,12 +254,12 @@ const TargetAudience = () => {
 
       {/* Wave divider with subtle gradient */}
       <div className="absolute bottom-0 left-0 w-full">
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#1D1616] to-transparent opacity-5"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-bg to-transparent opacity-5"></div>
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
           className="w-full h-20"
-          fill="#1D1616"
+          fill="var(--dark-bg)"
         >
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C0,0,131,95,321.39,56.44Z"></path>
         </svg>

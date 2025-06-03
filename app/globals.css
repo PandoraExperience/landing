@@ -4,51 +4,135 @@
 
 /* Custom CSS variables for the rainbow button */
 :root {
-  --color-1: 25, 95%, 53%;  /* warm orange */
-  --color-2: 210, 100%, 20%; /* deep blue */
-  --color-3: 300, 80%, 50%;  /* purple */
-  --color-4: 145, 50%, 36%;  /* forest green */
-  --color-5: 45, 100%, 50%;  /* gold */
+  /* Main blue color from the design */
+  --primary: #0560BB;
+  /* Darker blue for depth */
+  --primary-dark: #003366;
+  /* Lighter blue for accents */
+  --primary-light: #3B82F6;
+  /* Light background */
+  --ice-white: #F5F9FF;
+
+  /* Secondary Colors */
+  /* Dark background color */
+  --dark-bg: #1D1616;
+  /* Neutral tone for text */
+  --light-gray: #E5E5E5;
+  /* Light text color */
+  --text-light: #94A3B8;
+
+  /* Accent Colors */
+  --accent-blue: #60A5FA;
+  --accent-purple: #818CF8;
+
+  /* Colors for the rainbow button */
+  --color-1: 25, 95%, 53%;
+  /* warm orange */
+  --color-2: 210, 100%, 20%;
+  /* deep blue */
+  --color-3: 300, 80%, 50%;
+  /* purple */
+  --color-4: 145, 50%, 36%;
+  /* forest green */
+  --color-5: 45, 100%, 50%;
+  /* gold */
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text-light);
+  background-color: var(--dark-bg);
 }
 
 /* Custom animation classes */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes breathe {
-  0% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.1); }
-  100% { opacity: 0.5; transform: scale(1); }
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @layer components {
   .animate-fadeIn {
     animation: fadeIn 0.3s ease-in-out;
   }
-  
+
   .animate-slideUp {
     animation: slideUp 0.5s ease-out;
   }
-  
+
   .animate-pulse-slow {
     animation: pulse 3s infinite ease-in-out;
   }
@@ -62,95 +146,18 @@
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-20px);
     }
   }
-  
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
 }
-
-/* Global styles */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  @apply text-gray-800 bg-white;
-} 
-
-/* Phone Input Custom Styles for Dark Theme */
-.PhoneInput {
-  display: flex;
-  align-items: center;
-}
-
-.PhoneInputCountry {
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  margin-right: 0.5rem;
-}
-
-.PhoneInputCountryIcon {
-  width: 1.5em;
-  height: 1em;
-}
-
-.PhoneInputCountrySelect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  border: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Fix the dropdown styling */
-.PhoneInputCountrySelect option {
-  background-color: #1D1616;
-  color: white;
-}
-
-.PhoneInputCountrySelectArrow {
-  display: block;
-  content: '';
-  width: 0.3em;
-  height: 0.3em;
-  margin-left: 0.3em;
-  border-style: solid;
-  border-color: currentColor;
-  border-top-width: 0;
-  border-bottom-width: 1px;
-  border-left-width: 0;
-  border-right-width: 1px;
-  transform: rotate(45deg);
-  color: white;
-}
-
-.PhoneInputInput {
-  flex: 1;
-  min-width: 0;
-  background-color: transparent;
-  color: white;
-}
-
-/* Ensure selected country is visible */
-.PhoneInputCountryIcon--border {
-  background-color: transparent;
-  box-shadow: none;
-}
-
-/* Fix flag position */
-.PhoneInputCountryIconImg {
-  display: inline-block;
-} 
