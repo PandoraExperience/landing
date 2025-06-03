@@ -1,6 +1,6 @@
 # El Despertar del Avatar - Landing Page
 
-[![Deploy on PR Merge](https://github.com/PandoraExperience/landing/actions/workflows/ci-chakana.yml/badge.svg?branch=main)](https://github.com/PandoraExperience/landing/actions/workflows/ci-chakana.yml)
+[![Deployment](https://github.com/PandoraExperience/landing/actions/workflows/ci-chakana.yml/badge.svg)](https://github.com/PandoraExperience/landing/actions/workflows/ci-chakana.yml)
 
 Una landing page moderna y convertidora para el evento "El Despertar del Avatar", una experiencia transformadora de inmersión en hielo.
 
