@@ -1,1 +1,39 @@
+name: Deploy on PR Merge
 
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  deploy_production:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Configuración inicial de Git
+        run: git config core.sharedRepository true
+
+      - name: Despliegue en producción
+        uses: appleboy/ssh-action@master
+        with:
+          host: 131.0.136.173
+          username: root
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /home/landing-chacana/
+            if [ -d 'LANDING-21-03' ]; then
+                cd LANDING-21-03
+                git pull origin master
+                docker compose build --no-cache
+                docker system prune
+                docker compose up -d
+            else
+                git clone git@github.com:PandoraExperience/landing.git
+                cd LANDING-21-03
+                docker compose up -d
+            fi
