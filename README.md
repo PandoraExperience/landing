@@ -1,12 +1,12 @@
-# El Despertar del Avatar - Landing Page
+# Pandora Experience - Landing Page
 
 [![Deployment](https://github.com/PandoraExperience/landing/actions/workflows/ci-chakana.yml/badge.svg)](https://github.com/PandoraExperience/landing/actions/workflows/ci-chakana.yml)
 
-Una landing page moderna y convertidora para el evento "El Despertar del Avatar", una experiencia transformadora de inmersión en hielo.
+Una landing page moderna y convertidora para el evento "Pandora Experience", una experiencia transformadora de inmersión en hielo.
 
 ## Descripción del Proyecto
 
-Esta landing page está diseñada para comunicar efectivamente el valor del evento "El Despertar del Avatar", abordar objeciones potenciales y maximizar las conversiones. 
+Esta landing page está diseñada para comunicar efectivamente el valor del evento "Pandora Experience", abordar objeciones potenciales y maximizar las conversiones. 
 
 El sitio incluye:
 - Hero section con video y contador regresivo
@@ -20,13 +20,18 @@ El sitio incluye:
 
 ## Tecnologías Utilizadas
 
-- Next.js 14 (App Router)
+- Next.js 15 (App Router)
 - TypeScript
 - Tailwind CSS
 - React Hook Form con Zod para validación
 - Framer Motion para animaciones
 - React Countdown para el contador regresivo
 - Optimizaciones SEO con Next SEO
+- MailerLite para suscripción
+- Wompi para pagos
+- GitHub Actions para despliegue
+- Docker para entorno de desarrollo
+- CTA para WhatsApp
 
 ## Configuración del Entorno de Desarrollo
 
@@ -39,8 +44,8 @@ El sitio incluye:
 
 1. Clonar el repositorio
 ```bash
-git clone [repo-url]
-cd munayki-landing
+git clone https://github.com/PandoraExperience/landing.git
+cd landing
 ```
 
 2. Instalar dependencias
@@ -70,6 +75,7 @@ yarn dev
   /lib - Funciones de utilidad
   /hooks - Custom React hooks
   /types - Definiciones de tipos TypeScript
+  /variables - Variables de configuración
   /public - Activos estáticos
   /app
     /page.tsx - Página principal
@@ -80,24 +86,15 @@ yarn dev
 
 ### Colores
 
-Los colores de marca se definen en `tailwind.config.ts`:
-
-- **Colores Primarios**:
-  - Deep Blue (#003366): Representa calma, resiliencia y claridad.
-  - Ice White (#F5F9FF): Evoca la pureza y frescura del hielo.
-  - Warm Orange (#FF6F3C): Agrega energía, urgencia y calidez emocional.
-
-- **Colores Secundarios**:
-  - Forest Green (#2E8B57): Refleja el entorno natural y el crecimiento.
-  - Light Gray (#E5E5E5): Tono neutral para fondos y texto.
-
-- **Colores de Acento**:
-  - Gold (#FFD700): Simboliza transformación y valor.
-  - Crimson (#DC143C): Agrega intensidad emocional y urgencia.
+Los colores de marca se definen en `global.css` y se usan en `tailwind.config.ts`:
 
 ### Contenido
 
 El contenido principal se puede modificar en los componentes de sección ubicados en `/app/components/sections/`.
+
+### Variables
+
+Las variables se definen en `variables.ts` y se usan en todo el proyecto.
 
 ## Mantenimiento
 
