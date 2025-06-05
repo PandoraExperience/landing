@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
 import { eventDate } from '@/app/variables';
-import { CTA_SECTION_ID } from '@/app/variables';
+import FormSection from './registration/Form';
 
 // CountdownUnit Component
 const CountdownUnit = ({ value, label, color }: { value: number, label: string, color: string }) => {
@@ -23,8 +23,6 @@ const CountdownUnit = ({ value, label, color }: { value: number, label: string, 
 export default function Hero() {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
 
   // Handle parallax effect
   useEffect(() => {
@@ -36,33 +34,6 @@ export default function Hero() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Intersection Observer for animation on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
   }, []);
 
   // Update countdown timer
@@ -93,22 +64,8 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen bg-dark-bg text-white flex flex-col items-center justify-center px-4 pt-8 pb-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen bg-dark-bg text-white flex flex-col items-center justify-center px-4 pt-8 pb-20 overflow-hidden">
       {/* Enhanced breathing/pulsating background gradients */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.3)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
 
@@ -134,7 +91,7 @@ export default function Hero() {
 
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
         {/* Main title with improved visual treatment */}
-        <div className={`relative mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`relative mb-4 transition-all duration-1000 delay-100 opacity-100 translate-y-0`}>
           <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
           <h2 className="relative text-3xl md:text-6xl font-bold mb-1 text-white tracking-wide md:tracking-wider">
             <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.05em] md:tracking-[0.15em] leading-relaxed relative">
@@ -148,7 +105,7 @@ export default function Hero() {
         </div>
 
         {/* Featured video with HeroVideoDialog component */}
-        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 opacity-100 scale-100`}>
           <HeroVideoDialog
             animationStyle="from-center"
             videoSrc="https://www.youtube.com/embed/al54yJ5J59s"
@@ -158,7 +115,7 @@ export default function Hero() {
         </div>
 
         {/* Quote */}
-        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-300 opacity-100 translate-y-0`}>
           <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
           <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
           <p className="text-2xl md:text-2xl italic font-light px-8 text-gray-300">
@@ -172,7 +129,7 @@ export default function Hero() {
         </div>
 
         {/* Event date and countdown section */}
-        <div className={`mb-10 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className={`mb-10 transition-all duration-1000 delay-400 opacity-100 translate-y-0`}>
           {/* Event date */}
           <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-2">
             <div className="flex items-center text-primary">
@@ -199,21 +156,7 @@ export default function Hero() {
         </div>
 
         {/* CTA button with social proof element */}
-        <div className={`flex flex-col items-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          {/* Enhanced CTA with improved visibility and contrast */}
-          <div className="relative mb-5 group">
-            {/* Animated glow effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary-light to-primary rounded-full opacity-80 blur-md animate-pulse group-hover:opacity-100"></div>
-
-            {/* Button with white background for high contrast */}
-            <button
-              onClick={() => scrollToSection(CTA_SECTION_ID)}
-              className="relative px-8 py-5 text-lg font-bold bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] group-hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
-            >
-              QUIERO ESTAR AHÍ
-            </button>
-          </div>
-        </div>
+        <FormSection />
       </div>
 
       {/* Wave divider with subtle gradient */}
