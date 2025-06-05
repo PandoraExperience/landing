@@ -17,6 +17,7 @@ const siteCategory = experience.category.name;
 const siteTwitter = "@munayki";
 const siteGoogleAnalytics = "G-SV2W2VMK1M";
 const siteFacebookPixel = "569974109521705";
+const siteFacebookVerification = "7s909e2dthuis6r8nxffz13hhxdpm1";
 // const siteGoogleVerification = "your-google-verification-code";
 
 const eventOffer = {
@@ -110,6 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           fbq('init', '${siteFacebookPixel}');
           fbq('track', 'PageView');`}
         </Script>
+        <meta name="facebook-domain-verification" content={siteFacebookVerification} />
 
         {/* Wompi */}
         <Script
