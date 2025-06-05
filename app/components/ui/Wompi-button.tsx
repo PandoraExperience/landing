@@ -2,17 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 import { experience, mailerLite, wompiAPI } from '@/app/variables';
-import './PaymentWompi.css';
 import MailerLite from '@mailerlite/mailerlite-nodejs';
 import { formatDateToMailerLite, trackFbPixel } from '@/app/lib/utils';
 import { AxiosError } from 'axios';
 
 interface WompiProps {
   reference: string;
-  email: string;
-  fullName: string;
-  phoneNumber: string;
-  numberPrefix: string;
+  email?: string;
+  fullName?: string;
+  phoneNumber?: string;
+  numberPrefix?: string;
 };
 
 const WompiWidgetCheckout = ({
@@ -69,63 +68,57 @@ const WompiButton = ({
     computeHash();
   }, [reference]);
 
-  if (!hashHex) return <p>Loading...</p>;
+  const handlePayment = (hashHex: string) => {
+    const widget = WompiWidgetCheckout({ reference, email, fullName, phoneNumber, numberPrefix }, hashHex);
+    trackFbPixel('InitiateCheckout', {
+      content_ids: [reference],
+      content_type: 'product',
+      content_category: 'experience',
+      content_name: experience.name,
+      value: wompiAPI.amountInCents / 100,
+      currency: wompiAPI.currency,
+    });
+
+    widget.open((result: WompiResponse) => {
+      var transaction = result.transaction;
+      if (transaction.status === "APPROVED") {
+        // Record transaction on MailerLite
+        new MailerLite({ api_key: mailerLite.apiKey || "" }).subscribers
+          .createOrUpdate({
+            email: transaction.customerEmail,
+            fields: {
+              purchase_id: reference,
+              purchase_date: formatDateToMailerLite(),
+              purchase_amount: wompiAPI.amountInCents / 100,
+              purchase_currency: wompiAPI.currency,
+            },
+          })
+          .catch((error: AxiosError) => {
+            if (error.response) console.error(error.response.data);
+          });
+
+        trackFbPixel('Purchase', {
+          content_ids: [reference],
+          content_type: 'product',
+          content_category: 'experience',
+          content_name: experience.name,
+          currency: wompiAPI.currency,
+          value: wompiAPI.amountInCents / 100
+        });
+      }
+    });
+  };
 
   return (
     <>
       <button
         type={type}
-        className={className}
-        disabled={disabled}
-        onClick={() => {
-          const widget = WompiWidgetCheckout({ reference, email, fullName, phoneNumber, numberPrefix }, hashHex);
-          trackFbPixel('InitiateCheckout', {
-            content_ids: [reference],
-            content_type: 'product',
-            content_category: 'experience',
-            content_name: experience.name,
-            value: wompiAPI.amountInCents / 100,
-            currency: wompiAPI.currency,
-          });
-
-          widget.open((result: WompiResponse) => {
-            var transaction = result.transaction;
-            if (transaction.status === "APPROVED") {
-              // Record transaction on MailerLite
-              new MailerLite({ api_key: mailerLite.apiKey || "" }).subscribers
-                .createOrUpdate({
-                  email: email,
-                  fields: {
-                    purchase_id: reference,
-                    purchase_date: formatDateToMailerLite(),
-                    purchase_amount: wompiAPI.amountInCents / 100,
-                    purchase_currency: wompiAPI.currency,
-                  },
-                })
-                .catch((error: AxiosError) => {
-                  if (error.response) console.error(error.response.data);
-                });
-
-              trackFbPixel('Purchase', {
-                content_ids: [reference],
-                content_type: 'product',
-                content_category: 'experience',
-                content_name: experience.name,
-                currency: wompiAPI.currency,
-                value: wompiAPI.amountInCents / 100
-              });
-            }
-          });
-        }}
+        className={hashHex ? className : className + " opacity-50 cursor-not-allowed"}
+        disabled={!hashHex}
+        onClick={() => hashHex && handlePayment(hashHex)}
       >
         <span className="inline-block mr-2 align-middle -translate-y-[8%]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 229.5 229.5"
-            width="16"
-            height="16"
-            className="fill-current"
-          >
+          <svg className="w-5 h-5 fill-current" viewBox="0 0 229.5 229.5" xmlns="http://www.w3.org/2000/svg">
             <path d="M214.419 32.12A7.502 7.502 0 0 0 209 25.927L116.76.275a7.496 7.496 0 0 0-4.02 0L20.5 25.927a7.5 7.5 0 0 0-5.419 6.193c-.535 3.847-12.74 94.743 18.565 139.961 31.268 45.164 77.395 56.738 79.343 57.209a7.484 7.484 0 0 0 3.522 0c1.949-.471 48.076-12.045 79.343-57.209 31.305-45.217 19.1-136.113 18.565-139.961zm-40.186 53.066l-62.917 62.917c-1.464 1.464-3.384 2.197-5.303 2.197s-3.839-.732-5.303-2.197l-38.901-38.901a7.497 7.497 0 0 1 0-10.606l7.724-7.724a7.5 7.5 0 0 1 10.606 0l25.874 25.874 49.89-49.891a7.497 7.497 0 0 1 10.606 0l7.724 7.724a7.5 7.5 0 0 1 0 10.607z" />
           </svg>
         </span>

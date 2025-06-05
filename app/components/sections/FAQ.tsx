@@ -1,41 +1,42 @@
 "use client";
 
+import { scrollToSection } from '@/app/lib/utils';
 import { useState } from 'react';
+import { CTA_SECTION_ID } from '@/app/variables';
+
+const questions = [
+  {
+    question: "¿Es seguro entrar al hielo?",
+    answer: "Si, totalmente. Nos aseguramos que estés en las mejores manos, por eso, verás a Naty, nuestra instructora en respiración certificada como ICE TRAINER, que ha venido acompañado y creado eventos de transformación en los últimos años. La práctica es segura, seguimos un protocolo y te entregamos recomendaciones para asegurarnos que tengas la mejor experiencia posible."
+  },
+  {
+    question: "¿El transporte esta incluido?",
+    answer: "No, el valor no incluye el transporte, pero no te preocupes, es accesible en transporte público, carro, o  moto (contamos con parqueadero) . Buscamos un espacio al que pudieras llegar fácil, a 1 hora de la ciudad, pero que estuviera en medio de la naturaleza. Al registrarte te enviaremos todas las indicaciones y facilidades para que puedas llegar sin contratiempos."
+  },
+  {
+    question: "¿Quienes NO pueden asistir?",
+    answer: "Menores de edad, mascotas, mujeres en embarazo, personas con dificultades cardíacas, problemas crónicos respiratorios, antecedentes de epilepsia, urticaria al frío NO pueden hacer la experiencia de inmersión en hielo."
+  },
+  {
+    question: "¿Cuanto tiempo dura?",
+    answer: "Una jornada completa: desde las 8:00 am hasta las 6pm. No vengas con afán, pues será un dia intenso. Separa todo el dia y la noche para que después descanses lo suficiente."
+  },
+  {
+    question: "¿Cómo reservo?",
+    answer: "Para separar tu cupo debes realizar la inscripción. Allí encontraras todos los medios de pago. Puedes pagar el 100% y recibir gratis el bono Valentia (Valorado en 80 dólares) o reservar con el 50% y pagar el restante faltando 10 dias."
+  },
+  {
+    question: "¿Que pasa si no puedo ir?",
+    answer: "En caso de que no puedas asistir por motivos de fuerza mayor (enfermedad o calamidad domestica) y ya hayas reservado, podrás ceder tu cupo a un amigo/ familiar o en tal caso reagendar para una próxima fecha . NO SE REALIZARÁ DEVOLUCIÓN DEL DINERO."
+  }
+];
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const questions = [
-    {
-      question: "¿Es seguro entrar al hielo?",
-      answer: "Si, totalmente. Nos aseguramos que estés en las mejores manos, por eso, verás a Naty, nuestra instructora en respiración certificada como ICE TRAINER, que ha venido acompañado y creado eventos de transformación en los últimos años. La práctica es segura, seguimos un protocolo y te entregamos recomendaciones para asegurarnos que tengas la mejor experiencia posible."
-    },
-    {
-      question: "¿El transporte esta incluido?",
-      answer: "No, el valor no incluye el transporte, pero no te preocupes, es accesible en transporte público, carro, o  moto (contamos con parqueadero) . Buscamos un espacio al que pudieras llegar fácil, a 1 hora de la ciudad, pero que estuviera en medio de la naturaleza. Al registrarte te enviaremos todas las indicaciones y facilidades para que puedas llegar sin contratiempos."
-    },
-    {
-      question: "¿Quienes NO pueden asistir?",
-      answer: "Menores de edad, mascotas, mujeres en embarazo, personas con dificultades cardíacas, problemas crónicos respiratorios, antecedentes de epilepsia, urticaria al frío NO pueden hacer la experiencia de inmersión en hielo."
-    },
-    {
-      question: "¿Cuanto tiempo dura?",
-      answer: "Una jornada completa: desde las 8:00 am hasta las 6pm. No vengas con afán, pues será un dia intenso. Separa todo el dia y la noche para que después descanses lo suficiente."
-    },
-    {
-      question: "¿Cómo reservo?",
-      answer: "Para separar tu cupo debes realizar la inscripción. Allí encontraras todos los medios de pago. Puedes pagar el 100% y recibir gratis el bono Valentia (Valorado en 80 dólares) o reservar con el 50% y pagar el restante faltando 10 dias."
-    },
-    {
-      question: "¿Que pasa si no puedo ir?",
-      answer: "En caso de que no puedas asistir por motivos de fuerza mayor (enfermedad o calamidad domestica) y ya hayas reservado, podrás ceder tu cupo a un amigo/ familiar o en tal caso reagendar para una próxima fecha . NO SE REALIZARÁ DEVOLUCIÓN DEL DINERO."
-    }
-  ];
-
   return (
     <section id="faq" className="relative py-16 px-4 bg-dark-bg overflow-hidden">
       {/* Subtle background patterns and glow effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,51,102,0.1)_0%,rgba(29,22,22,0)_70%)]"></div>
       <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-primary/5 filter blur-3xl animate-float"></div>
       <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-primary/5 filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
 
@@ -88,6 +89,16 @@ const FAQ = () => {
             )}
           </div>
         ))}
+      </div>
+
+      <div className="text-center mt-12">
+        {/* CTA Button */}
+        <button
+          onClick={() => scrollToSection(CTA_SECTION_ID)}
+          className="px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
+        >
+          QUIERO PARTICIPAR
+        </button>
       </div>
     </section>
   );

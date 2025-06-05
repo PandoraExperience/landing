@@ -55,7 +55,7 @@ const FormField = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className={`w-full px-4 py-3 rounded-lg bg-dark-bg/80 border ${error ? 'border-red-500' : 'border-white/10'} text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
+          className={`w-full px-4 py-3 rounded-lg bg-dark-bg border ${error ? 'border-red-500' : 'border-white'} placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all duration-300`}
           autoComplete='on'
           required={required}
         />
