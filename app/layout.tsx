@@ -18,6 +18,7 @@ const siteTwitter = "@munayki";
 const siteGoogleAnalytics = "G-SV2W2VMK1M";
 const siteFacebookPixel = "569974109521705";
 const siteFacebookVerification = "7s909e2dthuis6r8nxffz13hhxdpm1";
+const siteHotjarId = "6431249";
 // const siteGoogleVerification = "your-google-verification-code";
 
 const eventOffer = {
@@ -119,7 +120,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
 
-        {/* Structured Data for Event */}
+        {/* Hotjar Tracking Code */}
+        <Script>
+          {`(function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:${siteHotjarId},hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
+        </Script>
+
+        {/* Structured Data for the Event */}
         <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
