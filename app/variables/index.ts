@@ -1,3 +1,16 @@
+// Event date
+export const eventDate = new Date("2025-07-19T00:00:00");
+
+// Call to action section ID
+export const CTA_SECTION_ID = "registration-form";
+
+// WhatsApp contact information
+export const whatsappContact = {
+  number: "+573127811615", // Formatted for WhatsApp (removed spaces)
+  message: "Hola! Me interesa saber más sobre la experiencia PANDORA. Mi nombre es: "
+};
+
+// Experience details
 export const experience = {
   reference: "PANDORA",
   name: "Pandora Experience",
@@ -35,20 +48,13 @@ export const experience = {
   }
 };
 
-export const eventDate = new Date("2025-06-14T00:00:00");
-
-export const CTA_SECTION_ID = "registration-form";
-
-export const whatsappContact = {
-  number: "+573127811615", // Formatted for WhatsApp (removed spaces)
-  message: "Hola! Me interesa saber más sobre la experiencia PANDORA. Mi nombre es: "
-};
-
+// MailerLite configuration
 export const mailerLite = {
   apiKey: process.env.NEXT_PUBLIC_MAILERLITE_API_KEY,
   groupID: "154223300648633888"
 };
 
+// WOMPI API configuration
 export const wompiAPI = {
   integrityKey: process.env.NEXT_PUBLIC_WOMPI_INTEGRITY_KEY,
   publicKey: process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY,
