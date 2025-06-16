@@ -6,7 +6,9 @@ export const CTA_SECTION_ID = "registration-form";
 
 // WhatsApp contact information
 export const whatsappContact = {
-  number: "+573127811615", // Formatted for WhatsApp (removed spaces)
+  // Formatted for WhatsApp (removed spaces)
+  // number: "+573127811615", // Chakana
+  number: "+573165137110", // Naty
   message: "Hola! Me interesa saber más sobre la experiencia PANDORA. Mi nombre es: "
 };
 
