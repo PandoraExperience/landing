@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 
 const BenefitItem = ({ text, icon }: { text: string, icon: React.ReactNode }) => {

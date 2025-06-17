@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { eventDate, experience } from "@/app/variables";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script';
-
-const inter = Inter({ subsets: ["latin"] });
 
 // Variables setup
 const mark = "MUNAY-KI";
@@ -44,9 +41,7 @@ export const metadata: Metadata = {
     siteName: siteName,
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "screenshots/home.jpg",
         alt: siteName,
       },
     ],
@@ -57,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteName,
     description: siteDescription,
-    images: ["/twitter-image.jpg"],
+    images: ["screenshots/home.jpg"],
     creator: siteTwitter,
     site: siteTwitter,
   },
@@ -157,7 +152,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body>
         <img height="1" width="1" style={{ display: "none" }}
           src={`https://www.facebook.com/tr?id=${siteFacebookPixel}&ev=PageView&noscript=1`}
         />

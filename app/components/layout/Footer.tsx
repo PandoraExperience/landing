@@ -23,7 +23,7 @@ const Footer = () => {
           </p>
           <br />
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Pandora Experience. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Pandora Experience. Todos los derechos reservados. <a href="/terms">Terms and Conditions</a> | <a href="/policy">Privacy Policy</a>
           </p>
         </div>
       </div>
