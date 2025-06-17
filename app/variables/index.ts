@@ -50,6 +50,12 @@ export const experience = {
   }
 };
 
+export const policy = {
+  date: new Date("2025-06-16T00:00:00"),
+  email: "contacto@universare.com"
+};
+
+
 // MailerLite configuration
 export const mailerLite = {
   apiKey: process.env.NEXT_PUBLIC_MAILERLITE_API_KEY,

@@ -42,7 +42,7 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, onClose }) => {
             </p><p>
               No realizamos reembolso bajo ninguna circunstancia.
             </p><p>
-              No hay reembolso para cancelaciones dentro de las 48 horas previas al evento.
+              No hay re-agendamiento para cancelaciones dentro de las 48 horas previas al evento.
             </p>
 
             <h3 className="text-xl text-white font-medium mt-6">Términos del Evento</h3>

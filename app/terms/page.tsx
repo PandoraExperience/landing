@@ -1,13 +1,13 @@
 import React from 'react';
-import Thankyou from '@/app/components/sections/Thankyou';
 import WhatsAppWidget from '@/app/components/ui/WA-Widget';
 import Footer from '../components/layout/Footer';
+import TyC from '@/app/terms/TyC';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-dark-bg">
 
-      <Thankyou />
+      <TyC />
       <Footer />
 
       {/* Sticky WhatsApp Widget */}
