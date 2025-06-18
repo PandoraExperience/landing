@@ -26,6 +26,7 @@ export default function Home() {
       <PriceCard />
       <ReserveInfo />
       <YourGuide />
+      <Testimonials />
       <FAQ />
       <Footer />
     </main>

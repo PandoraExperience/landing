@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
+import { HeroVideo } from '@/app/components/ui/hero-video';
 import { eventDate } from '@/app/variables';
 import FormSection from './registration/Form';
 
@@ -100,17 +100,20 @@ export default function Hero() {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-2">
+            ¿Estás listo para reconectar con tu esencia en tierras ancestrales?
+            <br />
             No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
           </p>
         </div>
 
-        {/* Featured video with HeroVideoDialog component */}
+        {/* Featured video with HeroVideo component */}
         <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 opacity-100 scale-100`}>
-          <HeroVideoDialog
+          {/* <img src="/images/hero/hero-img.jpg" alt="Mujer en agua - Experiencia transformadora" /> */}
+          <HeroVideo
             animationStyle="from-center"
-            videoSrc="https://www.youtube.com/embed/al54yJ5J59s"
-            thumbnailSrc="/images/Hero/hero-video.webp"
-            thumbnailAlt="Mujer en agua - Experiencia transformadora Munay-Ki"
+            videoID="al54yJ5J59s"
+            thumbnailSrc="/images/hero/hero-img.jpg"
+            thumbnailAlt="Mujer en agua - Experiencia transformadora"
           />
         </div>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
+import { HeroVideo } from '@/app/components/ui/hero-video';
 import WAButton from '../ui/WA-button';
 import WompiButton from '../ui/Wompi-button';
 import { experience } from '@/app/variables';
@@ -31,13 +31,13 @@ export default function Thankyou() {
           </p>
         </div>
 
-        {/* Featured video with HeroVideoDialog component */}
+        {/* Featured video with HeroVideo component */}
         {/* <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 opacity-100 scale-100`}>
-          <HeroVideoDialog
+          <HeroVideo
             animationStyle="from-center"
-            videoSrc="https://www.youtube.com/embed/al54yJ5J59s"
+            videoID="al54yJ5J59s"
             thumbnailSrc="/images/thankyou/finalgracias.png"
-            thumbnailAlt="Mujer en agua - Experiencia transformadora Munay-Ki"
+            thumbnailAlt="Mujer en agua - Experiencia transformadora"
           />
         </div> */}
         <img

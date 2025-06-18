@@ -16,7 +16,7 @@ const siteGoogleAnalytics = "G-SV2W2VMK1M";
 const siteFacebookPixel = "569974109521705";
 const siteFacebookVerification = "7s909e2dthuis6r8nxffz13hhxdpm1";
 const siteHotjarId = "6431249";
-// const siteGoogleVerification = "your-google-verification-code";
+const siteGoogleVerification = "L3tyI0LO8H9KNR5CznC1SveEnQ4bkGPd-69QjYLfjSc";
 
 const eventOffer = {
   "@type": "Offer",
@@ -84,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0560BB" />
+        <meta name="google-site-verification" content={siteGoogleVerification} />
 
         {/* Google Analytics tag (gtag.js) */}
         <Script async src={`https://www.googletagmanager.com/gtag/js?id=${siteGoogleAnalytics}`} />
