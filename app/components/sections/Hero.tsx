@@ -112,7 +112,7 @@ export default function Hero() {
           <HeroVideo
             animationStyle="from-center"
             videoID="al54yJ5J59s"
-            thumbnailSrc="/images/hero/hero-img.jpg"
+            thumbnailSrc="/images/Hero/hero-img.jpg"
             thumbnailAlt="Mujer en agua - Experiencia transformadora"
           />
         </div>

@@ -11,25 +11,25 @@ const testimonialVideos = [
   {
     id: 1,
     videoID: "dQBCkuUtw4k",
-    thumbnailSrc: "/images/testi/testi.jpeg",
+    thumbnailSrc: "/images/testimonios/testi.jpeg",
     thumbnailAlt: "Testimonio de transformación 1 - Pandora Experience"
   },
   {
     id: 2,
     videoID: "cBY4QI2ahnE",
-    thumbnailSrc: "/images/testi/influ.jpg",
+    thumbnailSrc: "/images/testimonios/influ.jpg",
     thumbnailAlt: "Testimonio de transformación 2 - Pandora Experience"
   },
   {
     id: 3,
     videoID: "5ZnHDCggpXA",
-    thumbnailSrc: "/images/testi/vid1.jpg",
+    thumbnailSrc: "/images/testimonios/vid1.jpg",
     thumbnailAlt: "Testimonio de transformación 3 - Pandora Experience"
   },
   {
     id: 4,
     videoID: "9BU2mVWnIvk",
-    thumbnailSrc: "/images/testi/vid2.jpg",
+    thumbnailSrc: "/images/testimonios/vid2.jpg",
     thumbnailAlt: "Testimonio de transformación 4 - Pandora Experience"
   }
 ];
