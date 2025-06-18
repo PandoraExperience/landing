@@ -2,87 +2,42 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { HeroVideoDialog } from '@/app/components/ui/hero-video-dialog';
+import { HeroVideo } from '@/app/components/ui/hero-video';
 import { CTA_SECTION_ID } from '@/app/variables';
+import { scrollToSection } from '@/app/lib/utils';
 
 // Testimonial video data structure
 const testimonialVideos = [
   {
     id: 1,
-    videoSrc: "https://www.youtube.com/embed/dQBCkuUtw4k",
+    videoID: "dQBCkuUtw4k",
     thumbnailSrc: "/images/testi/testi.JPG",
-    thumbnailAlt: "Testimonio de transformación 1 - Munay-Ki"
+    thumbnailAlt: "Testimonio de transformación 1 - Pandora Experience"
   },
   {
     id: 2,
-    videoSrc: "https://www.youtube.com/embed/cBY4QI2ahnE",
+    videoID: "cBY4QI2ahnE",
     thumbnailSrc: "/images/testi/influ.JPG",
-    thumbnailAlt: "Testimonio de transformación 2 - Munay-Ki"
+    thumbnailAlt: "Testimonio de transformación 2 - Pandora Experience"
   },
   {
     id: 3,
-    videoSrc: "https://www.youtube.com/embed/5ZnHDCggpXA",
+    videoID: "5ZnHDCggpXA",
     thumbnailSrc: "/images/testi/vid1.JPG",
-    thumbnailAlt: "Testimonio de transformación 3 - Munay-Ki"
+    thumbnailAlt: "Testimonio de transformación 3 - Pandora Experience"
   },
   {
     id: 4,
-    videoSrc: "https://www.youtube.com/embed/9BU2mVWnIvk",
+    videoID: "9BU2mVWnIvk",
     thumbnailSrc: "/images/testi/vid2.JPG",
-    thumbnailAlt: "Testimonio de transformación 4 - Munay-Ki"
+    thumbnailAlt: "Testimonio de transformación 4 - Pandora Experience"
   }
 ];
-
-// Testimonial card component
-const TestimonialCard = ({
-  name,
-  role,
-  quote
-}: {
-  name: string,
-  role: string,
-  quote: string
-}) => {
-  return (
-    <div className="relative p-6 bg-dark-bg/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 group border border-white/5">
-      <div className="p-5">
-        <div className="mb-4">
-          <h4 className="font-bold text-white">{name}</h4>
-          <p className="text-sm text-gray-300">{role}</p>
-        </div>
-        <div className="relative">
-          <svg className="absolute -top-3 -left-3 w-6 h-6 text-primary/40" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-          </svg>
-          <p className="text-gray-300 text-sm italic relative z-10">
-            {quote}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
-  // Sample testimonial data (to be replaced with real content)
-  const testimonials = [];
-
-  // Handle parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      setParallaxOffset({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // Intersection Observer for animation on scroll
   useEffect(() => {
@@ -111,20 +66,6 @@ const Testimonials = () => {
     };
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   // Carousel navigation functions
   const handlePrevVideo = () => {
     setCurrentVideoIndex((prevIndex) =>
@@ -144,24 +85,6 @@ const Testimonials = () => {
       id="testimonios"
       className="relative py-16 px-4 overflow-hidden bg-dark-bg text-white"
     >
-      {/* Background Elements - Enhanced with breathing/pulsating background gradients */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
-
-      {/* Parallax background elements - more pronounced glow */}
-      <div
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
-        style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
-      ></div>
-      <div
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-primary/15 filter blur-3xl animate-breathe"
-        style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
-      ></div>
-
-      {/* Very subtle light streaks */}
-      <div className="absolute w-full h-full overflow-hidden opacity-30">
-        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
-        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-white/5 rotate-6 transform animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-      </div>
 
       {/* Content Container */}
       <div className="container mx-auto relative z-10 max-w-6xl">
@@ -201,11 +124,12 @@ const Testimonials = () => {
 
           {/* Video Testimonials Carousel */}
           <div className={`w-full max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-            <div className="relative">
+            <div className="block overflow-clip">
               {/* Current Video */}
-              <HeroVideoDialog
+              <HeroVideo
+                className="max-w-xl mx-auto my-16"
                 animationStyle="from-center"
-                videoSrc={testimonialVideos[currentVideoIndex].videoSrc}
+                videoID={testimonialVideos[currentVideoIndex].videoID}
                 thumbnailSrc={testimonialVideos[currentVideoIndex].thumbnailSrc}
                 thumbnailAlt={testimonialVideos[currentVideoIndex].thumbnailAlt}
               />

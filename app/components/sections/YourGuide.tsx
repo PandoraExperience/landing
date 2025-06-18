@@ -6,8 +6,6 @@ import Link from 'next/link';
 const YourGuide = () => {
   return (
     <section id="guia" className="relative py-16 px-4 bg-dark-bg overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,96,187,0.1)_0%,transparent_100%)]"></div>
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
