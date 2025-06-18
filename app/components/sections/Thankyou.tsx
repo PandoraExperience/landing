@@ -36,12 +36,12 @@ export default function Thankyou() {
           <HeroVideo
             animationStyle="from-center"
             videoID="al54yJ5J59s"
-            thumbnailSrc="/images/thankyou/finalgracias.png"
+            thumbnailSrc="/images/thankyou/finalgracias.jpg"
             thumbnailAlt="Mujer en agua - Experiencia transformadora"
           />
         </div> */}
         <img
-          src="/images/thankyou/finalgracias.png"
+          src="/images/thankyou/finalgracias.jpg"
           alt="Experiencia transformadora PANDORA"
           className="w-full max-w-[800px] pb-8 rounded-lg "
         />
