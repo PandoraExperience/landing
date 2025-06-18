@@ -89,8 +89,8 @@ export function HeroVideo({
           height={450}
           className="w-full group-hover:brightness-[0.8] rounded-2xl"
         />
-        <div className="absolute inset-0 flex items-center justify-center group-hover:scale-100 scale-[0.9] transition-all">
-          <div className=" flex items-center justify-center rounded-full backdrop-blur-md size-28">
+        <div className="absolute mt-16 inset-0 flex items-center justify-center group-hover:scale-100 scale-[0.9] transition-all">
+          <div className="flex items-center justify-center rounded-full backdrop-blur-md size-20">
             <Play className="size-8 fill-white group-hover:scale-105" />
           </div>
         </div>
@@ -102,12 +102,12 @@ export function HeroVideo({
             animate={{ opacity: 1 }}
             onClick={() => setIsVideoOpen(false)}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-transparent backdrop-blur-md rounded-3xl"
+            className="fixed inset-0 z-50 flex bg-transparent backdrop-blur-md rounded-3xl"
           >
             <motion.div
               {...selectedAnimation}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="relative w-full max-w-4xl aspect-video mx-4 md:mx-0"
+              className="relative w-full aspect-video"
             >
               <motion.button className="absolute -top-16 right-0 text-white text-xl bg-neutral-900/50 ring-1 backdrop-blur-md rounded-full p-2 dark:bg-neutral-100/50 dark:text-black">
                 <XIcon className="size-5" />
@@ -116,7 +116,7 @@ export function HeroVideo({
                 <iframe
                   src={`https://www.youtube.com/embed/${videoID}` +
                     `?autoplay=1&rel=0&loop=1&controls=0` +
-                    `&color=white&modestbranding=0&showinfo=0&playsinline=1` +
+                    `&showinfo=0&playsinline=1` +
                     `&playlist=${videoID}`}
                   className="size-full rounded-2xl"
                   allowFullScreen

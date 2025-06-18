@@ -108,11 +108,11 @@ export default function Hero() {
 
         {/* Featured video with HeroVideo component */}
         <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 opacity-100 scale-100`}>
-          {/* <img src="/images/hero/hero-img.jpg" alt="Mujer en agua - Experiencia transformadora" /> */}
+          {/* <img src="/images/hero/hero-img.jpeg" alt="Mujer en agua - Experiencia transformadora" /> */}
           <HeroVideo
             animationStyle="from-center"
             videoID="al54yJ5J59s"
-            thumbnailSrc="/images/Hero/hero-img.jpg"
+            thumbnailSrc="/images/Hero/hero-img.jpeg"
             thumbnailAlt="Mujer en agua - Experiencia transformadora"
           />
         </div>

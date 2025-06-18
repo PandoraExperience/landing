@@ -110,6 +110,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
         <meta name="facebook-domain-verification" content={siteFacebookVerification} />
 
+        {/* Goat Counter */}
+        <Script data-goatcounter="https://pandora-experience.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></Script>
+
         {/* Wompi */}
         <Script
           src="https://checkout.wompi.co/widget.js"
