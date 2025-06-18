@@ -18,7 +18,7 @@ const FormSection = () => {
   const router = useRouter();
 
   // Reference for Wompi Payment
-  const paymentReference = `${experience.reference}-${crypto.randomUUID()}`;
+  // const paymentReference = `${experience.reference}-${crypto.randomUUID()}`;
 
   // Form state
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const FormSection = () => {
     email: '',
     phone: '',
     phoneCountry: '+57', // Default to Colombia
-    agreeToTerms: false
+    agreeToTerms: true
   });
 
   // Error state
@@ -201,7 +201,7 @@ const FormSection = () => {
     {/* Terms Modal */}
     <TermsModal
       isOpen={showTermsModal}
-      onClose={() => setShowTermsModal(false)}
+      onClose={() => { setShowTermsModal(false); formData.agreeToTerms = true; }}
     />
     <div id="registration-form" className="max-w-2xl mx-auto mb-5 text-left">
       {!showPayment ? (
