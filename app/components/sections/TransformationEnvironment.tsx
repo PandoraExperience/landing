@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { scrollToSection } from '@/app/lib/utils';
 import { CTA_SECTION_ID } from '@/app/variables';
+import Quotes from '@/app/components/ui/Quotes';
 
 // Simple EnvironmentFeature component
 const EnvironmentFeature = ({
@@ -91,20 +93,6 @@ const TransformationEnvironment = () => {
     return () => clearInterval(timer);
   }, [galleryImages.length]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   // Gallery navigation functions
   const handlePrevImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -132,6 +120,10 @@ const TransformationEnvironment = () => {
               </span>
             </div>
           </div>
+
+          <Quotes><span className="text-gray-300">
+            "La naturaleza no sana con fuerza, sino con presencia"
+          </span></Quotes>
 
           {/* Main Title with glow effect */}
           <div className="relative mb-8">
@@ -220,11 +212,6 @@ const TransformationEnvironment = () => {
               title="Rituales ancestrales"
               description="Una combinación de ciencia, meditación y conexión con los elementos naturales para acompañar el proceso."
             />
-
-            {/* Testimonial Quote */}
-            <div className="p-5 bg-dark-bg/60 rounded-xl mt-8 border-l-4 border-primary">
-              <p className="italic text-gray-300">"La naturaleza no sana con fuerza, sino con presencia"</p>
-            </div>
           </div>
         </div>
 

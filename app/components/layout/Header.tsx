@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { scrollToSection } from '@/app/lib/utils';
 
 const sections = [
   { id: 'experiencia', label: 'Experiencia' },
@@ -14,20 +15,6 @@ const sections = [
   { id: 'faq', label: 'FAQ' }
 ];
 
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    // Adjust scroll position to account for fixed header (increased offset for larger header)
-    const headerOffset = 120;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
-  }
-};
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

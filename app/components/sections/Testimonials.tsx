@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { HeroVideo } from '@/app/components/ui/hero-video';
 import { CTA_SECTION_ID } from '@/app/variables';
 import { scrollToSection } from '@/app/lib/utils';
+import Quotes from '../ui/Quotes';
 
 // Testimonial video data structure
 const testimonialVideos = [
@@ -100,13 +101,9 @@ const Testimonials = () => {
           </div>
 
           {/* Quote */}
-          <div className="relative max-w-3xl mx-auto mb-8">
-            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-              Lo que hoy te incomoda, mañana te libera.
-            </p>
-          </div>
+          <Quotes><span className="text-gray-300">
+            Lo que hoy te incomoda, mañana te libera.
+          </span></Quotes>
 
           {/* Main Title with glow effect */}
           <div className={`relative pb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

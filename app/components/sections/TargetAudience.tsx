@@ -1,51 +1,47 @@
 "use client"
 
 import React, { useState } from 'react';
+import Quotes from '@/app/components/ui/Quotes';
+
+const IconListElement = ({ svgIconPath, title, description }: { svgIconPath: React.ReactNode, title: string, description: string }) => {
+  return (
+    <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
+      <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          {svgIconPath}
+        </svg>
+      </div>
+      <div>
+        <h4 className="text-xl font-semibold text-primary mb-1">{title}</h4>
+        <p className="text-gray-700">{description}</p>
+      </div>
+    </li>
+  );
+};
 
 const TargetAudience = () => {
   const [activeTab, setActiveTab] = useState('for-you');
 
-  // Add scroll handler function
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <section id="experiencia" className="relative pt-16 pb-24 px-4 bg-white overflow-hidden">
-      {/* Subtle background patterns */}
-      <div className="absolute bottom-0 right-0 w-full h-1/2 bg-[radial-gradient(circle,rgba(0,51,102,0.02)_0%,rgba(255,255,255,0)_70%)]"></div>
-      <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-warm-orange/5 filter blur-3xl animate-float"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-forest-green/5 filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
-
+    <section id="experiencia"
+      className="relative pt-16 pb-24 px-4 bg-white overflow-hidden"
+      style={{ marginBottom: '-1px' }}
+    >
       <div className="container mx-auto relative z-10">
         <div className="mb-16 text-center">
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
               <span className="inline-block px-6 py-2 rounded-full bg-white backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
-                DESCUBRE TU CAMINO
+                NO HAY CASUALIDADES
               </span>
             </div>
           </div>
 
           {/* Quote */}
-          <div className="relative max-w-3xl mx-auto mb-8">
-            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-600">
-              Sé el cambio que quieres ver en el mundo
-            </p>
-          </div>
+          <Quotes>
+            Deja de cargar con lo que ya no te pertenece y vuelve a creer en ti
+          </Quotes>
 
           {/* Main Title with glow effect */}
           <div className="relative transition-all duration-300">
@@ -53,7 +49,7 @@ const TargetAudience = () => {
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
 
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-dark-bg">
-              ¿Para Quién Es Esta Experiencia?
+              ¿Para quién es esta experiencia?
             </h2>
 
           </div>
@@ -67,7 +63,7 @@ const TargetAudience = () => {
                   : 'text-gray-600 hover:text-dark-bg'
                   }`}
               >
-                Esta experiencia es para ti
+                Es para ti...
               </button>
               <button onClick={() => setActiveTab('not-for-you')}
                 className={`px-6 py-3 rounded-lg text-base font-medium transition-all duration-300 ${activeTab === 'not-for-you'
@@ -75,7 +71,7 @@ const TargetAudience = () => {
                   : 'text-gray-600 hover:text-dark-bg'
                   }`}
               >
-                Esta experiencia NO es para ti
+                No es para personas...
               </button>
             </div>
           </div>
@@ -98,11 +94,9 @@ const TargetAudience = () => {
                     alt="Persona lista para la transformación"
                     className="w-full h-[500px] object-cover"
                   />
-                  {/* Removed dark overlay gradient */}
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 to-transparent"></div> */}
                   <div className="absolute bottom-0 left-0 p-8">
                     <h3 className="text-3xl font-bold text-white mb-3 [text-shadow:4px_4px_6px_rgba(0,0,0,0.6)]">
-                      Esta experiencia es para ti si:</h3>
+                      Esta experiencia es para ti si buscas:</h3>
                     <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
                   </div>
                 </div>
@@ -111,57 +105,40 @@ const TargetAudience = () => {
               {/* Content Side with Flowing Design */}
               <div className="lg:w-7/12 lg:pl-16">
                 <ul className="space-y-8">
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* Transformation icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Reinvención Personal y Reconexión con tu SER</h4>
-                      <p className="text-gray-700">Estás en un proceso de transformación y buscas herramientas para facilitar este camino</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* Unlock/key icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Superar Bloqueos Emocionales</h4>
-                      <p className="text-gray-700">Deseas liberar patrones limitantes que te impiden avanzar en tu vida</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* Calming wave icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Manejar el Estrés y la Ansiedad</h4>
-                      <p className="text-gray-700">Buscas herramientas efectivas para gestionar estados emocionales desafiantes</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* Shield/strength icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Fortalecer tu Resiliencia</h4>
-                      <p className="text-gray-700">Quieres desarrollar fortaleza interior y capacidad para enfrentar desafíos</p>
-                    </div>
-                  </li>
+                  {[
+                    {
+                      title: "Liberar bloqueos emocionales y mentales",
+                      description: "Soltar cargas invisibles emocionales debido a situaciones familiares, de pareja o de infancia.",
+/* Unlock/key icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                    },
+                    {
+                      title: "Superar altas cargas de estrés y ansiedad",
+                      description: "Eres un profesional o emprendedor que necesita liberar el estrés y mejorar su bienestar.",
+/* Calming wave icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                    },
+                    {
+                      title: "Reconectar contigo",
+                      description: "Buscas un crecimiento personal y espiritual que te ayude a reconectar contigo mismo.",
+/* Transformation icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                    },
+                    {
+                      title: "Claridad, energía y buen descanso",
+                      description: "Sientes falta de energía, sueño, motivación o claridad y quieres recuperar tu equilibrio.",
+/* ShieldCheck icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    },
+                    {
+                      title: "Crecer y salir de tu zona de confort",
+                      description: "Quieres aprender a atravesar el miedo, la incomodidad y la incertidumbre con valentia",
+/* Growth icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 12 m-8 0 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 M12 12 l8 -9 M21 2 h-4 m4 0 v4" />
+                    },
+                    {
+                      title: "Tranquilidad, confianza y amor propio",
+                      description: "Necesitas tomar mejores decisiones con confianza y creyendo más en ti",
+/* Peace icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20M12 12l6.928 4M12 12l-6.928 4" />
+                    },
+                  ].map((item, index) => (
+                    <IconListElement key={index} svgIconPath={item.svgIconPath} title={item.title} description={item.description} />
+                  ))}
                 </ul>
               </div>
             </div>
@@ -185,7 +162,7 @@ const TargetAudience = () => {
                   />
                   <div className="absolute bottom-0 left-0 p-8">
                     <h3 className="text-3xl font-bold text-white mb-3 [text-shadow:4px_4px_6px_rgba(0,0,0,0.6)]">
-                      Esta experiencia NO es para ti si:</h3>
+                      Esta experiencia NO es para personas:</h3>
                     <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
                   </div>
                 </div>
@@ -193,57 +170,35 @@ const TargetAudience = () => {
               {/* Content Side with Flowing Design */}
               <div className="lg:w-7/12 lg:pr-16 order-2 lg:order-1">
                 <ul className="space-y-8">
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* No commitment icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Sin Compromiso Personal</h4>
-                      <p className="text-gray-700">Buscas una experiencia sin esfuerzo o implicación personal</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* Comfort zone icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Zona de Comfort</h4>
-                      <p className="text-gray-700">No estás dispuesto a explorar más allá de tu zona de comfort para crecer</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* Medical condition icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Condiciones Médicas</h4>
-                      <p className="text-gray-700">Tienes condiciones de salud que contraindican la exposición al frío</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-                    {/* Instant results icon */}
-                    <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-primary mb-1">Resultados Inmediatos</h4>
-                      <p className="text-gray-700">Esperas transformaciones instantáneas sin pasar por un proceso de aprendizaje</p>
-                    </div>
-                  </li>
+                  {[
+                    {
+                      title: "Cerradas y estrictas",
+                      description: "NO estás abierto a explorar tu lado emocional y espiritual asi como la conexion mente, emociones y el cuerpo.",
+/* DenyCircle icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                    },
+                    {
+                      title: "Conformistas",
+                      description: "NO estás dispuesto a salir de tu zona de confort y crecer.",
+/* Calming wave icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                    },
+                    {
+                      title: "Que no quieran ponerse de prioridad",
+                      description: "Buscas seguir reprimiendo tus emociones y cargando situaciones dolorosas pensando en todos menos en ti.",
+/* ShieldX icon */    svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 10l6 6m0-6l-6 6m5.618-10.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    },
+                    {
+                      title: "Facilistas",
+                      description: "Prefieres soluciones rápidas o que evadan lo que sientan en lugar de un trabajo interno profundo.",
+/* Warning icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    },
+                    {
+                      title: "Que no quieran aprender",
+                      description: "NO te interesa aprender técnicas para gestionar el estrés y la ansiedad o explorar nuevas herramientas de autoconocimiento.",
+/* LockOpen icon */   svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                    },
+                  ].map((item, index) => (
+                    <IconListElement key={index} svgIconPath={item.svgIconPath} title={item.title} description={item.description} />
+                  ))}
                 </ul>
               </div>
 
