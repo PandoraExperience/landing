@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CTA_SECTION_ID } from '@/app/variables';
+import Quotes from '../ui/Quotes';
 
 // Simple EnvironmentFeature component
 const EnvironmentFeature = ({
@@ -133,6 +134,10 @@ const TransformationEnvironment = () => {
             </div>
           </div>
 
+          <Quotes><span className="text-gray-300">
+            "La naturaleza no sana con fuerza, sino con presencia"
+          </span></Quotes>
+
           {/* Main Title with glow effect */}
           <div className="relative mb-8">
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
@@ -220,11 +225,6 @@ const TransformationEnvironment = () => {
               title="Rituales ancestrales"
               description="Una combinación de ciencia, meditación y conexión con los elementos naturales para acompañar el proceso."
             />
-
-            {/* Testimonial Quote */}
-            <div className="p-5 bg-dark-bg/60 rounded-xl mt-8 border-l-4 border-primary">
-              <p className="italic text-gray-300">"La naturaleza no sana con fuerza, sino con presencia"</p>
-            </div>
           </div>
         </div>
 

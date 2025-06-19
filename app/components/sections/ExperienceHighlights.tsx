@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CTA_SECTION_ID } from '@/app/variables';
+import Quotes from '../ui/Quotes';
 
 // ExperienceCard Component
 const ExperienceCard = ({
@@ -104,9 +105,6 @@ export default function ExperienceHighlights() {
 
   return (
     <section ref={sectionRef} id="experiencia" className="relative py-16 px-4 bg-dark-bg text-white overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.2)_0%,rgba(33,33,33,0)_70%)] opacity-90"></div>
-
       {/* Parallax background elements */}
       <div
         className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#0560bb]/20 filter blur-3xl"
@@ -117,11 +115,6 @@ export default function ExperienceHighlights() {
         style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
       ></div>
 
-      {/* Light streaks */}
-      <div className="absolute w-full h-full overflow-hidden opacity-30">
-        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
-        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-white/5 rotate-6 transform animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-      </div>
 
       {/* Content Container */}
       <div className="container mx-auto relative z-10 max-w-6xl">
@@ -137,23 +130,17 @@ export default function ExperienceHighlights() {
           </div>
 
           {/* Quote */}
-          <div className="relative max-w-3xl mx-auto mb-8">
-            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-              Cuando te dejas de resistir, empiezas a sanar.
-            </p>
-          </div>
+          <Quotes><span className="text-gray-300">
+            Cuando te dejas de resistir, empiezas a sanar.
+          </span></Quotes>
 
           {/* Main Title with glow effect */}
           <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
-
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
               ¿Qué vas a vivir en esta experiencia?
             </h2>
-
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Acá te contamos lo que vas a vivir.
             </p>

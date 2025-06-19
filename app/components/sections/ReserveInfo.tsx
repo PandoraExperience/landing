@@ -2,23 +2,10 @@
 
 import React from 'react';
 import { CTA_SECTION_ID } from '@/app/variables';
+import { scrollToSection } from '@/app/lib/utils';
+import Quotes from '@/app/components/ui/Quotes';
 
 const ReserveInfo = () => {
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <section id="reserva" className="relative pt-24 pb-16 px-4 overflow-hidden bg-dark-bg text-white">
 
@@ -35,13 +22,9 @@ const ReserveInfo = () => {
           </div>
 
           {/* Quote */}
-          <div className="relative max-w-3xl mx-auto mb-8">
-            <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-            <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-            <p className="text-2xl md:text-3xl italic font-light px-8 text-gray-300">
-              Las grandes transformaciones comienzan con un solo paso.
-            </p>
-          </div>
+          <Quotes><span className="text-gray-300">
+            Las grandes transformaciones comienzan con un solo paso.
+          </span></Quotes>
 
           <h2 className="relative text-4xl md:text-5xl font-bold mt-14 mb-6 text-white">
             RESERVA TU CUPO AHORA

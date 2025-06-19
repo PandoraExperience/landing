@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { HeroVideo } from '@/app/components/ui/hero-video';
 import { eventDate } from '@/app/variables';
 import FormSection from './registration/Form';
+import Quotes from '../ui/Quotes';
 
 // CountdownUnit Component
 const CountdownUnit = ({ value, label, color }: { value: number, label: string, color: string }) => {
@@ -65,50 +66,28 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen bg-dark-bg text-white flex flex-col items-center justify-center px-4 pt-8 pb-20 overflow-hidden">
-      {/* Enhanced breathing/pulsating background gradients */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(5,96,187,0.3)_0%,rgba(33,33,33,0)_70%)] animate-breathe opacity-90"></div>
-
-      {/* Parallax background elements - more pronounced glow */}
-      <div
-        className="absolute top-20 left-10 w-96 h-96 rounded-full bg-primary/20 filter blur-3xl animate-breathe"
-        style={{ transform: `translate(${parallaxOffset.x * -0.3}px, ${parallaxOffset.y * -0.3}px)` }}
-      ></div>
-      <div
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-white/15 filter blur-3xl animate-breathe"
-        style={{ transform: `translate(${parallaxOffset.x * 0.2}px, ${parallaxOffset.y * 0.2}px)`, animationDelay: '2.5s' }}
-      ></div>
-      <div
-        className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-[#2E8B57]/15 filter blur-3xl animate-breathe"
-        style={{ transform: `translate(${parallaxOffset.x * 0.15}px, ${parallaxOffset.y * 0.15}px)`, animationDelay: '4s' }}
-      ></div>
-
-      {/* Very subtle light streaks */}
-      <div className="absolute w-full h-full overflow-hidden opacity-30">
-        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-white/5 -rotate-12 transform animate-pulse-slow"></div>
-        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-white/5 rotate-6 transform animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-      </div>
-
+    <section id="hero"
+      className="relative min-h-screen bg-dark-bg text-white flex flex-col items-center justify-center px-4 pt-8 pb-20 overflow-hidden"
+      style={{ marginBottom: '-1px' }}
+    >
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
         {/* Main title with improved visual treatment */}
         <div className={`relative mb-4 transition-all duration-1000 delay-100 opacity-100 translate-y-0`}>
-          <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
           <h2 className="relative text-3xl md:text-6xl font-bold mb-1 text-white tracking-wide md:tracking-wider">
             <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.05em] md:tracking-[0.15em] leading-relaxed relative">
               <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">PANDORA EXPERIENCE</span>
               PANDORA EXPERIENCE
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-2">
-            ¿Estás listo para reconectar con tu esencia en tierras ancestrales?
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto my-2">
+            Una experiencia para soltar el dolor, la ansiedad, el estrés y el agotamiento emocional.
             <br />
-            No es sólo una experiencia, es el inicio de un nuevo camino de consciencia.
+            Aquí respiras, sientes… <span className="whitespace-nowrap">y sanas desde adentro.</span>
           </p>
         </div>
 
         {/* Featured video with HeroVideo component */}
         <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 opacity-100 scale-100`}>
-          {/* <img src="/images/hero/hero-img.jpeg" alt="Mujer en agua - Experiencia transformadora" /> */}
           <HeroVideo
             animationStyle="from-center"
             videoID="al54yJ5J59s"
@@ -118,18 +97,15 @@ export default function Hero() {
         </div>
 
         {/* Quote */}
-        <div className={`relative max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-300 opacity-100 translate-y-0`}>
-          <div className="absolute -left-6 top-0 text-3xl text-[#DC0073]/70">"</div>
-          <div className="absolute -right-6 bottom-0 text-3xl text-[#DC0073]/70">"</div>
-          <p className="text-2xl md:text-2xl italic font-light px-8 text-gray-300">
-            Un llamado para quienes buscan
-            <span className="font-bold"> conectar con su Ser</span>,
-            <span className="font-bold"> activar su energía </span>
-            y
-            <span className="font-bold"> liberar bloqueos </span>
-            mentales y emocionales.
-          </p>
-        </div>
+        <Quotes>
+          <span className="text-gray-300">
+            Haz una pausa… y deja que tu
+            <span className="font-bold"> cuerpo </span>
+            suelte lo que tu
+            <span className="font-bold"> mente </span>
+            ya no puede sostener.
+          </span>
+        </Quotes>
 
         {/* Event date and countdown section */}
         <div className={`mb-10 transition-all duration-1000 delay-400 opacity-100 translate-y-0`}>
@@ -139,16 +115,16 @@ export default function Hero() {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
               </svg>
-              <span className="font-semibold text-xl">Próximo Evento:</span>
+              <span className="font-semibold text-xl">Próximo Evento: </span>
             </div>
-            <span className="text-white font-semibold text-lg">- {
-              eventDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
-            } -</span>
+            <span className="text-white font-semibold text-lg">{
+              eventDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' })
+            } - Medellín (afueras)</span>
           </div>
 
           {/* Countdown timer with improved styling */}
           <div className="p-5 bg-dark-bg/30 backdrop-blur-sm rounded-xl border border-primary/10 shadow-lg">
-            <p className="text-sm text-white/70 mb-4">Reserva tu lugar y sé parte de esta experiencia.</p>
+            <p className="text-sm text-white/70 mb-4">Nos vemos en:</p>
             <div className="flex justify-center gap-3 md:gap-6">
               <CountdownUnit value={countdown.days} label="Días" color="bg-primary" />
               <CountdownUnit value={countdown.hours} label="Horas" color="bg-primary" />
