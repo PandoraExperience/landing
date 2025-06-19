@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CTA_SECTION_ID } from '@/app/variables';
-import Quotes from '../ui/Quotes';
+import { scrollToSection } from '@/app/lib/utils';
+import Quotes from '@/app/components/ui/Quotes';
 
 // ExperienceCard Component
 const ExperienceCard = ({
@@ -89,19 +90,6 @@ export default function ExperienceHighlights() {
     };
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <section ref={sectionRef} id="experiencia" className="relative py-16 px-4 bg-dark-bg text-white overflow-hidden">

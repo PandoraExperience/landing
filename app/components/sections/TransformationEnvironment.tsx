@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { scrollToSection } from '@/app/lib/utils';
 import { CTA_SECTION_ID } from '@/app/variables';
-import Quotes from '../ui/Quotes';
+import Quotes from '@/app/components/ui/Quotes';
 
 // Simple EnvironmentFeature component
 const EnvironmentFeature = ({
@@ -91,20 +92,6 @@ const TransformationEnvironment = () => {
 
     return () => clearInterval(timer);
   }, [galleryImages.length]);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   // Gallery navigation functions
   const handlePrevImage = () => {

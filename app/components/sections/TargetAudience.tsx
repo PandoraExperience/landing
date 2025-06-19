@@ -22,21 +22,6 @@ const IconListElement = ({ svgIconPath, title, description }: { svgIconPath: Rea
 const TargetAudience = () => {
   const [activeTab, setActiveTab] = useState('for-you');
 
-  // Add scroll handler function
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 120;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <section id="experiencia"
       className="relative pt-16 pb-24 px-4 bg-white overflow-hidden"
