@@ -23,19 +23,6 @@ const CountdownUnit = ({ value, label, color }: { value: number, label: string, 
 // Hero Component
 export default function Hero() {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
-
-  // Handle parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 10; // Reduced movement for subtlety
-      const y = (e.clientY / window.innerHeight - 0.5) * 10;
-      setParallaxOffset({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // Update countdown timer
   useEffect(() => {
@@ -67,27 +54,33 @@ export default function Hero() {
 
   return (
     <section id="hero"
-      className="relative min-h-screen bg-dark-bg text-white flex flex-col items-center justify-center px-4 pt-8 pb-20 overflow-hidden"
+      className="relative bg-dark-bg text-white flex flex-col items-center justify-center px-4 pt-4 pb-20 overflow-hidden"
       style={{ marginBottom: '-1px' }}
     >
       <div className="container mx-auto flex flex-col items-center text-center z-10 max-w-6xl">
         {/* Main title with improved visual treatment */}
-        <div className={`relative mb-4 transition-all duration-1000 delay-100 opacity-100 translate-y-0`}>
+        <div className={`relative transition-all duration-1000 delay-100 opacity-100 translate-y-0`}>
           <h2 className="relative text-3xl md:text-6xl font-bold mb-1 text-white tracking-wide md:tracking-wider">
             <span className="inline-block animate-text-glow bg-gradient-to-r from-white via-primary to-white bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(5,96,187,0.8)] tracking-[0.05em] md:tracking-[0.15em] leading-relaxed relative">
               <span className="absolute inset-0 opacity-20 blur-sm animate-pulse-slow">PANDORA EXPERIENCE</span>
               PANDORA EXPERIENCE
             </span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto my-2">
-            Una experiencia para soltar el dolor, la ansiedad, el estrés y el agotamiento emocional.
-            <br />
-            Aquí respiras, sientes… <span className="whitespace-nowrap">y sanas desde adentro.</span>
-          </p>
+
+          {/* Quote */}
+          <Quotes>
+            <span className="text-gray-300">
+              Haz una pausa… y deja que tu
+              <span className="font-bold"> cuerpo </span>
+              suelte lo que tu
+              <span className="font-bold"> mente </span>
+              ya no puede sostener.
+            </span>
+          </Quotes>
         </div>
 
         {/* Featured video with HeroVideo component */}
-        <div className={`w-full max-w-4xl mb-8 transition-all duration-1000 delay-200 opacity-100 scale-100`}>
+        <div className={`w-full max-w-4xl transition-all duration-1000 delay-200 opacity-100 scale-100`}>
           <HeroVideo
             animationStyle="from-center"
             videoID="al54yJ5J59s"
@@ -96,21 +89,19 @@ export default function Hero() {
           />
         </div>
 
-        {/* Quote */}
-        <Quotes>
-          <span className="text-gray-300">
-            Haz una pausa… y deja que tu
-            <span className="font-bold"> cuerpo </span>
-            suelte lo que tu
-            <span className="font-bold"> mente </span>
-            ya no puede sostener.
-          </span>
-        </Quotes>
+
+        <p className="text-lg text-gray-300 max-w-3xl mx-auto mt-4">
+          Una experiencia para soltar el dolor, la ansiedad, el estrés y el agotamiento emocional.
+          <br />
+        </p>
+        <p className='text-gray-400 text-md my-2'>
+          Aquí respiras, sientes… <span className="whitespace-nowrap">y sanas desde adentro.</span>
+        </p>
 
         {/* Event date and countdown section */}
-        <div className={`mb-10 transition-all duration-1000 delay-400 opacity-100 translate-y-0`}>
+        <div className={`my-6 transition-all duration-1000 delay-400 opacity-100 translate-y-0`}>
           {/* Event date */}
-          <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-2">
+          <div className="mb-4 flex flex-col md:flex-row items-center justify-center gap-2">
             <div className="flex items-center text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
@@ -133,9 +124,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        {/* CTA button with social proof element */}
-        <FormSection />
       </div>
 
       {/* Wave divider with subtle gradient */}

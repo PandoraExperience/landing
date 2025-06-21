@@ -2,13 +2,14 @@
 export const eventDate = new Date("2025-07-19T00:00:00");
 
 // Call to action section ID
-export const CTA_SECTION_ID = "registration-form";
+// export const CTA_SECTION_ID = "registration-form";
+export const CTA_SECTION_ID = "price";
 
 // WhatsApp contact information
 export const whatsappContact = {
   // Formatted for WhatsApp (removed spaces)
-  // number: "+573127811615", // Chakana
-  number: "+573165137110", // Naty
+  number: "+573127811615", // Chakana
+  // number: "+573165137110", // Naty
   message: "Hola! Me interesa saber más sobre la experiencia PANDORA. Mi nombre es: "
 };
 
@@ -25,7 +26,10 @@ export const experience = {
     legalIdType: "CC"
   },
   price: {
-    amountInCents: 49900000,
+    amountInCents: 49700000,
+    promoEarlyBird: {
+      percentage: 30
+    },
     currency: "COP",
     promoApplied: {
       percentage: 10

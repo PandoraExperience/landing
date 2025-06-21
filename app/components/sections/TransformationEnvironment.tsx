@@ -31,7 +31,6 @@ const EnvironmentFeature = ({
 
 const TransformationEnvironment = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -44,18 +43,6 @@ const TransformationEnvironment = () => {
     '/images/venue/venue3.jpg',
     '/images/venue/venue4.jpg',
   ];
-
-  // Handle parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      setParallaxOffset({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // Intersection Observer for animation on scroll
   useEffect(() => {
@@ -115,19 +102,19 @@ const TransformationEnvironment = () => {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 NATURALEZA & DESPERTAR
               </span>
             </div>
           </div>
 
           <Quotes><span className="text-gray-300">
-            "La naturaleza no sana con fuerza, sino con presencia"
+            La naturaleza no sana con fuerza, sino con presencia
           </span></Quotes>
 
           {/* Main Title with glow effect */}
           <div className="relative mb-8">
-            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
             <h2 className="relative text-4xl md:text-5xl font-bold text-white text-center">
               Transformación Profunda
             </h2>
@@ -186,7 +173,7 @@ const TransformationEnvironment = () => {
             <EnvironmentFeature
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H7a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2 a10 10 0 1 0 0 20 a10 10 0 1 0 0-20 M2 12h20 M12 2c4 3 4 17 0 20 M12 2c-4 3-4 17 0 20" />
                 </svg>
               }
               title="Ubicación exclusiva en la naturaleza"
@@ -196,7 +183,7 @@ const TransformationEnvironment = () => {
             <EnvironmentFeature
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m0 0l-2.828 2.828m0 0a9 9 0 010-12.728m2.828 2.828a9 9 0 010 12.728" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 8a5 5 0 000 8 M5 5a9 9 0 000 14 M16 8a5 5 0 010 8 M19 5a9 9 0 010 14" />
                 </svg>
               }
               title="Ambiente libre de distracciones"

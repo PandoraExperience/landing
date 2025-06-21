@@ -203,7 +203,9 @@ const FormSection = () => {
       isOpen={showTermsModal}
       onClose={() => { setShowTermsModal(false); formData.agreeToTerms = true; }}
     />
-    <div id="registration-form" className="max-w-2xl mx-auto mb-5 text-left">
+    <div
+      id="registration-form"
+      className="max-w-2xl mx-auto mb-5 text-left">
       {!showPayment ? (
         // Registration Form
         <form onSubmit={handleSubmit} className="bg-[#111111] rounded-xl p-8">
