@@ -24,7 +24,7 @@ const TargetAudience = () => {
 
   return (
     <section id="experiencia"
-      className="relative pt-16 pb-24 px-4 bg-white overflow-hidden"
+      className="relative pt-8 pb-24 px-4 bg-white overflow-hidden"
       style={{ marginBottom: '-1px' }}
     >
       <div className="container mx-auto relative z-10">
@@ -32,7 +32,7 @@ const TargetAudience = () => {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-6 py-2 rounded-full bg-white backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
+              <span className="inline-block px-6 py-2 rounded-full bg-white backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 NO HAY CASUALIDADES
               </span>
             </div>
@@ -46,7 +46,7 @@ const TargetAudience = () => {
           {/* Main Title with glow effect */}
           <div className="relative transition-all duration-300">
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
 
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-dark-bg">
               ¿Para quién es esta experiencia?

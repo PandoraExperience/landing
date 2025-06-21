@@ -1,5 +1,5 @@
 import React from 'react';
-import Thankyou from '@/app/components/sections/Thankyou';
+import Thankyou from '@/app/thankyou/Thankyou';
 import WhatsAppWidget from '@/app/components/ui/WA-Widget';
 import Footer from '../components/layout/Footer';
 

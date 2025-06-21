@@ -84,17 +84,17 @@ const Testimonials = () => {
     <section
       ref={sectionRef}
       id="testimonios"
-      className="relative py-16 px-4 overflow-hidden bg-dark-bg text-white"
+      className="relative py-8 px-4 overflow-hidden bg-dark-bg text-white"
     >
 
       {/* Content Container */}
       <div className="container mx-auto relative z-10 max-w-6xl">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 HISTORIAS DE TRANSFORMACIÓN
               </span>
             </div>
@@ -108,10 +108,10 @@ const Testimonials = () => {
           {/* Main Title with glow effect */}
           <div className={`relative pb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
 
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
-              Testimonios Reales
+              Testimonios
             </h2>
 
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -160,7 +160,7 @@ const Testimonials = () => {
         </div>
 
         {/* Final Call to Action */}
-        <div className={`text-center transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mx-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
             Tú también puedes vivir esta experiencia transformadora
           </h3>
@@ -174,7 +174,7 @@ const Testimonials = () => {
               onClick={() => scrollToSection(CTA_SECTION_ID)}
               className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
             >
-              Vívelo tú también, reserva ahora
+              Vívelo tú también
             </button>
           </div>
         </div>

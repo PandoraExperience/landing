@@ -6,14 +6,14 @@ import React from 'react';
 const Footer = () => {
 
   return (
-    <footer className="relative bg-dark-bg text-white p-4 overflow-hidden">
+    <footer className="relative bg-dark-bg text-white px-4 py-8 overflow-hidden">
 
       <div className="container mx-auto relative">
         <div className="text-center">
-          <p className="text-gray-300 mb-6">
-            Una experiencia transformadora de inmersión en hielo para conectar con tu fuerza interior.
+          <p className="text-gray-300">
+            Una experiencia transformadora con respiración, meditación e inmersión en hielo, para conectar con tu fuerza interior.
           </p>
-          <div className="w-20 h-1 bg-[#DC0073]/80 rounded-full mx-auto md:mx-0"></div>
+          <div className="w-20 h-1 bg-accent-red/80 rounded-full mx-auto md:mx-0"></div>
         </div>
 
         {/* Footer bottom */}

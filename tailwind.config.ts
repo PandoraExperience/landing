@@ -21,6 +21,7 @@ const config: Config = {
         // Accent Colors
         'accent-blue': 'var(--accent-blue)',
         'accent-purple': 'var(--accent-purple)',
+        'accent-red': 'var(--accent-red)',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

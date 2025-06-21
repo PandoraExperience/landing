@@ -5,11 +5,12 @@ import Link from 'next/link';
 
 const YourGuide = () => {
   return (
-    <section id="guia" className="relative py-16 px-4 bg-dark-bg overflow-hidden">
+    <section id="guia"
+      className="relative py-8 px-4 bg-dark-bg overflow-hidden">
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)] mb-4">
+          <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)] mb-4">
             TU GUÍA
           </span>
           <h2 className="text-4xl font-bold text-white mb-3">
@@ -70,7 +71,7 @@ const YourGuide = () => {
             <div>
               <h3 className="text-primary text-xl font-semibold mb-4">Experiencia</h3>
               <p className="text-gray-300 leading-relaxed">
-                Más de 2 años acompañando en procesos terapéuticos a
+                Más de 4 años acompañando en procesos terapéuticos a
                 través de la re-programación mental, conexión espiritual y
                 energética, despertar del femenino a través del cuerpo y
                 ampliación de estados de consciencia.
@@ -98,7 +99,7 @@ const YourGuide = () => {
 
         {/* Main Title with glow effect */}
         <div className="relative mb-8">
-          <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+          <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
         </div>
       </div>
     </section>

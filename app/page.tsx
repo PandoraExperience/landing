@@ -4,7 +4,7 @@ import Header from '@/app/components/layout/Header';
 import Footer from '@/app/components/layout/Footer';
 import ReserveInfo from '@/app/components/sections/ReserveInfo';
 import TargetAudience from '@/app/components/sections/TargetAudience';
-import ExperienceHighlights from '@/app/components/sections/ExperienceHighlights';
+import ExperienceHighlights from '@/app/components/sections/Experience';
 import TransformationEnvironment from '@/app/components/sections/TransformationEnvironment';
 import Benefits from '@/app/components/sections/Benefits';
 import PriceCard from '@/app/components/sections/Price';
@@ -21,10 +21,10 @@ export default function Home() {
       <TargetAudience />
       <ExperienceHighlights />
       <TransformationEnvironment />
-      <Testimonials />
       <Benefits />
       <PriceCard />
       <ReserveInfo />
+      <Testimonials />
       <YourGuide />
       <FAQ />
       <Footer />

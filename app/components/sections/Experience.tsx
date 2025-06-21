@@ -11,7 +11,7 @@ const ExperienceCard = ({
   imageSrc,
   delay
 }: {
-  description: string;
+  description: React.ReactNode;
   imageSrc: string;
   delay: number;
 }) => {
@@ -20,26 +20,26 @@ const ExperienceCard = ({
       className="relative group transition-all duration-500 ease-out"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="relative overflow-hidden flex flex-col h-full rounded-2xl bg-dark-bg border border-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
+      <div className="relative flex flex-col h-full rounded-2xl bg-transparent border border-gray-800 shadow-lg hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
         {/* Image Container */}
-        <div className="relative w-full aspect-[16/9] overflow-hidden">
+        <div className="relative h-full aspect-[16/9]">
           <img
             src={imageSrc}
             alt="Experience image"
-            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+            className="aspect-[1] mx-auto object-cover h-full object-cover object-center transition-transform duration-700 group-hover:scale-110 rounded-full"
             loading="lazy"
           />
         </div>
 
         {/* Content */}
         <div className="p-6 flex-grow">
-          <p className="text-gray-300 leading-relaxed group-hover:translate-x-1 transition-transform duration-500">
+          <p className="text-gray-300 text-center text-lg leading-relaxed group-hover:translate-x-1 transition-transform duration-500">
             {description}
           </p>
         </div>
 
         {/* Card Bottom Bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#DC0073] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
       </div>
     </div>
   );
@@ -92,7 +92,9 @@ export default function ExperienceHighlights() {
 
 
   return (
-    <section ref={sectionRef} id="experiencia" className="relative py-16 px-4 bg-dark-bg text-white overflow-hidden">
+    <section
+      ref={sectionRef} id="experiencia"
+      className="relative py-8 px-4 bg-dark-bg text-white overflow-hidden">
       {/* Parallax background elements */}
       <div
         className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#0560bb]/20 filter blur-3xl"
@@ -111,26 +113,26 @@ export default function ExperienceHighlights() {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-[#DC0073]/30 text-[#DC0073] text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
-                EXPERIENCIA TRANSFORMADORA
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
+                LA EXPERIENCIA
               </span>
             </div>
           </div>
 
           {/* Quote */}
           <Quotes><span className="text-gray-300">
-            Cuando te dejas de resistir, empiezas a sanar.
+            Desconéctate del mundo para volver a conectar contigo
           </span></Quotes>
 
           {/* Main Title with glow effect */}
           <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-[#0560BB]/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
-              ¿Qué vas a vivir en esta experiencia?
+              ¿De qué se trata Pandora Experience?
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Acá te contamos lo que vas a vivir.
+              Es un retiro, una experiencia terapéutica, durante todo un día, en el que se trabajan los siguientes aspectos:
             </p>
           </div>
         </div>
@@ -139,36 +141,52 @@ export default function ExperienceHighlights() {
           {/* Card 1 - Mental Transformation */}
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <ExperienceCard
-              description="Técnicas milenarias de respiración para habitar el cuerpo."
+              description={<>
+                1. Sanación <span className="font-bold text-primary">Energética</span>
+                <br />
+                Limpia las cargas negativas y equilibrate energéticamente
+              </>}
               delay={400}
-              imageSrc="/images/experience/ex_breathe.jpg"
+              imageSrc="/images/experience/ex_energy.jpeg"
             />
           </div>
 
           {/* Card 2 - Emotional Expansion */}
           <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <ExperienceCard
-              description="Meditación para conectar con tu ser interior y recordar quien eres."
+              description={<>
+                2. Sanación <span className="font-bold text-accent-red">Emocional</span>
+                <br />
+                Suelta estrés, emociones acumuladas y miedos
+              </>}
               delay={600}
-              imageSrc="/images/experience/ex_meditation.jpg"
+              imageSrc="/images/experience/ex_emotion.jpeg"
             />
           </div>
 
           {/* Card 3 - Spiritual Renewal */}
           <div className={`transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <ExperienceCard
-              description="Reprogramación mental para aprender a observarte y dejar de reaccionar"
+              description={<>
+                3. Liberación <span className="font-bold text-primary">Mental</span>
+                <br />
+                Aprende a usar tu mente y dejar de reaccionar
+              </>}
               delay={800}
-              imageSrc="/images/experience/ex_mental.jpg"
+              imageSrc="/images/experience/ex_mental.jpeg"
             />
           </div>
 
           {/* Card 4 - Ice Immersion */}
           <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
             <ExperienceCard
-              description="Inmersión en Hielo para hackear tu biología y rendirte a la vida."
+              description={<>
+                4. Conexión <span className="font-bold text-accent-red">Espiritual</span>
+                <br />
+                Reconecta contigo mismo y con el poder del universo
+              </>}
               delay={1000}
-              imageSrc="/images/experience/ex_ice.jpg"
+              imageSrc="/images/experience/ex_espiritual.jpeg"
             />
           </div>
         </div>
