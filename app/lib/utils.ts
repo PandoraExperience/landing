@@ -68,6 +68,6 @@ export const trackFbPixel = (event: string, params: FbParams) => {
   fbq('track', event, params);
 };
 
-export const openWhatsApp = (number: string, message: string) => {
-  window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+export const openWhatsApp = (number: string, message: string, params?: string) => {
+  window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}${params ? `&${params}` : ''}`, '_blank', 'noopener,noreferrer');
 }
