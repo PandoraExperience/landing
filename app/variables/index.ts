@@ -26,7 +26,7 @@ export const experience = {
     legalIdType: "CC"
   },
   price: {
-    amountInCents: 49700000,
+    amountInCents: 49900000,
     promoEarlyBird: {
       percentage: 30
     },
@@ -73,3 +73,15 @@ export const wompiAPI = {
   currency: experience.price.currency,
   amountInCents: experience.price.amountInCents
 };
+
+// FB Pixel configuration
+export const fbPixel = {
+  pixelId: "569974109521705",
+  accessToken: process.env.NEXT_PUBLIC_FB_ACCESS_TOKEN,
+  version: "v23.0",
+  pixelEventName: "Lead",
+  pixelEventValue: experience.price.amountInCents / 100,
+  pixelEventCurrency: experience.price.currency
+};
+
+export const fbPixelUrl = `https://graph.facebook.com/${fbPixel.version}/${fbPixel.pixelId}/events?access_token=${fbPixel.accessToken}`;

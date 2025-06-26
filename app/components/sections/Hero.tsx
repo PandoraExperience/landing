@@ -83,7 +83,7 @@ export default function Hero() {
         <div className={`w-full max-w-4xl transition-all duration-1000 delay-200 opacity-100 scale-100`}>
           <HeroVideo
             animationStyle="from-center"
-            videoID="al54yJ5J59s"
+            videoID="0wXSw7ibELg"
             thumbnailSrc="/images/Hero/hero-img.jpeg"
             thumbnailAlt="Mujer en agua - Experiencia transformadora"
           />
