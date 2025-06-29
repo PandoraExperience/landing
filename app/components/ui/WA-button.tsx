@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { trackFbPixel, openWhatsApp } from '@/app/lib/utils';
-import { whatsappContact } from '@/app/variables';
 
 interface WAButtonProps {
   symbol: boolean;
@@ -11,18 +10,18 @@ interface WAButtonProps {
 }
 
 const WAButton = ({ symbol, className, children }: WAButtonProps) => {
-  const [params, setParams] = useState('');
+  const [params, setParams] = useState(new URLSearchParams());
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setParams(params.toString());
+    setParams(params);
   }, []);
 
   return (
     <button
       onClick={() => {
         trackFbPixel('Lead', { content_name: 'WhatsApp Contact' });
-        openWhatsApp(whatsappContact.number, whatsappContact.message, params);
+        openWhatsApp(params);
       }}
       className={"bg-[#25D366]/80 hover:bg-[#25D366]/65 rounded-lg hover:shadow-[#25D366]/40" + className}
     >

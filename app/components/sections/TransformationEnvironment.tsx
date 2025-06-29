@@ -5,21 +5,39 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { scrollToSection } from '@/app/lib/utils';
 import { CTA_SECTION_ID } from '@/app/variables';
 import Quotes from '@/app/components/ui/Quotes';
+import Button from '@/app/components/ui/Button';
+
+const environmentFeatures = [
+  {
+    id: 1,
+    iconPath: "M12 2 a10 10 0 1 0 0 20 a10 10 0 1 0 0-20 M2 12h20 M12 2c4 3 4 17 0 20 M12 2c-4 3-4 17 0 20",
+    title: "Ubicación exclusiva en la naturaleza",
+    description: "Solo una hora de Medellín, este territorio ancestral y de sanación, via Yolombó de facil acceso en transporte público y vehículo propio."
+  },
+  {
+    id: 2,
+    iconPath: "M8 8a5 5 0 000 8 M5 5a9 9 0 000 14 M16 8a5 5 0 010 8 M19 5a9 9 0 010 14",
+    title: "Ambiente libre de distracciones",
+    description: "Sin ruidos urbanos, solo el sonido del agua y la energía del entorno para reconectar contigo mismo."
+  },
+  {
+    id: 3,
+    iconPath: "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z",
+    title: "Rituales ancestrales",
+    description: "Una combinación de ciencia, meditación y conexión con los elementos naturales para acompañar el proceso."
+  }
+];
 
 // Simple EnvironmentFeature component
-const EnvironmentFeature = ({
-  icon,
-  title,
-  description
-}: {
-  icon: React.ReactNode,
-  title: string,
-  description: string
+const EnvironmentFeature = ({ iconPath, title, description }: {
+  iconPath: string, title: string, description: string
 }) => {
   return (
     <div className="flex items-start space-x-5 p-3 rounded-xl group transition-all duration-300 hover:bg-dark-bg/50">
       <div className="flex-shrink-0 p-3 bg-primary/20 rounded-xl text-primary">
-        {icon}
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
+        </svg>
       </div>
       <div>
         <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
@@ -30,7 +48,6 @@ const EnvironmentFeature = ({
 };
 
 const TransformationEnvironment = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -43,33 +60,6 @@ const TransformationEnvironment = () => {
     '/images/venue/venue3.jpg',
     '/images/venue/venue4.jpg',
   ];
-
-  // Intersection Observer for animation on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   // Auto-rotate images
   useEffect(() => {
@@ -94,11 +84,11 @@ const TransformationEnvironment = () => {
   };
 
   return (
-    <section ref={sectionRef} id="transformacion" className="relative py-16 px-4 bg-dark-bg text-white overflow-hidden">
+    <section ref={sectionRef} id="transformacion" className="relative py-8 px-4 bg-dark-bg text-white overflow-hidden">
 
       <div className="container mx-auto">
         {/* Header with fade-in animation */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-16 transition-all duration-1000 opacity-100 translate-y-0`}>
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
@@ -169,53 +159,27 @@ const TransformationEnvironment = () => {
           </div>
 
           {/* Right Column - Features List with staggered animations */}
-          <div className={`space-y-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <EnvironmentFeature
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2 a10 10 0 1 0 0 20 a10 10 0 1 0 0-20 M2 12h20 M12 2c4 3 4 17 0 20 M12 2c-4 3-4 17 0 20" />
-                </svg>
-              }
-              title="Ubicación exclusiva en la naturaleza"
-              description="Solo una hora de Medellín, este territorio ancestral y de sanación, via Yolombó de facil acceso en transporte público y vehículo propio."
-            />
-
-            <EnvironmentFeature
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 8a5 5 0 000 8 M5 5a9 9 0 000 14 M16 8a5 5 0 010 8 M19 5a9 9 0 010 14" />
-                </svg>
-              }
-              title="Ambiente libre de distracciones"
-              description="Sin ruidos urbanos, solo el sonido del agua y la energía del entorno para reconectar contigo mismo."
-            />
-
-            <EnvironmentFeature
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-              }
-              title="Rituales ancestrales"
-              description="Una combinación de ciencia, meditación y conexión con los elementos naturales para acompañar el proceso."
-            />
+          <div className={`space-y-8 transition-all duration-1000 delay-400 opacity-100 translate-y-0`}>
+            {environmentFeatures.map((feature) => (
+              <EnvironmentFeature
+                key={feature.id}
+                iconPath={feature.iconPath}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
           </div>
         </div>
 
         {/* Call to Action with enhanced animations */}
-        <div className={`text-center mt-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mt-16 transition-all duration-1000 delay-600 opacity-100 translate-y-0`}>
           {/* Urgency message */}
-          <p className="text-primary font-medium mb-4">
+          <p className="text-primary font-medium -mb-2">
             Para garantizar una experiencia semi-personalizada, tenemos cupos limitados
           </p>
-
-          {/* CTA Button */}
-          <button
-            onClick={() => scrollToSection(CTA_SECTION_ID)}
-            className="px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
-          >
+          <Button size="lg" onClick={() => scrollToSection(CTA_SECTION_ID)} >
             QUIERO PARTICIPAR
-          </button>
+          </Button>
         </div>
       </div>
     </section>

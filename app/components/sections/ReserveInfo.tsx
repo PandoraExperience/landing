@@ -4,8 +4,7 @@ import React from 'react';
 import { CTA_SECTION_ID } from '@/app/variables';
 import { scrollToSection } from '@/app/lib/utils';
 import Quotes from '@/app/components/ui/Quotes';
-import { Button } from '../ui/Button';
-import FormSection from './registration/Form';
+import Button from '@/app/components/ui/Button';
 
 const ReserveInfo = () => {
   return (
@@ -55,7 +54,7 @@ const ReserveInfo = () => {
               </div>
             </div>
 
-            {/* 2. Bonos primeros valientes */}
+            {/* 2. Premio al compromiso */}
             <div className="flex items-start gap-4 mb-6 pb-6 border-b border-white/5">
               <div className="flex-shrink-0 w-12 h-12 bg-[#0A0A0A] rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
@@ -64,7 +63,7 @@ const ReserveInfo = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-white text-xl font-semibold mb-1">Bonos primeros valientes</h3>
+                <h3 className="text-white text-xl font-semibold mb-1">Premio al compromiso</h3>
                 <p className="text-gray-400">Si decides separar tu cupo con el 100%, premiamos tu valentía con sesión canalizada del oráculo donde tus guías espirituales te brindaran claridad.</p>
               </div>
             </div>
@@ -100,21 +99,9 @@ const ReserveInfo = () => {
         </div>
 
         {/* CTA button with social proof element */}
-        <div className={`flex flex-col items-center transition-all duration-1000 delay-500 opacity-100 translate-y-0`}>
-          {/* Enhanced CTA with improved visibility and contrast */}
-          <div className="relative mt-16 group">
-            {/* Animated glow effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary-light to-primary rounded-full opacity-80 blur-md animate-pulse group-hover:opacity-100"></div>
-            {/* Button with white background for high contrast */}
-            <Button
-              variant="default"
-              size="lg"
-              onClick={() => scrollToSection(CTA_SECTION_ID)}
-            >
-              RESERVA TU LUGAR
-            </Button>
-          </div>
-        </div>
+        <Button size="lg" onClick={() => scrollToSection(CTA_SECTION_ID)} >
+          RESERVAR MI LUGAR
+        </Button>
       </div>
     </section>
   );
