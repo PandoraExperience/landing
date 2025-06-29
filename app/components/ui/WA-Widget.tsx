@@ -1,16 +1,22 @@
 'use client';
 
+import React, { useEffect, useState } from 'react';
 import { trackFbPixel, openWhatsApp } from '@/app/lib/utils';
-import { whatsappContact } from '@/app/variables';
-import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export default function WhatsAppWidget() {
+  const [params, setParams] = useState(new URLSearchParams());
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setParams(params);
+  }, []);
+
   const [isHovered, setIsHovered] = useState(false);
 
   const handleWhatsAppClick = () => {
     trackFbPixel('Lead', { content_name: 'WhatsApp Contact' });
-    openWhatsApp(whatsappContact.number, whatsappContact.message);
+    openWhatsApp(params);
   };
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 
 const BenefitItem = ({ text, icon }: { text: string, icon: React.ReactNode }) => {
   return (
-    <div className="flex items-center space-x-4 p-5 bg-dark-bg/90 rounded-lg border border-white/10 hover:border-accent-red/30 transition-colors shadow-md hover:shadow-lg group">
+    <div className="flex items-center space-x-4 p-5 bg-dark-bg/90 rounded-lg hover:bg-dark-bg transition-colors shadow-md hover:shadow-lg group">
       <div className="w-10 h-10 rounded-lg bg-accent-red/20 text-accent-red flex items-center justify-center flex-shrink-0 group-hover:bg-accent-red/30 transition-colors">
         {icon}
       </div>
@@ -20,7 +20,7 @@ const Benefits = () => {
           {/* Decorative top element */}
           <div className="flex items-center justify-center mb-8">
             <div className="relative">
-              <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
+              <span className="inline-block px-6 py-2 rounded-full bg-black/40 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)]">
                 Valor y Beneficios
               </span>
             </div>

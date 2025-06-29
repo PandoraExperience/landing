@@ -1,5 +1,6 @@
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { whatsappContact } from '@/app/variables';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -17,7 +18,7 @@ export const scrollToSection = (sectionId: string) => {
       behavior: 'smooth'
     });
   }
-};
+}
 
 export const formatNumber = (num: number) => {
   return num.toLocaleString('es-ES');
@@ -51,7 +52,7 @@ export const formatDateToMailerLite = (d: Date = new Date()) => {
   const m = pad(d.getMinutes());
   const s = pad(d.getSeconds());
   return `${Y}-${M}-${D} ${h}:${m}:${s}`;
-};
+}
 
 interface FbParams {
     content_name?: string,
@@ -66,8 +67,12 @@ interface FbParams {
 export const trackFbPixel = (event: string, params: FbParams) => {
   // @ts-ignore calling the facebook pixel
   fbq('track', event, params);
-};
+}
 
-export const openWhatsApp = (number: string, message: string, params?: string) => {
-  window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}${params ? `&${params}` : ''}`, '_blank', 'noopener,noreferrer');
+export const openWhatsApp = (params?: URLSearchParams, message?: string) => {
+  if (!message) message = whatsappContact.message;
+  const url = `${whatsappContact.api}send?phone=${whatsappContact.number.replace('+', '')}`;
+  if (!params) params = new URLSearchParams();
+  params.append('text', message);
+  window.open(`${url}&${params.toString()}`, '_blank', 'noopener,noreferrer');
 }

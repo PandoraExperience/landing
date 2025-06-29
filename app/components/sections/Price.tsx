@@ -56,21 +56,20 @@ const PriceCard = () => {
                   Bono primeros valientes
                 </p>
                 <p className="text-base text-gray-200 md:mx-16 mx-4">
-                  Promoción especial para los primeros
-                  <span className="font-bold text-accent-red"> 5 primeros valientes </span>
-                  que decidan vivir esta experiencia de transformación.
+                  Promoción especial para los <span
+                    className="font-bold text-accent-red">
+                    5 primeros valientes</span> que decidan vivir esta experiencia de transformación.
                 </p>
                 <br />
                 <div className="flex items-center justify-center gap-3">
                   <span className="text-accent-red px-4 py-2 rounded-md text-xl font-bold">
                     Descuento {experience.price.promoEarlyBird.percentage}%
                   </span>
-                  <span className="font-bold text-2xl underline">
+                  <span className="font-bold text-3xl underline">
                     {roundLocalNumber(experience.price.amountInCents / 100 * (1 - experience.price.promoEarlyBird.percentage / 100), 3)}
                     {` ${experience.price.currency}`}
                   </span>
                 </div>
-
               </div>
 
 
@@ -82,7 +81,7 @@ const PriceCard = () => {
               </button> */}
               <WAButton symbol={true} className="
               mx-auto bg-accent-red py-4 px-6 rounded-lg font-bold transition-colors flex items-center justify-center space-x-3 shadow-lg hover:shadow-accent-red/30">
-                <p className="text-xl">INSCRÍBETE AQUÍ</p>
+                <p className="text-xl">INSCRIBIRME</p>
               </WAButton>
             </div>
           </div>

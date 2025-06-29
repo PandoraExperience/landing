@@ -6,6 +6,7 @@ import { HeroVideo } from '@/app/components/ui/hero-video';
 import { CTA_SECTION_ID } from '@/app/variables';
 import { scrollToSection } from '@/app/lib/utils';
 import Quotes from '../ui/Quotes';
+import Button from '@/app/components/ui/Button';
 
 // Testimonial video data structure
 const testimonialVideos = [
@@ -81,11 +82,8 @@ const Testimonials = () => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="testimonios"
-      className="relative py-8 px-4 overflow-hidden bg-dark-bg text-white"
-    >
+    <section ref={sectionRef} id="testimonios"
+      className="relative py-8 px-4 overflow-hidden bg-dark-bg text-white">
 
       {/* Content Container */}
       <div className="container mx-auto relative z-10 max-w-6xl">
@@ -161,22 +159,14 @@ const Testimonials = () => {
 
         {/* Final Call to Action */}
         <div className={`text-center mx-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+          <h3 className="text-2xl md:text-3xl font-bold text-white">
             Tú también puedes vivir esta experiencia transformadora
           </h3>
 
           {/* CTA Button with pulsing effect */}
-          <div className="relative inline-block">
-            {/* Pulsing background effect */}
-            <div className="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse-slow opacity-70 -z-10"></div>
-
-            <button
-              onClick={() => scrollToSection(CTA_SECTION_ID)}
-              className="relative px-10 py-6 text-lg font-bold uppercase tracking-wider bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(5,96,187,0.5)] hover:shadow-[0_0_25px_rgba(5,96,187,0.8)]"
-            >
-              Vívelo tú también
-            </button>
-          </div>
+          <Button onClick={() => scrollToSection(CTA_SECTION_ID)} size="lg">
+            QUIERO VIVIRLO
+          </Button>
         </div>
       </div>
     </section>
