@@ -11,11 +11,13 @@ import PriceCard from '@/app/components/sections/Price';
 import Testimonials from '@/app/components/sections/Testimonials';
 import FAQ from '@/app/components/sections/FAQ';
 import YourGuide from '@/app/components/sections/YourGuide';
+import SaveLeadParams from '@/app/lib/SaveLeadParams';
 import WhatsAppWidget from '@/app/components/ui/WA-Widget';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-dark-bg">
+      <SaveLeadParams />
       <Header />
       <Hero />
       <TargetAudience />
