@@ -10,21 +10,23 @@ import YourGuide from '@/app/components/sections/YourGuide';
 import FAQ from '@/app/components/sections/FAQ';
 import FormSection from '@/app/components/sections/registration/Form';
 import SaveLeadParams from '@/app/lib/SaveLeadParams';
+import WhatsAppWidget from '@/app/components/ui/WA-Widget';
 
 export default function TestPage() {
   return (
     <main className="min-h-screen bg-dark-bg">
+      <SaveLeadParams />
       <Header />
-      <div className="pt-20 flex flex-col">
-        <SaveLeadParams />
+      <div className="pt-20">
         <FormSection />
-        <TransformationEnvironment />
-        <Testimonials />
-        <Benefits />
-        <PriceCard />
-        <YourGuide />
-        <FAQ />
       </div>
+      <TransformationEnvironment />
+      <Testimonials />
+      <Benefits />
+      <PriceCard />
+      <YourGuide />
+      <FAQ />
+      <WhatsAppWidget />
     </main>
   );
 } 
