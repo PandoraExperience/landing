@@ -10,7 +10,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing lead data' }, { status: 400 });
     }
 
-    const row = Object.entries(lead).flat();
+    const unorderedParams = Object.entries(lead);
+    const orderedParams = unorderedParams.sort((a, b) => a[0].localeCompare(b[0]));
+    const row = orderedParams.flat();
     const response = await fetch(SHEET_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
