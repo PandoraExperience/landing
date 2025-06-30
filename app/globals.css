@@ -27,15 +27,15 @@
   --accent-red: #DC0073;
 
   /* Colors for the rainbow button */
-  --color-1: 25, 95%, 53%;
+  --warm-orange: 25, 95%, 53%;
   /* warm orange */
-  --color-2: 210, 100%, 20%;
+  --deep-blue: 210, 100%, 20%;
   /* deep blue */
-  --color-3: 300, 80%, 50%;
+  --purple: 300, 80%, 50%;
   /* purple */
-  --color-4: 145, 50%, 36%;
+  --forest-green: 145, 50%, 36%;
   /* forest green */
-  --color-5: 45, 100%, 50%;
+  --gold: 45, 100%, 50%;
   /* gold */
 }
 
