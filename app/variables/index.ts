@@ -1,5 +1,5 @@
 // Event date
-export const eventDate = new Date("2025-08-24T00:00:00");
+export const eventDate = new Date("2025-10-18T00:00:00");
 
 // Call to action section ID
 // export const CTA_SECTION_ID = "registration-form";
