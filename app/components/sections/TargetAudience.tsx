@@ -6,7 +6,7 @@ import Quotes from '@/app/components/ui/Quotes';
 const IconListElement = ({ svgIconPath, title, description }: { svgIconPath: React.ReactNode, title: string, description: string }) => {
   return (
     <li className="flex items-center space-x-6 group p-1 rounded-xl transition-all duration-300 hover:bg-primary/5">
-      <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-110 transition-transform">
+      <div className="flex-shrink-0 p-4 bg-primary/10 rounded-full text-primary group-hover:scale-125 transition-transform">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           {svgIconPath}
         </svg>
@@ -88,9 +88,8 @@ const TargetAudience = () => {
             <div className="relative lg:flex items-center">
               {/* Visual Image Side */}
               <div className="lg:w-5/12 mb-10 lg:mb-0">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_70px_-10px_rgba(5,96,187,0.3)]">
-                  <img
-                    src="/images/experience/experience-for.jpg"
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl duration-300 hover:scale-[1.02]">
+                  <img src="/images/experience/experience-for.jpg"
                     alt="Persona lista para la transformación"
                     className="w-full h-[500px] object-cover"
                   />
@@ -154,9 +153,8 @@ const TargetAudience = () => {
             <div className="relative lg:flex items-center">
               {/* Visual Image Side */}
               <div className="lg:w-5/12 mb-10 lg:mb-0 order-1 lg:order-2">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_70px_-10px_rgba(5,96,187,0.3)]">
-                  <img
-                    src="/images/experience/experience-not.jpg"
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl duration-300 hover:scale-[1.02]">
+                  <img src="/images/experience/experience-not.jpg"
                     alt="Persona evitando desafíos"
                     className="w-full h-[500px] object-cover"
                   />
