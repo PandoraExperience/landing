@@ -23,6 +23,7 @@ jobs:
           host: 131.0.136.173
           username: root
           key: ${{ secrets.PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE_PRODUCT }}
           port: 22
           script: |
             cd /home/landing-chacana/
