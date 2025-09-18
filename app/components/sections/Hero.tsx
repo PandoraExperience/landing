@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { HeroVideo } from '@/app/components/ui/hero-video';
-import { eventDate } from '@/app/variables';
+import { eventDate, nextDate } from '@/app/variables';
 import FormSection from './registration/Form';
 import Quotes from '../ui/Quotes';
 
@@ -28,11 +28,14 @@ export default function Hero() {
   useEffect(() => {
     const updateCountdown = () => {
       const now = new Date();
-      const diff = eventDate.getTime() - now.getTime();
+      let diff = eventDate.getTime() - now.getTime();
 
-      if (diff <= 0) {
-        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
+      if (diff <= 0) { // Event date passed
+        diff = nextDate.getTime() - now.getTime();
+        if (diff <= 0) { // Next date passed
+          setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+          return;
+        }
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
