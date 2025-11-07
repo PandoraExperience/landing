@@ -108,7 +108,7 @@ const ExperienceHighlights = () => {
         <h3 className="relative text-4xl md:text-5xl font-bold mb-4 text-white">
           ¿De qué se trata Pandora Experience? </h3>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-          Es un retiro, una experiencia terapéutica, durante todo un día, en el que se trabajan los siguientes aspectos:
+          Es un retiro terapéutico de un día que combina técnicas ancestrales y científicas para ayudarte a sanar desde adentro.
         </p>
       </div>
 
@@ -117,28 +117,28 @@ const ExperienceHighlights = () => {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <ExperienceCard imageSrc="/images/experience/ex_energy.jpeg"
             description={<> 1. Sanación <span className="font-bold text-primary">Energética</span>
-              <br /> Limpia las cargas negativas y equilibrate energéticamente </>} />
+              <br /> Limpia memorias del pasado, culpa, tristeza o apegos. </>} />
         </div>
 
         {/* Card 2 - Emotional Expansion */}
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <ExperienceCard imageSrc="/images/experience/ex_emotion.jpeg"
             description={<> 2. Sanación <span className="font-bold text-accent-red">Emocional</span>
-              <br /> Suelta estrés, emociones acumuladas y miedos </>} />
+              <br /> Transforma el miedo en poder. Una práctica que te enseña a rendirte sin huir del dolor. </>} />
         </div>
 
         {/* Card 3 - Spiritual Renewal */}
         <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <ExperienceCard imageSrc="/images/experience/ex_mental.jpeg"
             description={<> 3. Liberación <span className="font-bold text-primary">Mental</span>
-              <br /> Aprende a usar tu mente y dejar de reaccionar </>} />
+              <br /> Aprende a soltar la ansiedad y el sobrepensamiento a través del cuerpo. </>} />
         </div>
 
         {/* Card 4 - Ice Immersion */}
         <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <ExperienceCard imageSrc="/images/experience/ex_espiritual.jpeg"
             description={<> 4. Conexión <span className="font-bold text-accent-red">Espiritual</span>
-              <br /> Reconecta contigo mismo y con el poder del universo </>} />
+              <br /> Reconecta contigo mismo y con el poder del universo. </>} />
         </div>
       </div>
 

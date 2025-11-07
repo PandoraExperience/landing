@@ -4,14 +4,14 @@ import "./globals.css";
 import Script from 'next/script';
 
 // Variables setup
-const mark = "MUNAY-KI";
+const mark = "Pandora";
 const metadataBase = new URL(experience.rrss.website);
 const siteName = `${experience.name} - ${experience.shortDescription} | ${mark}`;
 const siteDescription = experience.longDescription;
 const siteKeywords = [...experience.category.keywords, mark];
 const siteAuthors = [{ name: mark }];
 const siteCategory = experience.category.name;
-const siteTwitter = "@munayki";
+const siteTwitter = "@pandora.experiences";
 const siteGoogleAnalytics = "G-SV2W2VMK1M";
 const siteFacebookPixel = "569974109521705";
 const siteFacebookVerification = "7s909e2dthuis6r8nxffz13hhxdpm1";
@@ -147,7 +147,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "offers": eventOffer,
               "organizer": {
                 "@type": "Organization",
-                "name": "MUNAY-KI",
+                "name": "Pandora",
                 "url": metadataBase
               },
               "eventStatus": "https://schema.org/EventScheduled",

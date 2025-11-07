@@ -17,7 +17,7 @@
 ## Estructura del Proyecto
 
 ```
-munayki-landing/
+pandora-landing/
 ├── app/
 │   ├── components/
 │   │   ├── ui/ (componentes reutilizables)
