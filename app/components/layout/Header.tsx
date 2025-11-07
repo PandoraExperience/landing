@@ -11,7 +11,7 @@ const sections = [
   { id: 'precio', label: 'Precio' },
   // { id: 'benefits', label: 'Beneficios' },
   { id: 'reserva', label: 'Reserva' },
-  { id: 'guia', label: 'Guía' },
+  { id: 'dirige', label: 'Dirige' },
   { id: 'faq', label: 'FAQ' }
 ];
 

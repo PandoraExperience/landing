@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 const YourGuide = () => {
   return (
-    <section id="guia"
+    <section id="dirige"
       className="relative py-8 px-4 bg-dark-bg overflow-hidden">
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)] mb-4">
-            TU GUÍA
+            DIRIGE
           </span>
           <h2 className="text-4xl font-bold text-white mb-3">
             NATY DIAZ
@@ -60,10 +60,9 @@ const YourGuide = () => {
             <div>
               <h3 className="text-primary text-xl font-semibold mb-4">Especialización</h3>
               <p className="text-gray-300 leading-relaxed">
-                Mentora de negocios conscientes, experta en
-                eliminación de barreras mentales y conexión con el ser
-                espiritual. Facilitadora de procesos de transformación y
-                despertar de consciencia.
+                He acompañado a cientos de mujeres a reconectar con su poder interior, sanar heridas del pasado y abrir su corazón al amor propio.
+                Mi propósito es recordarte que no tienes que sanar sola.
+                El hielo, la respiración y la presencia son caminos para regresar a ti.
               </p>
             </div>
 

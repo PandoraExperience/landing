@@ -49,7 +49,7 @@ const TargetAudience = () => {
             <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
 
             <h2 className="relative text-4xl md:text-5xl font-bold mb-4 text-dark-bg">
-              ¿Para quién es esta experiencia?
+              ¿Para qué es esta experiencia?
             </h2>
 
           </div>
@@ -71,7 +71,7 @@ const TargetAudience = () => {
                   : 'text-gray-600 hover:text-dark-bg'
                   }`}
               >
-                No es para personas...
+                No es para...
               </button>
             </div>
           </div>
@@ -107,32 +107,27 @@ const TargetAudience = () => {
                   {[
                     {
                       title: "Liberar bloqueos emocionales y mentales",
-                      description: "Soltar cargas invisibles emocionales debido a situaciones familiares, de pareja o de infancia.",
+                      description: "Si aún sientes ansiedad o tristeza después de una ruptura.",
 /* Unlock/key icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                     },
                     {
-                      title: "Superar altas cargas de estrés y ansiedad",
-                      description: "Eres un profesional o emprendedor que necesita liberar el estrés y mejorar su bienestar.",
+                      title: "Descansar de pensamientos en bucles",
+                      description: "Te cuesta dormir, comer o concentrarte porque tu mente no se apaga.",
 /* Calming wave icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
                     },
                     {
                       title: "Reconectar contigo",
-                      description: "Buscas un crecimiento personal y espiritual que te ayude a reconectar contigo mismo.",
+                      description: "Sientes que perdiste tu valor, tu energía o tu dirección.",
 /* Transformation icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
                     },
                     {
-                      title: "Claridad, energía y buen descanso",
-                      description: "Sientes falta de energía, sueño, motivación o claridad y quieres recuperar tu equilibrio.",
-/* ShieldCheck icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    },
-                    {
-                      title: "Crecer y salir de tu zona de confort",
-                      description: "Quieres aprender a atravesar el miedo, la incomodidad y la incertidumbre con valentia",
+                      title: "Crecer y romper ciclos",
+                      description: "Quieres dejar de repetir patrones y relaciones que te lastiman.",
 /* Growth icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 12 m-8 0 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 M12 12 l8 -9 M21 2 h-4 m4 0 v4" />
                     },
                     {
                       title: "Tranquilidad, confianza y amor propio",
-                      description: "Necesitas tomar mejores decisiones con confianza y creyendo más en ti",
+                      description: "Deseas recuperar la confianza, la calma y el amor propio.",
 /* Peace icon */ svgIconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20M12 12l6.928 4M12 12l-6.928 4" />
                     },
                   ].map((item, index) => (
