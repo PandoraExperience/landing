@@ -76,8 +76,8 @@ export default function Hero() {
               Haz una pausa… y deja que tu
               <span className="font-bold"> cuerpo </span>
               suelte lo que tu
-              <span className="font-bold"> mente </span>
-              ya no puede sostener.
+              <span className="font-bold"> corazón </span>
+              aun no ha podido soltar.
             </span>
           </Quotes>
         </div>
@@ -94,7 +94,7 @@ export default function Hero() {
 
 
         <p className="text-lg text-gray-300 max-w-3xl mx-auto mt-4">
-          Una experiencia para soltar el dolor, la ansiedad, el estrés y el agotamiento emocional.
+          Una experiencia terapéutica y ancestral para cerrar ciclos, soltar el dolor de una ruptura y volver a sentir paz.
           <br />
         </p>
         <p className='text-gray-400 text-md my-2'>
