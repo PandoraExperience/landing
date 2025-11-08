@@ -75,7 +75,7 @@ const Benefits = () => {
               icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 4v16"></path><path d="M17 4v16"></path><path d="M19 16H3a2 2 0 0 0-2 2v1h20v-1a2 2 0 0 0-2-2Z"></path><path d="M8 16v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"></path></svg>}
             />
             <BenefitItem
-              text="Espacio natural privado (max 20 personas)"
+              text="Espacio natural privado (max 15 personas)"
               icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"></path></svg>}
             />
             <BenefitItem

@@ -20,7 +20,7 @@ const config: Config = {
 
         // Accent Colors
         'accent-blue': 'var(--accent-blue)',
-        'accent-purple': 'var(--accent-purple)',
+        'accent-pink': 'var(--accent-pink)',
         'accent-red': 'var(--accent-red)',
       },
       backgroundImage: {
