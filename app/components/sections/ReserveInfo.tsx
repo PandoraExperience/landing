@@ -34,7 +34,7 @@ const ReserveInfo = () => {
           </h2>
 
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Llena el formulario para separar tu lugar. Al terminar, te compartiremos los datos de pago y cómo completar tu inscripción.
+
           </p>
         </div>
 

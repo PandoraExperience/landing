@@ -13,7 +13,7 @@ const PriceCard = () => {
         <div className="bg-black/50 rounded-xl border border-white/10 relative shadow-xl mt-8">
           {/* Corner badge - final version */}
           <div className="absolute -top-6 -right-6 bg-accent-red text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-xl z-10 uppercase tracking-wider ring-2 ring-white/10">
-            Bono para primeros valientes
+            Oferta de cierre de año
           </div>
 
           <div className="p-8">
@@ -22,12 +22,12 @@ const PriceCard = () => {
 
               {/* Price display */}
               <div className="mb-6">
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center gap-1">
                   <span className="text-gray-300 text-2xl line-through">
                     {roundLocalNumber(experience.price.amountInCents / 100 / (1 - experience.price.promoApplied.percentage / 100), 3)}
                     {` ${experience.price.currency}`}
                   </span>
-                  <span className="bg-accent-red/20 text-accent-red px-4 py-2 rounded-md text-xl font-bold">
+                  <span className="text-accent-red px-4 py-2 rounded-md text-xl font-bold">
                     Descuento {experience.price.promoApplied.percentage}%
                   </span>
                 </div>
@@ -45,31 +45,41 @@ const PriceCard = () => {
               <div className="mb-6">
                 <p className="text-base text-gray-200 mb-3">
                   <span className="font-bold text-accent-red">(</span>
-                  Cupos limitados a 20 personas
+                  Cupos limitados a 15 personas
                   <span className="font-bold text-accent-red">)</span>
                 </p>
               </div>
 
               {/* Bonus */}
-              <div className="bg-accent-red/10 rounded-lg p-4 mb-6 border border-accent-red/20">
+              <div className="bg-accent-pink rounded-lg p-4 max-w-xl mx-auto border border-accent-red">
                 <p className="text-accent-red text-2xl font-bold mb-2">
                   Bono primeros valientes
                 </p>
-                <p className="text-base text-gray-200 md:mx-16 mx-4">
-                  Promoción especial para los <span
+                <p className="text-base text-gray-200 md:mx-16 mt-4">
+                  Solo para l@s <span
                     className="font-bold text-accent-red">
-                    5 primeros valientes</span> que decidan vivir esta experiencia de transformación.
+                    5 primer@s valientes</span> que se inscriban ❤️
                 </p>
                 <br />
-                <div className="flex items-center justify-center gap-3">
-                  <span className="text-accent-red px-4 py-2 rounded-md text-xl font-bold">
-                    Descuento {experience.price.promoEarlyBird.percentage}%
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <span className="text-accent-red px-4 rounded-md text-xl font-bold">
+                    Descuento especial
+                    {/*experience.price.promoEarlyBird.percentage + experience.price.promoApplied.percentage*/}
                   </span>
                   <span className="font-bold text-3xl underline">
                     {roundLocalNumber(experience.price.amountInCents / 100 * (1 - experience.price.promoEarlyBird.percentage / 100), 3)}
-                    {` ${experience.price.currency}`}
+                    <span className="text-gray-300 text-2xl">{` ${experience.price.currency}`}</span>
                   </span>
                 </div>
+                <p className="text-base text-gray-200 md:mx-16 my-2">
+                  Una oportunidad unica para vivir esta experiencia transformadora a precio especial.
+                </p>
+                <br />
+
+                <WAButton symbol={true} className="
+              mx-auto bg-accent-red py-4 px-6 rounded-lg font-bold transition-colors flex items-center justify-center space-x-3 shadow-lg hover:shadow-accent-red/30">
+                  <p className="text-xl">INSCRIBIRME YA</p>
+                </WAButton>
               </div>
 
 
@@ -79,10 +89,6 @@ const PriceCard = () => {
               >
                 <p className="text-lg">RESERVA TU LUGAR</p>
               </button> */}
-              <WAButton symbol={true} className="
-              mx-auto bg-accent-red py-4 px-6 rounded-lg font-bold transition-colors flex items-center justify-center space-x-3 shadow-lg hover:shadow-accent-red/30">
-                <p className="text-xl">INSCRIBIRME</p>
-              </WAButton>
             </div>
           </div>
         </div>

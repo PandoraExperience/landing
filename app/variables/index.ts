@@ -28,9 +28,9 @@ export const experience = {
     legalIdType: "CC"
   },
   price: {
-    amountInCents: 49900000,
+    amountInCents: 42000000,
     promoEarlyBird: {
-      percentage: 30
+      percentage: 16.7
     },
     currency: "COP",
     promoApplied: {
