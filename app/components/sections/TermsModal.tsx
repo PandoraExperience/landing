@@ -37,7 +37,7 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, onClose }) => {
 
             <h3 className="text-xl text-white font-medium mt-6">Política de Cancelación</h3>
             <p>
-              En caso de fuerza mayor, podrás reagendar tu participación para una futura edición
+              En caso de fuerza mayor, podrás reagendar tu participación con 48 horas de antelación para una futura edición
               o transferir tu cupo a otra persona.
             </p><p>
               No realizamos reembolso bajo ninguna circunstancia.

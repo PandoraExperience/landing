@@ -28,7 +28,7 @@ const questions = [
   },
   {
     question: "¿Que pasa si no puedo ir?",
-    answer: "En caso de que no puedas asistir por motivos de fuerza mayor (enfermedad o calamidad domestica) y ya hayas reservado, podrás ceder tu cupo a un amigo/ familiar o en tal caso reagendar para una próxima fecha . NO SE REALIZARÁ DEVOLUCIÓN DEL DINERO."
+    answer: "Al reservar tu cupo confirmas tu participación en esta experiencia transformadora. Si por motivos de fuerza mayor no puedes asistir, puedes ceder tu cupo o reagendar tu participación (según disponibilidad de cupos), avisando con al menos 10 días de anticipación. Ten presente que NO se realizan devoluciones de dinero ni cancelaciones. Gracias por honrar tu compromiso y ayudarnos a cuidar la energía del grupo."
   }
 ];
 
@@ -39,19 +39,19 @@ const FAQ = () => {
     <section id="faq"
       className="relative py-8 px-4 bg-dark-bg overflow-hidden">
       {/* Subtle background patterns and glow effects */}
-      <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-primary/5 filter blur-3xl animate-float"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-primary/5 filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/4 left-0 w-64 h-64 rounded-full bg-primary filter blur-3xl animate-float"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-primary filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
 
       <div className="max-w-3xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <span className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border-2 border-accent-red/30 text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)] mb-4">
+          <span className="inline-block px-6 py-2 rounded-full bg-black backdrop-blur-sm border-2 border-accent-red text-accent-red text-lg font-bold tracking-widest shadow-[0_0_10px_rgba(220,0,115,0.3)] mb-4">
             RESUELVE TUS DUDAS
           </span>
 
           {/* Title with glow effect */}
           <div className="relative mb-4">
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-primary/30 filter blur-[80px] rounded-full animate-breathe"></div>
+            <div className="absolute inset-0 bg-primary filter blur-[80px] rounded-full animate-breathe"></div>
             <h2 className="relative text-3xl text-white font-bold">
               Preguntas Frecuentes
             </h2>
@@ -65,7 +65,7 @@ const FAQ = () => {
         {questions.map((item, index) => (
           <div key={index} className="mb-4">
             <div
-              className="bg-black/40 p-4 rounded-lg cursor-pointer flex justify-between items-center border border-white/5 hover:border-primary/20 transition-all duration-300"
+              className="bg-black p-4 rounded-lg cursor-pointer flex justify-between items-center border border-white hover:border-primary transition-all duration-300"
               onClick={() => setActiveIndex(activeIndex === index ? null : index)}
             >
               <h3 className="text-white font-medium">{item.question}</h3>
@@ -85,8 +85,8 @@ const FAQ = () => {
               </svg>
             </div>
             {activeIndex === index && (
-              <div className="bg-black/40 p-4 mt-1 rounded-lg text-gray-300 border border-white/5">
-                {item.answer}
+              <div className="bg-black p-4 mt-1 rounded-lg text-gray-300 border border-white">
+                <p>{item.answer}</p>
               </div>
             )}
           </div>

@@ -17,7 +17,7 @@ const content = {
       {
         title: 'Política de Cancelación',
         content: [
-          'En caso de fuerza mayor, podrás reagendar tu participación para una futura edición o transferir tu cupo a otra persona.',
+          'En caso de fuerza mayor, podrás reagendar tu participación con 48 horas de antelación para una futura edición o transferir tu cupo a otra persona.',
           'No realizamos reembolsos bajo ninguna circunstancia.',
           'No hay re-agendamiento para cancelaciones dentro de las 48 horas previas al evento.'
         ],
